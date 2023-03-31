@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user[:email] = user_params[:email].downcase
 
     if @user.save
       login!(@user)
