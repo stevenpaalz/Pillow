@@ -41,8 +41,9 @@ function Navigation() {
                 <li><NavLink exact to="/">Manage Rentals</NavLink></li>
                 <li><NavLink exact to="/">Advertise</NavLink></li>
                 <li><NavLink exact to="/">Help</NavLink></li>
+                {sessionLinks}
             </ul>
-            {sessionLinks}
+            
         </div>
     )
 }
