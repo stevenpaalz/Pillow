@@ -1,0 +1,45 @@
+#login-open-button {
+    font-size: 35px;
+}
+
+.credential-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    position: absolute;
+}
+
+.credential-form > label {
+    padding: 10px 0px;
+    width: 400px;
+}
+
+.credential-form > label > input {
+    float: right;
+}
+
+.credential-form ul {
+    margin: 0px;
+}
+
+.credential-form > button {
+    width: 200px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px 0px;
+}
+
+@media (max-width: 500px) {
+    .credential-form {
+        width: 100%;
+        align-items: left;
+    }
+    
+    .credential-form > button {
+        width: 60%;
+    }
+
+    .credential-form > label {
+        width: 60%;
+    }
+}
