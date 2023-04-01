@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button id="profile-button" onClick={openMenu}>
         <img src={profileIcon} />
       </button>
       {showMenu && (
