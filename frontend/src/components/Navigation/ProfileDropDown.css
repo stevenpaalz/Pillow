@@ -32,6 +32,7 @@
 
 #profile-dropdown-content li:hover {
     background-color: #e8f5fc;
+    cursor: pointer;
 }
 
 #profile-dropdown-content li:last-child {
