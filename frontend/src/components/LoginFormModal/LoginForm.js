@@ -32,6 +32,7 @@ function LoginForm() {
     }
 
     return(
+        <>
         <form className="credential-form" id="login-form" onSubmit={handleSubmit}>
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
@@ -44,6 +45,8 @@ function LoginForm() {
             </label>
             <button type="submit">Log In</button>
         </form>
+
+        </>
     )
 }
 

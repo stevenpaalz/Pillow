@@ -8,3 +8,7 @@
 body {
     color: #2a2a35
 }
+
+.hidden {
+    display: none;
+}

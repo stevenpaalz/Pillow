@@ -5,15 +5,18 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import zillowLogo from "../../assets/zillow_main_logo.png"
+import ProfileDropDown from "./ProfileDropDown";
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
+    let dropdown;
     if (sessionUser) {
         sessionLinks = (
             <ProfileButton user={sessionUser} />
         );
+        dropdown = (<ProfileDropDown user={sessionUser}/>);
     } else {
         sessionLinks = (
             <>
@@ -24,6 +27,7 @@ function Navigation() {
     }
 
     return(
+        <>
         <div id='nav-bar' className="open-sans">
             <ul id="left-nav">
                 <li><NavLink exact to="/">Buy</NavLink></li>
@@ -43,8 +47,9 @@ function Navigation() {
                 <li><NavLink exact to="/">Help</NavLink></li>
                 {sessionLinks}
             </ul>
-            
         </div>
+        { dropdown }
+        </>
     )
 }
 

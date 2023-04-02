@@ -29,14 +29,17 @@ body {
 #modal-content {
     position: fixed;
     background-color: white;
-    height: 180px;
+    height: 91%;
     width: 400px;
     padding: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 50%;
+    flex-direction: column;
+    top: 3%;
     z-index: 1;
     border: lightblue 1px solid;
     border-radius: 3px;
+}
+
+.close-modal-button i {
+    float: right;
 }

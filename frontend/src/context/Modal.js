@@ -33,7 +33,11 @@ export const Modal = ({onClose, children}) => {
             <div id="modal-background" onClick={onClose}>
             </div>
             <div id="modal-content">
-                {children}
+                <button className="close-modal-button" onClick={onClose}><i className="fa-regular fa-x"></i></button>
+                <div id="login-modal-content">
+                    <h2>Welcome to Zill-oh?</h2>
+                    {children}
+                </div>
             </div>
         </div>,
         modalNode

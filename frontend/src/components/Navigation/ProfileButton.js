@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
 import profileIcon from '../../assets/profile_icon.png';
 
-function ProfileButton({ user }) {
-  const dispatch = useDispatch();
+function ProfileButton() {
   const [showMenu, setShowMenu] = useState(false);
+
   
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
+    const profileDropDown = document.getElementById('profile-dropdown');
+    profileDropDown.classList.remove('hidden');
   };
   
   useEffect(() => {
@@ -17,6 +17,8 @@ function ProfileButton({ user }) {
 
     const closeMenu = () => {
       setShowMenu(false);
+      const profileDropDown = document.getElementById('profile-dropdown');
+      profileDropDown.classList.add('hidden');
     };
 
     document.addEventListener('click', closeMenu);
@@ -24,25 +26,13 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
+
 
   return (
     <>
       <button id="profile-button" onClick={openMenu}>
         <img src={profileIcon} />
       </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
     </>
   );
 }
