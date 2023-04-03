@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import { useEffect } from 'react';
 
@@ -11,7 +10,6 @@ function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    const session = useSelector(state => state.session)
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 
@@ -30,7 +28,7 @@ function LoginForm() {
         document.addEventListener('click', clickAway);
 
         return () => document.removeEventListener("click", clickAway);
-    }, [email])
+    }, [email, emailRegex])
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -17,13 +17,13 @@ ApplicationRecord.transaction do
     puts "Creating users..."
     User.create!(
       email: 'demo@email.com', 
-      password: 'password'
+      password: 'Password1!'
     )
   
     10.times do 
       User.create!({
         email: Faker::Internet.unique.email,
-        password: 'password'
+        password: 'Password1!'
       }) 
     end
   

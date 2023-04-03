@@ -33,7 +33,7 @@ function LoginFormModal() {
 
     const demoLoginHandler = (e) => {
         e.preventDefault();
-        return dispatch(sessionActions.login({email: 'demo@email.com', password: 'password'}))
+        return dispatch(sessionActions.login({email: 'demo@email.com', password: 'Password1!'}))
     }
 
     const closeModal = (e) => {

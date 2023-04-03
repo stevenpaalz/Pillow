@@ -40,10 +40,20 @@
 #create-account-password-errors {
     color: #596B82;
     font-size: 12px;
-    margin-left: 16px;
+    margin-left: 8px;
     font-weight: 300;
 }
 
 #create-account-password-errors li {
     margin-top: 8px;   
+}
+
+#create-account-password-errors li i.red-error {
+    color: rgb(163, 0, 11);
+    margin-right: 8px;
+}
+
+#create-account-password-errors li i.green-valid {
+    color: rgb(18, 138, 41);
+    margin-right: 8px;
 }

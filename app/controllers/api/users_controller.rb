@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else 
-      render json: { errors: ['Account already exists with that email.'] }, status: :unprocessable_entity
+      render json: { errors: ['Not a valid email address'] }, status: :unprocessable_entity
     end
   end
 
