@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
 import './LoginForm.css';
 import './SignUpForm.css';
 
@@ -11,8 +12,76 @@ function SignUpForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const session = useSelector(state => state.session)
+    const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    if (session.user !== null) { return <Redirect to="/" />;}
+    useEffect(()=>{
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const clickAway = () => {
+            if (!email.toLowerCase().match(emailRegex) && email !== "") {
+                emailInput.classList.add('red-error');
+                emailError.classList.remove('hidden');
+            } else {
+                emailInput.classList.remove('red-error');
+                emailError.classList.add('hidden');
+            }
+        }
+        document.addEventListener('click', clickAway);
+
+        return () => document.removeEventListener("click", clickAway);
+    }, [email])
+
+    useEffect(()=>{
+        const passValidationOne = document.querySelector('#create-account-password-errors li:nth-child(1)');
+        const passValidationTwo = document.querySelector('#create-account-password-errors li:nth-child(2)');
+        const passValidationThree = document.querySelector('#create-account-password-errors li:nth-child(3)');
+        const passValidationFour = document.querySelector('#create-account-password-errors li:nth-child(4)');
+        const createSubmit = document.getElementById('create-submit');
+        const passValidations = [passValidationOne, passValidationTwo, passValidationThree, passValidationFour];
+        createSubmit.removeAttribute('disabled');
+
+        const makeGreen = (validation) => {
+            validation.classList.remove('red-error');
+            validation.classList.add('green');
+        }
+
+        const makeRed = (validation) => {
+            validation.classList.add('red-error');
+            validation.classList.remove('green');
+        }
+
+        if (password.length === 0) {
+            passValidations.forEach((validation)=>{
+                validation.classList.remove('red-error');
+                validation.classList.remove('green');
+            })
+            createSubmit.setAttribute('disabled', true);
+        }
+        else {
+            if (password.length < 8) {
+                makeRed(passValidationOne);
+                createSubmit.setAttribute('disabled', true);
+            } else {
+                makeGreen(passValidationOne);
+            }
+            if (!(/\d/.test(password)) || !(/[a-z]/gi).test(password)) {
+                makeRed(passValidationTwo);
+                createSubmit.setAttribute('disabled', true);
+            } else {
+                makeGreen(passValidationTwo);
+            }
+
+        }   
+        // $&+,:;=?@#|'<>.^*()%!-]
+
+        // const checkValidation = () => {
+
+        // }
+
+        // document.addEventListener('click', clickAway);
+
+        // return () => document.removeEventListener("click", clickAway)
+    }, [password])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,12 +103,9 @@ function SignUpForm() {
     return(
         <>
         <form className="credential-form" id="signup-form" onSubmit={handleSubmit}>
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
             <label htmlFor="email">Email</label>
             <input id="email" type="text" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} required/>
-
+            <p className="hidden" id="email-error">Enter a valid email address</p>
             <label htmlFor="password">Password</label>
             <input id="password" type="password" placeholder="Create password" value={password} onChange={e => setPassword(e.target.value)} required/>
 
@@ -54,10 +120,12 @@ function SignUpForm() {
                 <label htmlFor='landlord-checkbox'>I am a landlord or industry professional</label>
             </div>
             
-            <button type="submit">Submit</button>
+            <button id="create-submit" type="submit">Submit</button>
             <p id="terms-of-use">By submitting, I accept Zill-oh's <a href='https://www.zillow.com/z/corp/terms/'>terms of use.</a></p>
         </form>
-
+        <ul id="login-errors">
+            {errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
         </>
     )
 }

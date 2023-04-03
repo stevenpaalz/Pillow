@@ -36,11 +36,17 @@ function LoginFormModal() {
         return dispatch(sessionActions.login({email: 'demo@email.com', password: 'password'}))
     }
 
+    const closeModal = (e) => {
+        e.preventDefault();
+        setShowModal(false);
+        setExistingUser(true);
+    }
+
     return(
         <>
             <button id="login-open-button" className="open-sans" onClick={() => setShowModal(true)}>Sign In</button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <Modal onClose={closeModal}>
                     <h2 id='welcome-header'>Welcome to Zill-oh</h2>
                     <nav id='new-account-nav'>
                         <button className='selected-login-nav' onClick={selectSignIn}>Sign in</button>

@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else 
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: ['Account already exists with that email.'] }, status: :unprocessable_entity
     end
   end
 

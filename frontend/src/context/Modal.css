@@ -31,7 +31,7 @@ body {
     background-color: white;
     height: 88%;
     width: 400px;
-    padding: 20px;
+    padding: 12px 20px;
     display: flex;
     flex-direction: column;
     top: 3%;

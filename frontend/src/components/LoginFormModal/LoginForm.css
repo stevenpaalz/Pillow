@@ -45,13 +45,13 @@
     border: 1px solid white;
 }
 
-.credential-form button:hover {
+.credential-form button:hover, #demo-login button:hover {
     cursor: pointer;
     background: #154bc0;
     transition: 0.3s;
 }
 
-.credential-form button:active:hover {
+.credential-form button:active:hover, #demo-login-button:active:hover {
     box-shadow: 0px 0px 4px 3px #2a7dd5;
     transition: box-shadow 0.3s;
 }
@@ -142,4 +142,45 @@
     width: 326px;
     padding: 9px 16px;
     margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+#login-errors {
+    width: 345px;
+    padding: 0px 20px;
+    margin-bottom: 16px;
+}
+
+#login-errors li, #email-error {
+    color: rgb(163, 0, 11);
+    font-weight: 400;
+    font-size: 12px;
+    padding-top: 6px;
+}
+
+#email.red-error {
+    border: 1px solid rgb(163, 0, 11);
+}
+
+#create-account-password-errors li.red-error {
+    color: rgb(163, 0, 11);
+}
+
+#create-account-password-errors li.green {
+    color: rgb(18, 138, 41);
+}
+
+#create-submit:disabled {
+    background-color: #0069fd7a;
+}
+
+#create-submit:disabled:hover {
+    background-color: #0069fd7a;
+    cursor: default;
+}
+
+#create-submit:disabled:active:hover {
+    background-color: #0069fd7a;
+    cursor: default;
+    box-shadow: 0px 0px 0px 0px #2a7dd5;
 }

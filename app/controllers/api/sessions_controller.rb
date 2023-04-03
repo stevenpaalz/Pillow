@@ -14,7 +14,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render 'api/users/show'
     else
-      render json: { errors: ["Incorrect email or password. Please try again or click 'Fogot your password?'."] }, status: :unauthorized
+      render json: { errors: ["Incorrect email or password. Please try again or click 'Forgot your password?'."] }, status: :unauthorized
     end
   end
 

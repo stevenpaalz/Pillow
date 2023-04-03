@@ -21,8 +21,8 @@ function ProfileDropDown() {
           <li><Link to="/">Your home</Link></li>
           <li><Link to="/">Renter Hub</Link></li>
           <li><Link to="/">Account settings</Link></li>
-          <li>
-            <button onClick={logout}>Sign out</button>
+          <li onClick={logout}>
+            <button>Sign out</button>
           </li>
         </ul>
       </div>
