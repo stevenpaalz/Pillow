@@ -18,7 +18,6 @@ function LoginFormModal() {
         const create = document.querySelector('#new-account-nav button:last-child');
         signIn.classList.add('selected-login-nav');
         create.classList.remove('selected-login-nav');
-
     }
 
     const selectCreate = (e) => {
@@ -28,7 +27,6 @@ function LoginFormModal() {
         const create = document.querySelector('#new-account-nav button:last-child');
         create.classList.add('selected-login-nav');
         signIn.classList.remove('selected-login-nav');
-
     }
 
     const demoLoginHandler = (e) => {

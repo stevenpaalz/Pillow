@@ -6,9 +6,12 @@ import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import zillowLogo from "../../assets/zillow_main_logo.png"
 import ProfileDropDown from "./ProfileDropDown";
+import BuyDropDown from "./BuyDropDown";
+import { useState } from "react";
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
+    const [buyDropDownOpen, setBuyDropDownOpen] = useState(false);
 
     let sessionLinks;
     let dropdown;
@@ -27,11 +30,13 @@ function Navigation() {
         <>
         <div id='nav-bar' className="open-sans">
             <ul id="left-nav">
-                <li><NavLink exact to="/">Buy</NavLink></li>
-                <li><NavLink exact to="/">Rent</NavLink></li>
-                <li><NavLink exact to="/">Sell</NavLink></li>
-                <li><NavLink exact to="/">Home Loans</NavLink></li>
-                <li><NavLink exact to="/">Agent Finder</NavLink></li>
+                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span><NavLink exact to="/">Buy</NavLink></span>
+                    {buyDropDownOpen && <BuyDropDown />}
+                </li>
+                <li><span><NavLink exact to="/">Rent</NavLink></span></li>
+                <li><span><NavLink exact to="/">Sell</NavLink></span></li>
+                <li><span><NavLink exact to="/">Home Loans</NavLink></span></li>
+                <li><span><NavLink exact to="/">Agent Finder</NavLink></span></li>
             </ul>
             <div id="nav-logo">
                 <NavLink exact to="/">
@@ -39,9 +44,9 @@ function Navigation() {
                     </NavLink>
             </div>
             <ul id="right-nav">
-                <li><NavLink exact to="/">Manage Rentals</NavLink></li>
-                <li><NavLink exact to="/">Advertise</NavLink></li>
-                <li><NavLink exact to="/">Help</NavLink></li>
+                <li><span><NavLink exact to="/">Manage Rentals</NavLink></span></li>
+                <li><span><NavLink exact to="/">Advertise</NavLink></span></li>
+                <li><span><NavLink exact to="/">Help</NavLink></span></li>
                 {sessionLinks}
             </ul>
         </div>

@@ -47,9 +47,3 @@ if (
 } else {
   renderApplication();
 }
-
-// if (sessionStorage.getItem("X-CSRF-Token") === null) {
-//   restoreCSRF().then(renderApplication);
-// } else {
-//   renderApplication();
-// }
