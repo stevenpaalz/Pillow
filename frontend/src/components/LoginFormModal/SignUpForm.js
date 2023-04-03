@@ -19,12 +19,12 @@ function SignUpForm() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
         const createSubmit = document.getElementById('create-submit');
-        setEmailValid(true);
         const clickAway = () => {
             if (!email.toLowerCase().match(emailRegex) && email !== "") {
                 emailInput.classList.add('red-error');
                 emailError.classList.remove('hidden');
                 setEmailValid(false);
+            } else if (email === "") {setEmailValid(false);
             } else {
                 emailInput.classList.remove('red-error');
                 emailError.classList.add('hidden');
