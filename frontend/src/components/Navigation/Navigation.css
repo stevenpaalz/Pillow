@@ -29,7 +29,7 @@
     }
 
     #nav-bar ul li:hover {
-        color: #1277e1
+        color: rgb(0, 106, 255)
     }
 
     #right-nav {
@@ -43,7 +43,7 @@
     }
 
     #login-open-button:hover {
-        color: #1277e1;
+        color: rgb(0, 106, 255);
         cursor: pointer;
     }
 

@@ -1,16 +1,33 @@
 .credential-form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 90%;
+    padding: 0px 5%;
 }
 
-.credential-form > label {
-    padding: 10px 0px;
-    width: 400px;
+.credential-form label {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 900;
 }
 
-.credential-form > label > input {
-    float: right;
+.credential-form input {
+    padding: 9px 16px;
+    font-size: 16px;
+    background-color: #F6F6FA;
+    border-radius: 4px;
+    border: 1px solid rgb(209, 209, 213);
+    font-weight: 300px;
+}
+
+.credential-form input:focus {
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #2a7dd5;;
+    box-shadow: 0px 0px 4px 3px #2a7dd5;
+    transition: box-shadow 0.5s;
 }
 
 .credential-form ul {
@@ -18,10 +35,13 @@
 }
 
 .credential-form > button {
-    width: 200px;
-    margin: auto;
-    margin-top: 10px;
-    padding: 10px 0px;
+    margin: 30px 0px 20px 0px;
+    padding: 9px 16px;
+    background: #006AFF;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    height: 26px;
 }
 
 @media (max-width: 500px) {
@@ -37,4 +57,55 @@
     .credential-form > label {
         width: 60%;
     }
+}
+
+#welcome-header {
+    font-family: 'Times New Roman';
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    padding: 0px 0 30px 0;
+}
+
+#new-account-nav {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+#new-account-nav button {
+    text-align: center;
+    height: 100%;
+    padding: 10px 0px;
+}
+
+#new-account-nav button:hover {
+    color: rgb(0, 106, 255);
+    cursor: pointer;
+}
+
+#new-account-nav button:active:hover {
+    box-shadow:0px 0px 3px 2px #2a7dd5;
+    border-radius: 5px;
+}
+
+#new-account-nav button:first-child {
+    width: 80px
+}
+
+#new-account-nav button:last-child {
+    width: 120px;
+}
+
+.login-divider-line {
+    border: 1px rgb(219, 219, 219) solid;
+}
+
+.selected-login-nav {
+    border-bottom: solid 4px rgb(0, 106, 255);
+    border-radius: 4px;
+}
+
+.credential-form a {
+    margin: 0 auto;
 }
