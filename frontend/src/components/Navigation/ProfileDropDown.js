@@ -13,7 +13,7 @@ function ProfileDropDown() {
 
     return(
       <div id="profile-dropdown" className="hidden">
-        <div class="arrow-up"></div>
+        <div className="arrow-up"></div>
         <ul id= "profile-dropdown-content" className="hidden open-sans">
           <li><Link to="/">Saved homes</Link></li>
           <li><Link to="/">Saved searches</Link></li>

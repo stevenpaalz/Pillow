@@ -1,0 +1,49 @@
+#landlord-checkbox-div {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    width: 100%;
+}
+
+#landlord-checkbox-div label{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px
+}
+
+#landlord-checkbox {
+    width: 22px;
+    height: 20px;
+    border: 2px solid rgb(167, 166, 171);
+    border-radius: 4px;
+    padding: 0px;
+}
+
+#landlord-checkbox:checked {
+    background: url(../../assets/zillow_check.png) 2px 3px / 12px no-repeat, rgb(0, 106, 255);
+}
+
+#landlord-checkbox:focus {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px, 
+    rgb(166, 229, 255) 0px 0px 2px 3px, 
+    rgb(0, 106, 255) 0px 0px 2px 4px;
+}
+
+#terms-of-use {
+    color: #596B82;
+    font-size: 12px;
+    margin: 0 auto 24px auto;
+    font-weight: 400;
+}
+
+#create-account-password-errors {
+    color: #596B82;
+    font-size: 12px;
+    margin-left: 16px;
+    font-weight: 300;
+}
+
+#create-account-password-errors li {
+    margin-top: 8px;   
+}

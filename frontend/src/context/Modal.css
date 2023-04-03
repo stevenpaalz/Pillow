@@ -38,6 +38,7 @@ body {
     z-index: 1;
     border: lightgrey 1px solid;
     border-radius: 8px;
+    overflow-y: auto;
 }
 
 .close-modal-button {

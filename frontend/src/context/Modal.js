@@ -36,7 +36,7 @@ export const Modal = ({onClose, children}) => {
                 <div id="close-modal-container">
                     <button className="close-modal-button" onClick={onClose}><i className="fa-regular fa-x"></i></button>
                 </div>
-                <div id="login-modal-content" class='open-sans'>
+                <div id="login-modal-content" className='open-sans'>
                     {children}
                 </div>
             </div>

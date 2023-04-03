@@ -54,3 +54,10 @@ a {
 button {
 	all: unset;
 }
+
+input[type="checkbox"] {
+	appearance: none;
+	background-color: #fff;
+	margin: 0;
+	border: none;
+}

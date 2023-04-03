@@ -34,16 +34,16 @@ function LoginForm() {
     return(
         <>
         <form className="credential-form" id="login-form" onSubmit={handleSubmit}>
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input id="email" type="text" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} required/>
-            <label for="password">Password
+            <label htmlFor="password">Password
             </label>
             <input id="password" type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} required/>
             <button type="submit">Sign In</button>
             <a href="https://www.wikihow.com/Remember-a-Forgotten-Password">Forgot your password?</a>
+            <ul id="login-errors">
+                {errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
         </form>
         </>
     )

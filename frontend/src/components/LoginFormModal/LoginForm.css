@@ -10,7 +10,7 @@
     padding-bottom: 10px;
     width: 100%;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .credential-form input {
@@ -25,7 +25,7 @@
 .credential-form input:focus {
     font-size: 16px;
     background-color: white;
-    border: 1px solid #2a7dd5;;
+    border: 1px solid #2a7dd5;
     box-shadow: 0px 0px 4px 3px #2a7dd5;
     transition: box-shadow 0.5s;
 }
@@ -34,14 +34,26 @@
     margin: 0px;
 }
 
-.credential-form > button {
-    margin: 30px 0px 20px 0px;
+.credential-form button, #demo-login button {
+    margin: 30px 0px 10px 0px;
     padding: 9px 16px;
     background: #006AFF;
     color: white;
     text-align: center;
     border-radius: 4px;
     height: 26px;
+    border: 1px solid white;
+}
+
+.credential-form button:hover {
+    cursor: pointer;
+    background: #154bc0;
+    transition: 0.3s;
+}
+
+.credential-form button:active:hover {
+    box-shadow: 0px 0px 4px 3px #2a7dd5;
+    transition: box-shadow 0.3s;
 }
 
 @media (max-width: 500px) {
@@ -108,4 +120,26 @@
 
 .credential-form a {
     margin: 0 auto;
+    color: #0D4599;
+    padding-bottom: 16px;
+    font-weight: 600;
+}
+
+.credential-form a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #448ec0;
+}
+
+#demo-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+}
+
+#demo-login button {
+    width: 326px;
+    padding: 9px 16px;
+    margin-top: 20px;
 }

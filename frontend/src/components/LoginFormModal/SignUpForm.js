@@ -17,7 +17,7 @@ function SignUpForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({email: email, password: password}))
+        return dispatch(sessionActions.signup({email: email, password: password}))
             .catch(async (res) => {
                 let data;
                 try {
@@ -37,10 +37,10 @@ function SignUpForm() {
             <ul>
                 {errors.map(error => <li key={error}>{error}</li>)}
             </ul>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input id="email" type="text" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} required/>
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input id="password" type="password" placeholder="Create password" value={password} onChange={e => setPassword(e.target.value)} required/>
 
             <ul id="create-account-password-errors">
@@ -49,11 +49,13 @@ function SignUpForm() {
                 <li>At least 1 special character</li>
                 <li>At least 1 lowercase and 1 uppercase letter</li>
             </ul>
-            <label>
-                <input type='checkbox'></input>I am a landlord or industry professional
-            </label>
+            <div id='landlord-checkbox-div'>
+                <input id='landlord-checkbox' type='checkbox'></input>
+                <label htmlFor='landlord-checkbox'>I am a landlord or industry professional</label>
+            </div>
+            
             <button type="submit">Submit</button>
-            <p>By submitting, I accept Zill-oh's <a href='https://www.zillow.com/z/corp/terms/'>terms of use.</a></p>
+            <p id="terms-of-use">By submitting, I accept Zill-oh's <a href='https://www.zillow.com/z/corp/terms/'>terms of use.</a></p>
         </form>
 
         </>
