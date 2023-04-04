@@ -1,7 +1,7 @@
 #splash-carousel {
     display: flex;
     padding: 8px;
-    height: 283px;
+    height: 299px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -9,8 +9,9 @@
 }
 
 #splash-carousel li.listing-index-item {
-    width: 345px;
+    width: 343px;
     height: 100%;
+    margin-right: 16px;
     flex-shrink: 0;
 }
 
@@ -27,4 +28,35 @@
     justify-content: space-between;
     padding: 8px;
     margin: 48px 64px 8px 64px;
+}
+
+#splash-listings-scroller button:disabled {
+    color: lightgray;
+    border: 1px solid lightgray;
+}
+
+#splash-listings-scroller button:hover {
+    background-color: rgb(242, 242, 242);
+}
+
+#splash-listings-scroller button:active:hover {
+    background-color: rgb(171, 171, 171);
+    transition: 0.1s;
+}
+
+#splash-listings-scroller button {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border: 1px solid gray;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 14px;
+}
+
+#splash-listings-scroller {
+    display: flex;
+    justify-content: center;
 }

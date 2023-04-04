@@ -11,8 +11,45 @@ function SplashListings() {
     useEffect(()=>{
         dispatch(fetchListings())
     }, [dispatch])
-// working here
-    // const nextScroll = 
+
+    const nextScroll = (e) => {
+        e.preventDefault();
+        const splashCarousel = document.getElementById('splash-carousel');
+        const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child');
+        let rect = lastListingItem.getBoundingClientRect();
+        const extra = ((rect.left - 82) % 359);
+        splashCarousel.scrollBy({left: 359 + extra});
+    }
+
+    const prevScroll = (e) => {
+        e.preventDefault();
+        const splashCarousel = document.getElementById('splash-carousel');
+        const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child');
+        let rect = lastListingItem.getBoundingClientRect();
+        const extra = (359 - ((rect.left - 82) % 359));
+        splashCarousel.scrollBy({left: -359 - extra});
+    }
+
+    const scrollHandler = () => {
+        const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
+        let rect = lastListingItem.getBoundingClientRect();
+        const nextButton = document.getElementById('next-button');
+        const previousButton = document.getElementById('previous-button');
+        if (rect.left <= (window.innerWidth-448)) {
+            nextButton.setAttribute('disabled', true);
+        } else { 
+            nextButton.removeAttribute('disabled');
+        }
+        if (rect.left >= 1877) {
+            previousButton.setAttribute('disabled', true);
+        } else {
+            previousButton.removeAttribute('disabled');
+        }
+    }
+    useEffect(()=> {
+        const previousButton = document.getElementById('previous-button');
+        previousButton.setAttribute('disabled', true);
+    }, [])
 
     return(
         <>
@@ -22,11 +59,11 @@ function SplashListings() {
                     <h4>Based on your view history</h4>
                 </div>
                 <div id='splash-listings-scroller'>
-                    <button>Previous</button>
-                    <button onClick={nextScroll}>Next</button>
+                    <button id='previous-button' onClick={prevScroll}><i className="fa-solid fa-chevron-left"></i></button>
+                    <button id='next-button' onClick={nextScroll}><i className="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <ul id='splash-carousel'>
+            <ul id='splash-carousel' onScroll={scrollHandler}>
                 {Object.values(listings).map((listing)=>{
                     return <ListingIndexItem key={listing.id} listing={listing} />
                 })}

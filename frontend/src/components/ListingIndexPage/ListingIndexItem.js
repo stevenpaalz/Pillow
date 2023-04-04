@@ -1,10 +1,12 @@
 import '../Splash/SplashListings.css';
+import placeholderImage from '../../assets/placeholder.jpeg';
+import './ListingIndexItem.css';
 
 function ListingIndexItem({listing}) {
 
     return(
         <li className='listing-index-item'>
-            <p>image placeholder</p>
+            <img src={placeholderImage} alt="apartment" id='lead-index-image'/>
             <h4>{listing.price}</h4>
             <ul>
                 <li>{listing.numBeds} bds</li>
