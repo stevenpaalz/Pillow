@@ -1,6 +1,25 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string
+#  password_digest :string
+#  session_token   :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
   has_secure_password
   before_validation :ensure_session_token
+
+  has_many(
+    :listings,
+    foreign_key: :lister_id,
+    primary_key: :id,
+    class_name: :Listing,
+    dependent: :destroy
+  ) 
 
   validates :email, 
     uniqueness: true, 
