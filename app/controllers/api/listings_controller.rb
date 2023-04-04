@@ -32,7 +32,7 @@ class Api::ListingsController < ApplicationController
     def destroy
         @listing = Listing.find(params[:id])
         if @listing.lister_id === current_user.id
-            destroy @listing
+            @listing.destroy
         end
     end
 
