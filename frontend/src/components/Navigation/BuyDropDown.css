@@ -10,6 +10,7 @@
     padding: 36px;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
+    z-index: 2;
 }
 
 #buy-dropdown.dropdown-subnav {
