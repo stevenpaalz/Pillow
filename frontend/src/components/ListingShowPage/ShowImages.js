@@ -1,4 +1,4 @@
-import "./ShowImages.js";
+import "./ShowImages.css";
 import placeholder_image from "../../assets/placeholder.jpeg";
 
 function ShowImages({listing}) {

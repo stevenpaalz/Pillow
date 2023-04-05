@@ -15,8 +15,7 @@ function ListingIndexItem({listing}) {
     }
 
     const routeChange = () => {
-        console.log('triggered');
-        history.push(`homes/${listing.id}`)
+        history.push(`/homes/${listing.id}`)
     }
 
     return(
