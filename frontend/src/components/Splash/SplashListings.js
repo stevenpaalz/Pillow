@@ -32,16 +32,15 @@ function SplashListings() {
 
     const scrollHandler = () => {
         const splashCarousel = document.getElementById('splash-carousel')
-        // const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
-        // let rect = lastListingItem.getBoundingClientRect();
         const nextButton = document.getElementById('next-button');
         const previousButton = document.getElementById('previous-button');
         if (splashCarousel.scrollLeft === 0) {
             previousButton.setAttribute('disabled', true);
         } else { previousButton.removeAttribute('disabled');}
-        // console.log(splashCarousel.scrollWidth)
-        // console.log(splashCarousel.scrollLeft)
-        if ((splashCarousel.scrollWidth - splashCarousel.scrollLeft + 143) === window.innerWidth) {
+
+        const lastCarouselItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
+        const rect = lastCarouselItem.getBoundingClientRect();
+        if ((rect.right) <= window.innerWidth - (window.innerWidth*.09)) {
             nextButton.setAttribute('disabled', true);
         } else {nextButton.removeAttribute('disabled');}
     }
@@ -68,8 +67,6 @@ function SplashListings() {
                     return <ListingIndexItem key={listing.id} listing={listing} />
                 })}
             </ul>
-            <div id='splash-mask'>
-            </div>
         </>
     )
 }

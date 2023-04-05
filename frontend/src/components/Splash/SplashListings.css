@@ -5,7 +5,7 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    margin: 0 64px;
+    margin: 0 7%;
 }
 
 #splash-carousel li.listing-index-item {
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
-    margin: 48px 64px 8px 64px;
+    margin: 48px 7% 8px 7%;
 }
 
 #splash-listings-scroller button:disabled {
@@ -71,6 +71,11 @@
     justify-content: center;
 }
 
+#splash-carousel::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 #splash-listings-headers {
     color: #2A2A33;
     line-height: 24px;
@@ -86,3 +91,13 @@
     font-size: 14px;
     font-weight: 300;
 }
+
+/* @media (min-width: 1100px) {
+    #splash-carousel {
+        margin: 0 10%;
+    }
+
+    #splash-listings-nav {
+        margin: 48px 10% 8px 10%;
+    }
+} */

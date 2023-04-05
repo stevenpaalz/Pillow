@@ -1,0 +1,15 @@
+#index-page-container {
+    display: flex;
+    height: 100%;
+}
+
+#listings-page-index {
+    width: 750px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1280px) {
+    #listings-page-index {
+        width: 375px;
+    }
+}
