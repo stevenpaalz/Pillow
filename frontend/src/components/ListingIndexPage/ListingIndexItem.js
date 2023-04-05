@@ -2,8 +2,11 @@ import '../Splash/SplashListings.css';
 import placeholderImage from '../../assets/placeholder.jpeg';
 import './ListingIndexItem.css';
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function ListingIndexItem({listing}) {
+    const history = useHistory();
     const [liked, setLiked] = useState(false)
 
     const toggleLiked = (e) => {
@@ -11,8 +14,13 @@ function ListingIndexItem({listing}) {
         setLiked(!liked);
     }
 
+    const routeChange = () => {
+        console.log('triggered');
+        history.push(`homes/${listing.id}`)
+    }
+
     return(
-        <li className='listing-index-item open-sans'>
+        <li onClick={routeChange} className='listing-index-item open-sans'>
             <button onClick={toggleLiked} id="index-like-button">
                 <i className="fa-solid fa-heart background-heart"></i>
                 {!liked && <i className="fa-regular fa-heart foreground-heart"></i>}
