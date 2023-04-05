@@ -31,21 +31,21 @@ function SplashListings() {
     }
 
     const scrollHandler = () => {
-        const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
-        let rect = lastListingItem.getBoundingClientRect();
+        const splashCarousel = document.getElementById('splash-carousel')
+        // const lastListingItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
+        // let rect = lastListingItem.getBoundingClientRect();
         const nextButton = document.getElementById('next-button');
         const previousButton = document.getElementById('previous-button');
-        if (rect.left <= (window.innerWidth-448)) {
-            nextButton.setAttribute('disabled', true);
-        } else { 
-            nextButton.removeAttribute('disabled');
-        }
-        if (rect.left >= 1877) {
+        if (splashCarousel.scrollLeft === 0) {
             previousButton.setAttribute('disabled', true);
-        } else {
-            previousButton.removeAttribute('disabled');
-        }
+        } else { previousButton.removeAttribute('disabled');}
+        // console.log(splashCarousel.scrollWidth)
+        // console.log(splashCarousel.scrollLeft)
+        if ((splashCarousel.scrollWidth - splashCarousel.scrollLeft + 143) === window.innerWidth) {
+            nextButton.setAttribute('disabled', true);
+        } else {nextButton.removeAttribute('disabled');}
     }
+    
     useEffect(()=> {
         const previousButton = document.getElementById('previous-button');
         previousButton.setAttribute('disabled', true);

@@ -35,6 +35,16 @@
     border: 1px solid lightgray;
 }
 
+#splash-listings-scroller button:disabled:hover {
+    cursor: default;
+    background-color: white;
+}
+
+#splash-listings-scroller button:disabled:active:hover {
+    cursor: default;
+    background-color: white;
+}
+
 #splash-listings-scroller button:hover {
     background-color: rgb(242, 242, 242);
 }
