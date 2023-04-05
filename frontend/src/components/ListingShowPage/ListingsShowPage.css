@@ -17,6 +17,7 @@
     background-color: white;
     display: flex;
     overflow: hidden;
+    color: #2A2A33;
 }
 
 #listing-show-page-right {

@@ -1,4 +1,4 @@
-import "./ShowHeader.js";
+import "./ShowHeader.css";
 
 function ShowHeader({listing}) {
 

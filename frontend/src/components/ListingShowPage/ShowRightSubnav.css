@@ -1,0 +1,24 @@
+#show-right-subnav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 16px;
+    height: 59px;
+    border-bottom: 1px solid rgb(209, 209, 213);
+}
+
+#show-right-subnav li {
+    padding: 20px 8px;
+    font-weight: 300;
+    font-size: 15px;
+    height: 15px;
+}
+
+#show-right-subnav li:hover {
+    
+}
+
+.selected {
+    color: rgb(0, 106, 255);
+    border-bottom: 3px solid rgb(0, 106, 255);
+}

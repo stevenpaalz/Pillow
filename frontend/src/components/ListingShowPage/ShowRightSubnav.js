@@ -4,7 +4,7 @@ function ShowRightSubnav() {
 
     return(
         <ul id="show-right-subnav">
-            <li>Overview</li>
+            <li className="selected">Overview</li>
             <li>Facts and features</li>
         </ul>
     )
