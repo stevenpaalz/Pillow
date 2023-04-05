@@ -19,14 +19,15 @@ function ListingIndexItem({listing}) {
                 {liked && <i className="fa-solid fa-heart foreground-heart"></i>}
             </button>
             <img src={placeholderImage} alt="apartment" id='lead-index-image'/>
+            <div className='listing-index-content'>
             <h4 id='listing-index-price'>{listing.price.toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits: 0,})}</h4>
-            <ul>
-                <li>{listing.numBeds} bds</li>
-                <li>{listing.numBaths} ba</li>
-                <li>{listing.squareFeet} sqft</li>
+            <ul className='listing-index-facts'>
+                <li><span>{listing.numBeds}</span> bds</li>
+                <li><span>{listing.numBaths}</span> ba</li>
+                <li><span>{listing.squareFeet}</span> sqft</li>
                 <li>{listing.homeType} for {listing.saleType}</li>
             </ul>
-            <p>
+            <p className='listing-index-address'>
                 <span>{listing.streetNumber}</span>
                 <span> {listing.streetAddress}</span>
                 {listing.unitNumber && <span> {listing.unitNumber}</span>}
@@ -34,7 +35,8 @@ function ListingIndexItem({listing}) {
                 <span> {listing.state}</span>,
                 <span> {listing.zipcode}</span>
             </p>
-            <p>LISTING BY: {listing.lister.email}</p>
+            <p className='listing-index-lister'>LISTING BY: {listing.lister.email}</p>
+            </div>
         </li>
     )
 }

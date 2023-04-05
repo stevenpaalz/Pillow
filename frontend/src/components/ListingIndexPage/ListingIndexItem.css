@@ -33,7 +33,6 @@ li.listing-index-item:active:hover {
     width: 32px;
     filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 2px 4px);
     font-size: 32px;
-
 }
 
 #index-like-button i.background-heart {
@@ -45,4 +44,57 @@ li.listing-index-item:active:hover {
     position: relative;
     z-index: 3;
     top: -32px;
+}
+
+.listing-index-content {
+    display: grid;
+    padding: 8px;
+    place-content: start space-between;
+    grid-template-areas: "title title actions"
+    "body1 body1 body1"
+    "body2 body2 body2"
+    "body3 mls-logo mls-logo"
+    "additionalInfo additionalInfo additionalInfo";
+    column-gap: 8px;
+    grid-area: data / data / data / data;
+    color: #2A2A33;
+}
+
+#listing-index-price {
+    font-weight: 500;
+    line-height: 24px;
+    font-size: 20px;
+    grid-area: title / title / title / title;
+}
+
+.listing-index-facts {
+    grid-area: body1 / body1 / body1 / body1;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    font-weight: 300;
+}
+
+.listing-index-facts li:not(:last-child)::after {
+    content: " | ";
+    color: rgb(167, 166, 171);
+    padding: 0 3px 0 2px;
+}
+
+.listing-index-facts li span {
+    font-weight: 600;
+}
+
+.listing-index-address {
+    grid-area: body2 / body2 / body2 / body2;
+    font-size: 14px;
+    line-height: 24px;
+    color: #0A0A14;
+}
+
+.listing-index-lister {
+    grid-area: additionalInfo / additionalInfo / additionalInfo / additionalInfo;
+    color: rgb(89, 107, 130);
+    font-size: 10px;
+    line-height: 16px;
 }

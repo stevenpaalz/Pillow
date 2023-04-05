@@ -70,3 +70,19 @@
     display: flex;
     justify-content: center;
 }
+
+#splash-listings-headers {
+    color: #2A2A33;
+    line-height: 24px;
+}
+
+#splash-listings-headers h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#splash-listings-headers h4 {
+    color: rgb(89, 107, 130);
+    font-size: 14px;
+    font-weight: 300;
+}

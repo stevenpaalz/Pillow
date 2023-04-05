@@ -53,9 +53,9 @@ function SplashListings() {
 
     return(
         <>
-            <div id='splash-listings-nav'>
+            <div className='open-sans' id='splash-listings-nav'>
                 <div id='splash-listings-headers'>
-                    <h3>Homes For you</h3>
+                    <h3>Homes For You</h3>
                     <h4>Based on your view history</h4>
                 </div>
                 <div id='splash-listings-scroller'>
