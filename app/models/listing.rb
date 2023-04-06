@@ -24,6 +24,8 @@
 #
 class Listing < ApplicationRecord
 
+  has_many_attached :photos
+
   HOME_TYPE = [
     "Condo",
     "Apartment",

@@ -5,7 +5,8 @@ function ShowImages({listing}) {
 
     return(
         <div id='show-images'>
-            <img src={placeholder_image} />
+            <img src={listing.photoUrl} />
+            {/* <img src={placeholder_image} /> */}
         </div>
     )
 }
