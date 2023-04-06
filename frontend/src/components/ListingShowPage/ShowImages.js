@@ -5,8 +5,9 @@ function ShowImages({listing}) {
 
     return(
         <div id='show-images'>
-            <img src={listing.photoUrl} />
-            {/* <img src={placeholder_image} /> */}
+            {listing.photoUrls && listing.photoUrls.map((photoUrl, index)=>{
+                return <img key={index} src={photoUrl} />
+            })}
         </div>
     )
 }

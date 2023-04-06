@@ -1,7 +1,7 @@
 import '../Splash/SplashListings.css';
 import placeholderImage from '../../assets/placeholder.jpeg';
 import './ListingIndexItem.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -13,6 +13,14 @@ function ListingIndexItem({listing}) {
         e.preventDefault();
         e.stopPropagation();
         setLiked(!liked);
+    }
+
+    let modifiedHomeType;
+
+    if (listing.homeType === "Apartment") {
+        modifiedHomeType = "Apt";
+    } else {
+        modifiedHomeType = listing.homeType;
     }
 
     const routeChange = () => {
@@ -33,7 +41,7 @@ function ListingIndexItem({listing}) {
                 <li><span>{listing.numBeds}</span> bds</li>
                 <li><span>{listing.numBaths}</span> ba</li>
                 <li><span>{listing.squareFeet}</span> sqft</li>
-                <li>{listing.homeType} for {listing.saleType}</li>
+                <li>{modifiedHomeType} for {listing.saleType}</li>
             </ul>
             <p className='listing-index-address'>
                 <span>{listing.streetNumber}</span>

@@ -1,5 +1,5 @@
 class Api::ListingsController < ApplicationController
-    wrap_parameters include: Listing.attribute_names
+    wrap_parameters include: Listing.attribute_names + [:photo, :images]
 
     def index
         @listings = Listing.includes(:lister).all
@@ -13,6 +13,7 @@ class Api::ListingsController < ApplicationController
 
     def create
         @listing = Listing.new(listingparams)
+        @listing.lister_id = current_user.id
         if @listing.save
             render :show
         else
@@ -39,7 +40,7 @@ class Api::ListingsController < ApplicationController
     private
 
     def listingparams
-        params.require(:listing).permit(:lister_id, :street_number, :street_address, :unit_number, :city, :state, :price, :home_type, :square_feet, :description, :sale_type, :air_con, :year_built, :zipcode, :num_baths, :num_beds)
+        params.require(:listing).permit(:lister_id, :street_number, :street_address, :unit_number, :city, :state, :price, :home_type, :square_feet, :description, :sale_type, :air_con, :year_built, :zipcode, :num_baths, :num_beds, images: [])
     end
 
 end

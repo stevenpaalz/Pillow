@@ -1,0 +1,5 @@
+#sell-form input {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}

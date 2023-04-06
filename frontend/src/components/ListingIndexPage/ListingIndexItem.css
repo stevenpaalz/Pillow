@@ -79,7 +79,7 @@ li.listing-index-item:active:hover {
 .listing-index-facts li:not(:last-child)::after {
     content: " | ";
     color: rgb(167, 166, 171);
-    padding: 0 3px 0 2px;
+    padding: 0 1px 0 1px;
 }
 
 .listing-index-facts li span {
