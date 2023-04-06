@@ -11,6 +11,7 @@ function ListingIndexItem({listing}) {
 
     const toggleLiked = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         setLiked(!liked);
     }
 

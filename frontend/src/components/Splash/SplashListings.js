@@ -40,7 +40,7 @@ function SplashListings() {
 
         const lastCarouselItem = document.querySelector('#splash-carousel li.listing-index-item:last-child')
         const rect = lastCarouselItem.getBoundingClientRect();
-        if ((rect.right) <= window.innerWidth - (window.innerWidth*.09)) {
+        if ((rect.right) <= window.innerWidth - (window.innerWidth*.08)) {
             nextButton.setAttribute('disabled', true);
         } else {nextButton.removeAttribute('disabled');}
     }
