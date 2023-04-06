@@ -1,4 +1,7 @@
 #show-right-subnav {
+    position: fixed;
+    background-color: white;
+    width: 453px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

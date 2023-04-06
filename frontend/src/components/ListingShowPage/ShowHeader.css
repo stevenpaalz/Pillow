@@ -64,3 +64,17 @@
 #show-header-facts li span {
     font-weight: 700;
 }
+
+#header-buttons button:hover {
+    cursor: pointer;
+    background-color: rgb(13, 69, 153);
+    border-color: rgb(13, 69, 153);
+    color: white;
+}
+
+#header-buttons button:active:hover {
+    cursor: pointer;
+    background-color: rgb(0, 23, 81);
+    border-color: rgb(0, 23, 81);
+    color: white;
+}

@@ -1,6 +1,5 @@
 #show-page-container {
     height: 100%;
-    /* overflow: hidden; */
 }
 
 #listing-show-page-background {
@@ -11,7 +10,6 @@
     z-index: 1;
     width: 100%;
     height: calc(100% + 80px);
-    /* overflow: hidden; */
 }
 
 #listing-show-content {

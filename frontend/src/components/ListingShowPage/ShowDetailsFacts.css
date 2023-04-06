@@ -1,4 +1,37 @@
 #show-details-facts {
     display: flex;
     flex-direction: column;
+    justify-content: flext-start;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgb(209, 209, 213);
+}
+
+#show-details-facts ul {
+    list-style-type: disc;
+}
+
+#show-details-facts ul li{
+    margin: 15px 40px;
+}
+
+
+#show-details-facts h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#interior-details, #construction-details, #community {
+    padding: 0 16px;
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+#interior-details h4, #construction-details h4, #community h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 8px 0px 16px;
+}
+
+#interior-details h5, #construction-details h5, #community h5 {
+    font-weight: 700;
 }
