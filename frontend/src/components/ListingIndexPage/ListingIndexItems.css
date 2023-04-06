@@ -10,3 +10,14 @@
 #index-listings-ul li{
     margin-bottom: 12px;
 }
+
+#listings-page-index-headers {
+    padding: 20px;
+}
+
+#listings-page-index-headers h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+}

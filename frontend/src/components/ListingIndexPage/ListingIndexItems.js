@@ -18,7 +18,7 @@ function ListingIndexItems() {
     },[])
 
     return(
-        <div id='index-page-right-side'>
+        <div id='index-page-right-side' className="open-sans">
             <div id='listings-page-index-headers'>
                 <h3>Real Estate & Homes For Sale</h3>
                 <h4>XX results</h4>
