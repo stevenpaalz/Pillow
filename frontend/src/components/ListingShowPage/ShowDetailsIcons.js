@@ -7,9 +7,9 @@ function ShowDetails({listing}) {
 
     return(
         <ul id="show-details-icons">
-            <li><i className="fa-regular fa-building"></i> {listing.homeType}</li>
-            <li><i className="fa-regular fa-calendar-days"></i> {listing.yearBuilt}</li>
-            <li><i className="fa-regular fa-snowflake"></i> {aircon}</li>
+            <li><i className="fa-regular fa-building"></i>{listing.homeType}</li>
+            <li><i className="fa-regular fa-calendar-days"></i>Built in {listing.yearBuilt}</li>
+            <li><i className="fa-regular fa-snowflake"></i>{aircon}</li>
             {listing.saleType === "Sale" && <li>
                 <i className="fa-solid fa-ruler-combined"></i>
                 {(listing.price / listing.squareFeet).toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits: 0,})} price/sqft

@@ -9,13 +9,18 @@
 
 #show-right-subnav li {
     padding: 20px 8px;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 15px;
     height: 15px;
 }
 
 #show-right-subnav li:hover {
-    
+    color: #62aef7;
+    cursor: pointer;
+}
+
+#show-right-subnav li:active:hover {
+    color: #2A2A33;
 }
 
 .selected {

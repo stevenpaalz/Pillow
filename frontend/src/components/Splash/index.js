@@ -8,7 +8,7 @@ function Splash() {
     }
 
     return(
-        <>
+        <div id='splash-container'>
             <div id='splash-header'>
                 <h1>Find it. Tour it. Own it.</h1>
                 <form onSubmit={handleSubmit} className="open-sans" id='splash-search'>
@@ -19,7 +19,7 @@ function Splash() {
            <div id='splash-index'>
                 <SplashListings />
            </div>
-        </>
+        </div>
     )
 }
 

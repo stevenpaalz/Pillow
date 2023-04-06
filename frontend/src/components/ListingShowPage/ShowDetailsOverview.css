@@ -1,0 +1,25 @@
+#show-details-overview {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgb(209, 209, 213);
+}
+
+#show-details-overview h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+#show-details-overview p {
+    margin-bottom: 8px;
+    line-height: 24px;
+}
+
+#show-details-overview p:nth-child(3) {
+    font-weight: 700;
+}
+
+#show-details-overview p:nth-child(4) {
+    margin-top: 8px;
+}

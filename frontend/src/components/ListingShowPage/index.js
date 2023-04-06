@@ -30,7 +30,7 @@ function ListingShowPage() {
         return null
     }
     else return(
-        <>
+        <div id='show-page-container'>
             <div onClick={closePage} id="listing-show-page-background">
                 <div id="close-page-button-container">
                     <button className="close-page-button" onClick={closePage}><i className="fa-regular fa-x"></i></button>
@@ -53,7 +53,7 @@ function ListingShowPage() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

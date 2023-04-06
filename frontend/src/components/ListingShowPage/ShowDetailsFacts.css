@@ -1,0 +1,4 @@
+#show-details-facts {
+    display: flex;
+    flex-direction: column;
+}

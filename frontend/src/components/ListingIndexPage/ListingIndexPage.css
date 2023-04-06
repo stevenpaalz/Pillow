@@ -7,7 +7,7 @@
 
 #listings-page-index {
     width: 750px;
-    height: 100vh;
+    height: 88%;
     flex-shrink: 0;
     overflow-y: auto;
 }
