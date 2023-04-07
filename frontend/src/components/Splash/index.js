@@ -1,5 +1,6 @@
 import './Splash.css';
 import SplashListings from './SplashListings';
+import SplashCTA from "./SplashCTA";
 
 function Splash() {
 
@@ -19,6 +20,8 @@ function Splash() {
            <div id='splash-index'>
                 <SplashListings />
            </div>
+           <SplashCTA />
+
         </div>
     )
 }
