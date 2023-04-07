@@ -5,6 +5,7 @@ import Splash from './components/Splash';
 import ListingIndexPage from './components/ListingIndexPage';
 import ListingShowPage from './components/ListingShowPage';
 import CreateListing from './components/CreateListing';
+import MapWrapper from './components/Map';
 
 function App() {
   return (

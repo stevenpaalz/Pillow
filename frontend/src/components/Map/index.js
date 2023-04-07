@@ -1,52 +1,51 @@
 import '../Map/Map.css';
-import { Wrapper } from "@googlemaps/react-wrapper";
-import { useEffect, useRef, useState } from "react";
+import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
+import { useRef, useEffect } from 'react';
 
 function MapWrapper({listings}) {
-    const mapOptions = {zoom: 8}
+    const { isLoaded } = useLoadScript({
+       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+    });
 
-    return(
-        <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
-            <Map mapOptions={mapOptions} listings={listings}/>
-        </Wrapper>
-    )
-}
+    const markers = {};
 
-export default MapWrapper
+    // const getLatLng = async (listing) => {
+    //     let geocoder = new window.google.maps.Geocoder();
+    //     const res = await geocoder.geocode({
+    //         address: `${listing.streetNumber} ${listing.streetAddress} ${listing.city} ${listing.state} ${listing.zipcode}`
+    //     })
+    //     return res.geometry.location;
+    // }
 
-function Map({mapOptions, listings}) {
-    const [map, setMap] = useState(null);
-    const mapRef = useRef(null);
-    const markers = useRef({})
+    // useEffect(()=>{
+    //     Object.values(listings).forEach((listing)=>{
+    //         if (!markers[listing.id]) {
+    //             markers[listing.id] = getLatLng(listing)
+    //             // markers[listing.id] = new window.google.maps.Marker({
+    //             //     position: getLatLng(listing)
+    //             // })
+    //         }
+    //     })
+    //     debugger
+    // }, [isLoaded, listings])
 
-    useEffect(()=>{
-        if (!map) {
-            new window.google.maps.Map(mapRef, {...mapOptions})
-        }
-    }, [mapOptions, map])
-
-    const getLatLng = async (listing) => {
-        let geocoder = new window.google.maps.Geocoder();
-        const res = await geocoder.geocode({
-            address: `${listing.streetNumber} ${listing.streetAddress} ${listing.city} ${listing.state} ${listing.zipcode}`
-        })
-        return res.geometry.location;
-    }
-
-    useEffect(()=>{
-        Object.values(listings).forEach((listing)=>{
-            if (!markers[listing.id]) {
-                markers[listing.id] = new window.google.maps.Marker({
-                    position: getLatLng(listing),
-                    map
-                })
-            }
-        })
-    }, [])
-
-    return(
-        <div ref={mapRef} id="map-div">
-            <h1>map</h1>
+    if (!isLoaded || !markers) return(
+        <div>
+            Loading...
         </div>
+    ) 
+
+    return(
+        <Map markers={markers} />
     )
 }
+
+function Map({markers}) {
+    return(
+        <GoogleMap zoom={12} center={{lat: 40.79, lng: -74}} mapContainerClassName="map-container">
+
+        </GoogleMap>
+    ) 
+}
+
+export default MapWrapper;

@@ -74,7 +74,7 @@ function SellFormPage() {
             formData.append('listing[photos]', photoFile);
         }
         if (imageFiles.length !== 0) {
-            for (let i = 0; i <= imageFiles.length; i++) {
+            for (let i = 0; i < imageFiles.length; i++) {
                 formData.append('listing[images][]', imageFiles[i])
             }
             // imageFiles.forEach(image => {

@@ -22,5 +22,8 @@
   "homepage": "https://github.com/stevenpaalz/Pillow#readme",
   "engines": {
     "node": "16.19.0"
+  },
+  "dependencies": {
+    "@react-google-maps/api": "^2.18.1"
   }
 }

@@ -20,10 +20,8 @@ function ListingIndexPage() {
             <SearchBar />
             <div id='index-page-container'>
                 
-                <div id="map-wrapper">
-                    <MapWrapper listings={listings}/>
-                </div>
-            <ListingIndexItems listings={listings}/>
+                <MapWrapper listings={listings}/>
+                <ListingIndexItems listings={listings}/>
             </div>
         </>
     )
