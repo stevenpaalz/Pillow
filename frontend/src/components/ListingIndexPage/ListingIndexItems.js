@@ -1,18 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
 
-function ListingIndexItems() {
-    const dispatch = useDispatch();
-    const listings = useSelector(state => state.listings)
+function ListingIndexItems({listings}) {
     const [sortText, setSortText] = useState("Newest");
     const [sortOptions, setSortOptions] = useState(false)
-
-    useEffect(()=>{
-        dispatch(fetchListings())
-    }, [dispatch])
 
     const showSortOptions = () => {
         setSortOptions(!sortOptions);

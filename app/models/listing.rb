@@ -25,6 +25,7 @@
 class Listing < ApplicationRecord
 
   has_many_attached :images
+  debugger
 
   HOME_TYPE = [
     "Condo",
