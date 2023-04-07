@@ -74,6 +74,7 @@ li.listing-index-item:active:hover {
     line-height: 24px;
     display: flex;
     font-weight: 300;
+    height: 24px;
 }
 
 .listing-index-facts li:not(:last-child)::after {

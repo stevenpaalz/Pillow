@@ -30,11 +30,11 @@ function Navigation() {
         <>
         <div id='nav-bar' className="open-sans">
             <ul id="left-nav">
-                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span><NavLink exact to="/">Buy</NavLink></span>
+                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span><NavLink exact to="/homes">Buy</NavLink></span>
                     {buyDropDownOpen && <BuyDropDown />}
                 </li>
                 <li><span><NavLink exact to="/">Rent</NavLink></span></li>
-                <li><span><NavLink exact to="/">Sell</NavLink></span></li>
+                <li><span><NavLink exact to="/sell">Sell</NavLink></span></li>
                 <li><span><NavLink exact to="/">Home Loans</NavLink></span></li>
                 <li><span><NavLink exact to="/">Agent Finder</NavLink></span></li>
             </ul>

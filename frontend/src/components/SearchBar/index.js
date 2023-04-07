@@ -10,7 +10,7 @@ function SearchBar() {
         <div id="index-page-search-bar">
             <div id="search-bar-form">
                 <form onSubmit={handleSubmit} className="open-sans" id='index-search'>
-                    <input placeholder='City, Neighborhood, ZIP, Address'></input>
+                    <input id='search-input-area' placeholder='City, Neighborhood, ZIP, Address'></input>
                     <span><button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button></span>
                 </form>
                 <button id='sale-type-sort' className='search-bar-sort'>

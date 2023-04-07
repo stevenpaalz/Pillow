@@ -13,3 +13,26 @@
     justify-content: space-between;
     width: 75%;
 }
+
+#index-search {
+    width: 298px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(209, 209, 213);
+    border-radius: 4px;
+}
+
+#index-search:focus-within {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px, rgb(166, 229, 255) 0px 0px 2px 3px, rgb(0, 106, 255) 0px 0px 2px 4px;
+}
+
+
+#search-input-area {
+    padding: 5px 8px;
+    width: 250px;
+}
+
+#search-input-area:focus-visible {
+    outline: none;
+}

@@ -5,11 +5,14 @@
     overflow: hidden;
 }
 
+#index-page-right-side {
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
 #listings-page-index {
     width: 750px;
     height: 88%;
-    flex-shrink: 0;
-    overflow-y: auto;
 }
 
 @media (max-width: 1280px) {

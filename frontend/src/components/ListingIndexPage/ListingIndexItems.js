@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
@@ -7,30 +7,63 @@ import './ListingIndexItems.css';
 function ListingIndexItems() {
     const dispatch = useDispatch();
     const listings = useSelector(state => state.listings)
-
+    const [sortText, setSortText] = useState("Newest");
+    const [sortOptions, setSortOptions] = useState(false)
 
     useEffect(()=>{
         dispatch(fetchListings())
     }, [dispatch])
 
-    useEffect(()=>{
+    const showSortOptions = () => {
+        setSortOptions(!sortOptions);
+    }
 
-    },[])
+    useEffect(() => {
+        if (!sortOptions) return;
+    
+        const closeMenu = () => {
+          setSortOptions(false);
+        };
+    
+        document.addEventListener('click', closeMenu);
+      
+        return () => document.removeEventListener("click", closeMenu);
+      }, [sortOptions]);
+
+    const updateSort = (e) => {
+        setSortText(e.target.innerHTML)
+    }
 
     return(
         <div id='index-page-right-side' className="open-sans">
             <div id='listings-page-index-headers'>
                 <h3>Real Estate & Homes For Sale</h3>
-                <h4>XX results</h4>
-                <label htmlFor='listings-page-sort-by'>Sort By</label>
-                <select name="sort=by" id='listings-page-sort-by'>
-                    <option value="newest">Newest</option>
-                    <option>Price (High to Low)</option>
-                    <option>Price (Low to High)</option>
-                    <option>Bedrooms</option>
-                    <option>Bathrooms</option>
-                    <option>Square Feet</option>
-                </select>
+                <div id='listings-page-index-header-sort'>
+                    <h4>{Object.values(listings).length} results</h4>
+                    <div >
+                        
+                        <div onClick={showSortOptions} id='listings-page-sort-by'>
+                            <p>Sort:</p>
+                            <button id='listings-page-sort-by-button'>{sortText}<i className="fa-solid fa-chevron-down"></i></button>
+                            {sortOptions && 
+                            <ul id='sort-drop-down'>
+                                <li onClick={updateSort}>Newest</li>
+                                <li onClick={updateSort}>Price (High to Low)</li>
+                                <li onClick={updateSort}>Price (Low to High)</li>
+                                <li onClick={updateSort}>Bedrooms</li>
+                                <li onClick={updateSort}>Bathrooms</li>
+                                <li onClick={updateSort}>Squarefeet</li>
+                            </ul>}
+                        </div>
+                            {/* <option value="newest">Newest</option>
+                            <option>Price (High to Low)</option>
+                            <option>Price (Low to High)</option>
+                            <option>Bedrooms</option>
+                            <option>Bathrooms</option>
+                            <option>Square Feet</option> */}
+
+                    </div>
+                </div>
             </div>
 
             <div id="listings-page-index">
