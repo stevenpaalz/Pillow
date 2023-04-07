@@ -1,7 +1,19 @@
 #show-images {
     width: auto;
+    height: 100%;
+    margin-bottom: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5%;
 }
 
-#show-images img {
+#hero-image {
     width: 100%;
+}
+
+.sub-image {
+    width: 49.5%;
 }

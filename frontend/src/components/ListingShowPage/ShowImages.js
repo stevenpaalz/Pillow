@@ -2,11 +2,19 @@ import "./ShowImages.css";
 import placeholder_image from "../../assets/placeholder.jpeg";
 
 function ShowImages({listing}) {
+
+    let subImages;
+
+    if (listing.imageUrls) {
+        subImages = listing.imageUrls.slice(1);
+    }
     
     return(
         <div id='show-images'>
-            {listing.imageUrls && listing.imageUrls.map((imageUrl, index)=>{
-                return <img key={index} src={imageUrl} />
+            {subImages && <img id='hero-image' src={listing.imageUrls[0]} />}
+            
+            {subImages && subImages.map((imageUrl, index)=>{
+                return <img className='sub-image' key={index} src={imageUrl} />
             })}
         </div>
     )
