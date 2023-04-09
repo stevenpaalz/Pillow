@@ -3,3 +3,142 @@
     display: flex;
     flex-direction: column;
 }
+
+#sell-landing-top {
+    background-image: url(https://zilloh-seeds.s3.us-east-2.amazonaws.com/seller-landing-page-background3.png);
+    background-position: 60% 90%;
+    height: 527px;
+    width: 90%;
+    margin: 0 5%;
+}
+
+#sell-landing-cta {
+    position: absolute;
+    width: 40%;
+    top: 295px;
+    background-color: #0D4599;
+    padding-left: 20px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+
+#sell-landing-cta:after {
+    border-bottom-width: 65px;
+    border-top-width: 65px;
+    border-top-style: solid;
+    border-top-color: transparent;
+    border-left-width: 33px;
+    border-left-color: #0D4599;
+    border-left-style: solid;
+    right: -33px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    font-size: 33px;
+    content: "";
+}
+
+#sell-landing-form {
+    position: absolute;
+    height: 120px;
+    width: calc(90% - 40px);
+    top: 360px;
+    background-color: rgba(0,116,228,.9);
+    padding: 10px 20px 60px 20px;
+}
+
+#blue-bar {
+    position: absolute;
+    background-color: #E0F2FF;
+    height: 57px;
+    top: 550px;
+    width: 90%;
+}
+
+#address-input-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 15px;
+}
+
+#sell-landing-cta h1 {
+    font-size: 33px;
+    font-weight: 600;
+    color: white;
+}
+
+#sell-landing-radio-div {
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    font-size: 15px;
+}
+
+#sell-landing-radio-div label {
+    margin-right: 24px;
+    color: rgb(201, 201, 201);
+    cursor: pointer;
+    padding-bottom: 12px;
+}
+
+#sell-landing-radio-div input[type="radio"] {
+    display: none;
+}
+
+#sell-landing-radio-div label:hover {
+    color: #62aef7
+}
+
+#sell-landing-radio-div input[type="radio"]:checked + label{
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+#address-input-div input {
+    height: 32px;
+    padding: 4px 6px 2px 6px;
+}
+
+#address-input-div input:focus-visible {
+    box-shadow: inset 0 2px 2px #F9F9FB, 0 0 0 #62aef7;
+    outline: none;
+}
+
+#full-address {
+    width: 460px;
+}
+
+#unit-number {
+    width: 145px;
+}
+
+#city {
+    width: 170px;
+}
+
+#state {
+    width: 75px;
+}
+
+#zipcode {
+    width: 130px;
+}
+
+#continue-button {
+    width: 105px;
+    color: white;
+    background: #3DCA5A;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    border: #3DCA5A 1px solid;
+}
+
+#continue-button:hover {
+    background: linear-gradient(to top,#3DCA5A,#17B036);
+}
+#continue-button:active:hover {
+    background: linear-gradient(to top,#17B036,#3DCA5A);
+}

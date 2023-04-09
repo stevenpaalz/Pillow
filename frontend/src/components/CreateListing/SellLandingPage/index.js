@@ -24,29 +24,30 @@ function SellLandingPage({setLandingComplete, streetNumber, streetAddress, unitN
       ]
 
     return(
-        <div id='sell-landing-page'>
+        <div id='sell-landing-page' className="open-sans">
             <div id="sell-landing-top">
                 <div id="sell-landing-cta">
                     <h1>Post a Listing</h1>
                 </div>
                 <form id='sell-landing-form'>
 
-                <div>
+                <div id='sell-landing-radio-div'>
+                    <input id='sale'
+                        type='radio'
+                        name="sale-type" 
+                        value="Sale"
+                        defaultChecked
+                        onChange={changeSaleType} />
                     <label htmlFor="sale">For Sale</label>
-                        <input id='sale'
-                            type='radio'
-                            name="sale-type" 
-                            value="Sale"
-                            defaultChecked
-                            onChange={changeSaleType} />
+                    <input id='rent'
+                        type='radio'
+                        name="sale-type" 
+                        value="Rent"
+                        onChange={changeSaleType} />   
                     <label htmlFor="rent">For Rent</label>
-                        <input id='rent'
-                            type='radio'
-                            name="sale-type" 
-                            value="Rent"
-                            onChange={changeSaleType} />   
-                </div>
 
+                </div>
+                <div id="address-input-div">
                      <input id ='full-address'
                         placeholder="Street address"
                         type='text' 
@@ -77,7 +78,8 @@ function SellLandingPage({setLandingComplete, streetNumber, streetAddress, unitN
                         value={zipcode}
                         onChange={changeZipcode} />
 
-                    <button onClick={handleContinue}>Continue</button>
+                    <button id="continue-button" onClick={handleContinue}>Continue</button>
+                </div>
                 </form>
                 <div id='blue-bar'></div>
             </div>

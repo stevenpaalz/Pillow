@@ -101,6 +101,14 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                     value={homeType}
                     onChange={changeHomeType} />
 
+                <label htmlFor="home-type">Home type</label>
+                <select onChange={changeHomeType} id="home-type">
+                    <option value="Condo">Condo</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="New Construction">New Construction</option>
+                </select>
+
                 <label htmlFor="num-beds">Beds</label>
                 <input id ='num-beds'
                     type='number'
