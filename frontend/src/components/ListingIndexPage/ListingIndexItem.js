@@ -34,7 +34,7 @@ function ListingIndexItem({listing}) {
                 {!liked && <i className="fa-regular fa-heart foreground-heart"></i>}
                 {liked && <i className="fa-solid fa-heart foreground-heart"></i>}
             </button>
-            <img src={placeholderImage} alt="apartment" id='lead-index-image'/>
+            <img src={listing.imageUrls[0]} alt="apartment" id='lead-index-image'/>
             <div className='listing-index-content'>
             <h4 id='listing-index-price'>{listing.price.toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits: 0,})}</h4>
             <ul className='listing-index-facts'>

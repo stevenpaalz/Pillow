@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
 
 puts "Destroying tables..."
 User.destroy_all
@@ -28,7 +29,9 @@ User.create!(
   }) 
 end
 
-Listing.create!({
+listings = []
+
+listings.push(Listing.create!({
   lister_id: 2,
   street_number: '456',
   street_address: "Lexington Ave",
@@ -53,9 +56,9 @@ Listing.create!({
   year_built: 1950,
   num_baths: 2.5,
   num_beds: 2
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 3,
   street_number: '759',
   street_address: "Fifth Ave",
@@ -80,9 +83,9 @@ Listing.create!({
   year_built: 1973,
   num_baths: 2,
   num_beds: 2
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 3,
   street_number: '234',
   street_address: "West 42nd St",
@@ -98,9 +101,10 @@ Listing.create!({
   year_built: 1994,
   num_baths: 1.5,
   num_beds: 2
-})
+}))
 
-Listing.create!({
+
+listings.push(Listing.create!({
   lister_id: 3,
   street_number: '567',
   street_address: "Eighth Ave",
@@ -125,9 +129,9 @@ Listing.create!({
   year_built: 1956,
   num_baths: 1,
   num_beds: 1
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 4,
   street_number: '331',
   street_address: "Park Ave",
@@ -151,9 +155,9 @@ Listing.create!({
   year_built: 1988,
   num_baths: 3,
   num_beds: 4
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 5,
   street_number: '890',
   street_address: "Broadway",
@@ -169,9 +173,9 @@ Listing.create!({
   year_built: 2023,
   num_baths: 2.5,
   num_beds: 3
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 6,
   street_number: '123',
   street_address: "West 57th St",
@@ -187,9 +191,9 @@ Listing.create!({
   year_built: 2023,
   num_baths: 2,
   num_beds: 2
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 7,
   street_number: '456',
   street_address: "Seventh Ave",
@@ -212,11 +216,10 @@ Listing.create!({
   sale_type: "Rent",
   year_built: 1994,
   num_baths: 1,
-  num_beds: 3,
-  images: ["https://zilloh-seeds.s3.us-east-2.amazonaws.com/aged-residential-building-usa.jpg"]
-})
+  num_beds: 3
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 7,
   street_number: '678',
   street_address: "Ninth Ave",
@@ -232,9 +235,9 @@ Listing.create!({
   year_built: 1944,
   num_baths: 1.5,
   num_beds: 2
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 8,
   street_number: '345',
   street_address: "Madison Ave",
@@ -259,9 +262,9 @@ Listing.create!({
   year_built: 2007,
   num_baths: 1.5,
   num_beds: 1
-})
+}))
 
-Listing.create!({
+listings.push(Listing.create!({
   lister_id: 9,
   street_number: '901',
   street_address: "Sixth Ave",
@@ -278,7 +281,14 @@ Listing.create!({
   year_built: 2007,
   num_baths: 2.5,
   num_beds: 2
-})
+}))
 
+listings.each_with_index do |listing, idx|
+  listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/listing_#{idx + 1}.jpg"), filename: "listing_#{idx+1}.jpg")
+  listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Bedroom/bed_#{1001 + idx}.jpg"), filename: "bed_#{1001 + idx}.jpg")
+  listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Kitchen/kitchen_#{1001 + idx}.jpg"), filename: "kitchen_#{1001 + idx}.jpg")
+  listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Livingroom/living_#{1001 + idx}.jpg"), filename: "living_#{1001 + idx}.jpg")
+  listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Bathroom/bath_#{1001 + idx}.jpg"), filename: "bath_#{1001 + idx}.jpg")
+end
 
 puts "Done!"
