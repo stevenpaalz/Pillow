@@ -4,18 +4,11 @@ import './SellFormPage.css';
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function SellFormPage() {
+function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [photoUrl, setPhotoUrl] = useState(null); 
     const [imageFiles, setImageFiles] = useState ([]);
     const [imageUrls, setImageUrls] = useState ([]);
-    const [streetNumber, setStreetNumber] = useState("");
-    const [streetAddress, setStreetAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [zipcode, setZipcode] = useState("");
-    const [saleType, setSaleType] = useState("");
 
     const [price, setPrice] = useState("");
     const [homeType, setHomeType] = useState("");
@@ -47,13 +40,6 @@ function SellFormPage() {
         else setImageUrls([]);
     }
 
-    const changeStreetNumber = e => { setStreetNumber(e.target.value)};
-    const changeStreetAddress = e => { setStreetAddress(e.target.value)};
-    const changeCity = e => { setCity(e.target.value)};
-    const changeState = e => { setState(e.target.value)};
-    const changeZipcode = e => { setZipcode(e.target.value)};
-    const changeSaleType = e => { setSaleType(e.target.value)};
-
     const changePrice = e => { setPrice(e.target.value)};
     const changeHomeType = e => { setHomeType(e.target.value)};
     const changeNumBeds = e => { setNumBeds(e.target.value)};
@@ -66,7 +52,7 @@ function SellFormPage() {
     const handleSubmit = async e => {
         e.preventDefault();
         const formData = new FormData();
-        const formValues = {'streetNumber': streetNumber, 'streetAddress': streetAddress, 'city': city, 'state': state, 'zipcode': zipcode, 'saleType': saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
+        const formValues = {'streetNumber': streetNumber, 'streetAddress': streetAddress, 'unitNumber': unitNumber, 'city': city, 'state': state, 'zipcode': zipcode, 'saleType': saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
         Object.keys(formValues).forEach((key) => {
             formData.append(`listing[${key}]`, formValues[key])
         })
@@ -77,57 +63,28 @@ function SellFormPage() {
             for (let i = 0; i < imageFiles.length; i++) {
                 formData.append('listing[images][]', imageFiles[i])
             }
-            // imageFiles.forEach(image => {
-            //   formData.append('listing[images][]', image);
-            // })
         }
         const listingId = await dispatch(createListing(formData));
         history.push(`/homes/${listingId}`);
     }
 
-    // let preview = null;
-    // if (photoUrl) preview = <img src={photoUrl} alt="" />;
     return(
-        <div id='sell-for-page'>
+        <div id='sell-form-page'>
+            <div id="sell-form-header">
+                {saleType === "Sale" && <h2>For Sale By Owner Listing</h2>}
+                {saleType === "Rent" && <h2>For Rent By Owner Listing</h2>}
+                <h3>
+                    <span>{streetNumber}</span>
+                    <span> {streetAddress}</span>
+                    {unitNumber && <span> {unitNumber}</span>}
+                    <span>, {city}</span>,
+                    <span> {state}</span>,
+                    <span> {zipcode}</span>
+                </h3>
+                <p>Post once and your home will be listed on both Zillow and Trulia, reaching buyers on the largest real estate network on the Web. Plus, home shoppers receive emails about new homes on the market – including yours.</p>
+            </div>
             <form id='sell-form' onSubmit={handleSubmit}>
-                <label htmlFor="street-number">Street Number</label>
-                <input id ='street-number'
-                    type='text' 
-                    value={streetNumber}
-                    onChange={changeStreetNumber} />
-
-                <label htmlFor="street-address">Street Address</label>
-                <input id ='street-address'
-                    type='text' 
-                    value={streetAddress}
-                    onChange={changeStreetAddress} />
-
-                <label htmlFor="city">City</label>
-                <input id ='city'
-                    type='text' 
-                    value={city}
-                    onChange={changeCity} />
-
-                <label htmlFor="state">State</label>
-                <input id ='state'
-                    type='text' 
-                    value={state}
-                    onChange={changeState} />
-
-                <label htmlFor="zipcode">Zipcode</label>
-                <input id ='zipcode'
-                    type='text' 
-                    value={zipcode}
-                    onChange={changeZipcode} />
-
-                <label htmlFor="sale-type">Sale Type</label>
-                <input id ='sale-type'
-                    type='text' 
-                    value={saleType}
-                    onChange={changeSaleType} />
-
-                {/*  */}
-                {/*  */}
+                
                 <h4>Set your price</h4>
                 <input id ='price'
                     type='text' 
@@ -136,7 +93,6 @@ function SellFormPage() {
 
                 <h4>Photos</h4>
                 <input id='file-upload' type="file" onChange={handleFiles} multiple />
-                {/* {preview} */}
 
                 <h4>Home facts</h4>
                 <label htmlFor="home-type">Home type</label>
