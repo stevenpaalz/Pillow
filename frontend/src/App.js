@@ -5,7 +5,7 @@ import Splash from './components/Splash';
 import ListingIndexPage from './components/ListingIndexPage';
 import ListingShowPage from './components/ListingShowPage';
 import CreateListing from './components/CreateListing';
-import MapWrapper from './components/Map';
+import YourHomes from './components/YourHomes';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Route exact path="/homes"><ListingIndexPage /></Route>
         <Route exact path="/homes/:listingId"><ListingShowPage /></Route>
         <Route exact path='/sell'><CreateListing /></Route>
+        <Route exact path='/:userId/homes'><YourHomes /></Route>
       </Switch>
     </> 
   );
