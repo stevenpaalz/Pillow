@@ -127,7 +127,9 @@
 }
 
 #continue-button {
-    width: 105px;
+    width: 83px;
+    height: 26px;
+    padding: 6px 10px;
     color: white;
     background: #3DCA5A;
     border-radius: 5px;

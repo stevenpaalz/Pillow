@@ -7,17 +7,20 @@ import { useHistory } from "react-router-dom";
 function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType}) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [errors, setErrors] = useState([]);
     const [imageFiles, setImageFiles] = useState ([]);
     const [imageUrls, setImageUrls] = useState ([]);
 
     const [price, setPrice] = useState("");
-    const [homeType, setHomeType] = useState("");
-    const [numBeds, setNumBeds] = useState("");
-    const [numBaths, setNumBaths] = useState("");
+    const [homeType, setHomeType] = useState("Condo");
+    const [numBeds, setNumBeds] = useState(0);
+    const [numBaths, setNumBaths] = useState(0);
     const [squareFeet, setSquareFeet] = useState("");
     const [yearBuilt, setYearBuilt] = useState("");
     const [airCon, setAirCon] = useState("");
     const [description, setDescription] = useState("");
+    const [loading, setLoading] = useState(false);
+
 
     const [photoFile, setPhotoFile] = useState(null);
 
@@ -51,6 +54,8 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setErrors([]);
+        setLoading(true);
         const formData = new FormData();
         const formValues = {'streetNumber': streetNumber, 'streetAddress': streetAddress, 'unitNumber': unitNumber, 'city': city, 'state': state, 'zipcode': zipcode, 'saleType': saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
         Object.keys(formValues).forEach((key) => {
@@ -64,12 +69,25 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                 formData.append('listing[images][]', imageFiles[i])
             }
         }
-        const listingId = await dispatch(createListing(formData));
-        history.push(`/homes/${listingId}`);
+        const listingId = await dispatch(createListing(formData))
+            .catch(async (res) => {
+                let data;
+                try {
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text();
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            });
+        if (listingId) {
+            history.push(`/homes/${listingId}`);
+        }
     }
 
     return(
-        <div id='sell-form-page'>
+        <div id='sell-form-page' className="open-sans">
             <div id="sell-form-header">
                 {saleType === "Sale" && <h2>For Sale By Owner Listing</h2>}
                 {saleType === "Rent" && <h2>For Rent By Owner Listing</h2>}
@@ -85,73 +103,91 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
             </div>
             <form id='sell-form' onSubmit={handleSubmit}>
                 
-                <h4>Set your price</h4>
-                <input id ='price'
-                    type='text' 
-                    value={price}
-                    onChange={changePrice} />
 
-                <h4>Photos</h4>
-                <input id='file-upload' type="file" onChange={handleFiles} multiple />
+                <div id="price-container">
+                    <h4>Set your price</h4>
+                    <div id="price-input-area">
+                        <span>$</span>
+                        <input id ='price'
+                            type='text' 
+                            value={price}
+                            onChange={changePrice} />
+                    </div>
+                </div>
 
-                <h4>Home facts</h4>
-                <label htmlFor="home-type">Home type</label>
-                <input id ='home-type'
-                    type='text' 
-                    value={homeType}
-                    onChange={changeHomeType} />
+                <div id="photos-container">
+                    <h4>Photos</h4>
+                    <div id="photo-upload-area">
+                        {/* <h4>My Photos</h4> */}
+                        <p>Upload files here</p>
+                        {/* <label htmlFor="file-upload">Add New Photo</label> */}
+                        <input id='file-upload' type="file" onChange={handleFiles} multiple />
+                    </div>
+                </div>
+                
 
-                <label htmlFor="home-type">Home type</label>
-                <select onChange={changeHomeType} id="home-type">
-                    <option value="Condo">Condo</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="House">House</option>
-                    <option value="New Construction">New Construction</option>
-                </select>
+                <div id='home-facts-div'>
+                    <h4>Home facts</h4>
 
-                <label htmlFor="num-beds">Beds</label>
-                <input id ='num-beds'
-                    type='number'
-                    step="1" 
-                    value={numBeds}
-                    onChange={changeNumBeds} />
+                    <div id="left-home-facts">
+                    <label htmlFor="home-type">Home type</label>
+                    <select onChange={changeHomeType} id="home-type">
+                        <option value="Condo">Condo</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="House">House</option>
+                        <option value="New Construction">New Construction</option>
+                    </select>
+                    <label htmlFor="num-beds">Beds</label>
+                    <input id ='num-beds'
+                        type='number'
+                        step="1" 
+                        value={numBeds}
+                        onChange={changeNumBeds} />
 
-                <label htmlFor="num-baths">Baths</label>
-                <input id ='num-baths'
-                    type='number'
-                    step="0.5" 
-                    value={numBaths}
-                    onChange={changeNumBaths} />
+                    <label htmlFor="num-baths">Baths</label>
+                    <input id ='num-baths'
+                        type='number'
+                        step="0.5" 
+                        value={numBaths}
+                        onChange={changeNumBaths} />
 
-                <label htmlFor="square-feet">Finished Square Feet</label>
-                <input id ='square-feet'
-                    type='number'
-                    step="1" 
-                    value={squareFeet}
-                    onChange={changeSquareFeet} />
+                    <label htmlFor="square-feet">Finished Square Feet</label>
+                    <input id ='square-feet'
+                        type='number'
+                        step="1" 
+                        value={squareFeet}
+                        onChange={changeSquareFeet} />
 
-                <label htmlFor="year-built">Year Built</label>
-                <input id ='year-built'
-                    type='number'
-                    step="1" 
-                    value={yearBuilt}
-                    onChange={changeYearBuilt} />
+                    <label htmlFor="year-built">Year Built</label>
+                    <input id ='year-built'
+                        type='number'
+                        step="1" 
+                        value={yearBuilt}
+                        onChange={changeYearBuilt} />
+                    </div>
 
-                <label htmlFor="air-con">Air Conditioning</label>
-                <input id ='air-con'
-                    type='text' 
-                    value={airCon}
-                    onChange={changeAirCon} />
+                    <div id="right-home-facts">
+                        <label htmlFor="air-con">Air Conditioning</label>
+                        <input id ='air-con'
+                            type='text' 
+                            value={airCon}
+                            onChange={changeAirCon} />
 
-                <label htmlFor="description">Describe your home</label>
-                <input id ='dscription'
-                    type='textarea' 
-                    value={description}
-                    onChange={changeDescription} />
+                        <label htmlFor="description">Describe your home</label>
+                        <input id ='description'
+                            type='textarea' 
+                            value={description}
+                            onChange={changeDescription} />
+                    </div>
+                </div>
+            <button id="submit-post-button" type="submit">Post for sale by owner</button>
 
-            <button type="submit">Post for sale by owner</button>
+            {(loading && !errors) && <p>Loading...</p>}
 
             </form>
+            <ul id="listing-errors">
+                {errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
         </div>
     )
 }

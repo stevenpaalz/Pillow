@@ -27,7 +27,9 @@ function ListingShowPage() {
     }
 
     if (!listing) {
-        return null
+        return(
+            <h1>Loading...</h1>
+        )
     }
     else return(
         <div id='show-page-container'>
