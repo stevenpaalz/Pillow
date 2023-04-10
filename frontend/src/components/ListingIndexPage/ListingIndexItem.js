@@ -30,7 +30,7 @@ function ListingIndexItem({listing}) {
 
     return(
         <li onClick={routeChange} className='listing-index-item open-sans'>
-            {(listing.lister.id !== sessionUser.id) && 
+            {(!sessionUser || listing.lister.id !== sessionUser.id) && 
             <button onClick={toggleLiked} id="index-like-button">
                 <i className="fa-solid fa-heart background-heart"></i>
                 {!liked && <i className="fa-regular fa-heart foreground-heart"></i>}

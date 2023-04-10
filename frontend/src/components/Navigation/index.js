@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import zillowLogo from "../../assets/zillow_main_logo.png"
@@ -10,6 +10,7 @@ import BuyDropDown from "./BuyDropDown";
 import { useState } from "react";
 
 function Navigation() {
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [buyDropDownOpen, setBuyDropDownOpen] = useState(false);
 
@@ -44,7 +45,7 @@ function Navigation() {
                     </NavLink>
             </div>
             <ul id="right-nav">
-                <li><span><NavLink exact to="/">Manage Rentals</NavLink></span></li>
+                <li><span onClick={() => {history.replace(`/${sessionUser.id}/homes`)}}>Manage Rentals</span></li>
                 <li><span><NavLink exact to="/">Advertise</NavLink></span></li>
                 <li><span><NavLink exact to="/">Help</NavLink></span></li>
                 {sessionLinks}

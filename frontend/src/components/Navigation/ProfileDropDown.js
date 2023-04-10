@@ -8,7 +8,6 @@ function ProfileDropDown() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
-
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());

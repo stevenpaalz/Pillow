@@ -1,22 +1,28 @@
 import "./YourHomes.css";
 import { useHistory, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "../ListingIndexPage/ListingIndexItem";
 import { deleteListing } from "../../store/listings";
 
 function YourHomes() {
+    const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory();
+
+    if (!sessionUser) {
+        history.push("/");
+    }
+
     const userId = useParams().userId;
     const dispatch = useDispatch();
-    const history = useHistory();
     const listings = useSelector((state) => {
         let allListings = state.listings;
         return Object.values(allListings).filter(listing => listing.lister.id == userId);
     })
 
     const openEdit = (e) => {
-        history.push(`/homes/${e.target.value}/edit`)
+        history.replace(`/homes/${e.target.value}/edit`)
     }
 
     const removeListing = (e) => {
@@ -67,7 +73,6 @@ function YourHomes() {
     }, [])
 
     return(
-
         <div id="your-home-container">
             <div className='open-sans' id='your-home-listings-nav'>
                 <div id='your-home-listings-headers'>
@@ -87,9 +92,9 @@ function YourHomes() {
                                 <ul>
                                     <ListingIndexItem listing={listing} />
                                 </ul>
-                                <div id="change-buttons">
-                                    <button onClick={openEdit} value={listing.id} id="update-button">Update</button>
-                                    <button onClick={removeListing} value={listing.id} id="delete-button">Delete</button>
+                                <div id="change-buttons" className="open-sans">
+                                    <button onClick={openEdit} value={listing.id} id="update-button">Update<i class="fa-solid fa-pencil"></i></button>
+                                    <button onClick={removeListing} value={listing.id} id="delete-button">Delete<i class="fa-regular fa-trash-can"></i></button>
                                 </div>
                             </li>
 

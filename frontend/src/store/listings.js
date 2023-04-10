@@ -46,7 +46,6 @@ export const createListing = (formData) => async dispatch => {
 }
 
 export const updateListing = (listingId, formData) => async dispatch => {
-    debugger
     const res = await csrfFetch(`/api/listings/${listingId}`,{
         method: 'PATCH',
         body: formData
