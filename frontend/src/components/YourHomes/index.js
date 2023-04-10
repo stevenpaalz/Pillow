@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "../ListingIndexPage/ListingIndexItem";
+import { deleteListing } from "../../store/listings";
 
 function YourHomes() {
     const userId = useParams().userId;
@@ -17,8 +18,9 @@ function YourHomes() {
         console.log(e.target.value)
     }
 
-    const deleteListing = (e) => {
-        console.log(e.target.value)
+    const removeListing = (e) => {
+        let listingId = e.target.value
+        dispatch(deleteListing(listingId))
     }
 
     useEffect(()=>{
@@ -81,10 +83,12 @@ function YourHomes() {
                     {Object.values(listings).map((listing)=>{
                         return(
                             <li key={listing.id} className="house-package">
-                                <ListingIndexItem listing={listing} />
+                                <ul>
+                                    <ListingIndexItem listing={listing} />
+                                </ul>
                                 <div id="change-buttons">
                                     <button onClick={openEdit} value={listing.id} id="update-button">Update</button>
-                                    <button onClick={deleteListing} value={listing.id} id="delete-button">Delete</button>
+                                    <button onClick={removeListing} value={listing.id} id="delete-button">Delete</button>
                                 </div>
                             </li>
 
