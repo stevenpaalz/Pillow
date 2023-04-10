@@ -1,5 +1,5 @@
 import '../Map/Map.css';
-import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
+import {GoogleMap, useLoadScript, Marker, MarkerClusterer} from "@react-google-maps/api";
 import { useRef, useEffect } from 'react';
 
 function MapWrapper({listings}) {
@@ -7,14 +7,14 @@ function MapWrapper({listings}) {
        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
     });
 
-    const markers = {};
+    // const markers = {};
 
     // const getLatLng = async (listing) => {
     //     let geocoder = new window.google.maps.Geocoder();
     //     const res = await geocoder.geocode({
     //         address: `${listing.streetNumber} ${listing.streetAddress} ${listing.city} ${listing.state} ${listing.zipcode}`
     //     })
-    //     return res.geometry.location;
+    //     return res.results[0].geometry.location;
     // }
 
     // useEffect(()=>{
@@ -26,24 +26,26 @@ function MapWrapper({listings}) {
     //             // })
     //         }
     //     })
-    //     debugger
     // }, [isLoaded, listings])
-
-    if (!isLoaded || !markers) return(
+    // debugger
+    if (!isLoaded) return(
         <div>
             Loading...
         </div>
     ) 
 
     return(
-        <Map markers={markers} />
+        <Map id="map-wrapper" listings={listings} />
     )
 }
 
-function Map({markers}) {
+function Map({listings}) {
     return(
         <GoogleMap zoom={12} center={{lat: 40.79, lng: -74}} mapContainerClassName="map-container">
-
+            {/* <Marker position={{lat: 40.79, lng: -74}} /> */}
+            {Object.values(listings).map((listing) => {
+                return <Marker key={listing.id} position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
+            })}
         </GoogleMap>
     ) 
 }

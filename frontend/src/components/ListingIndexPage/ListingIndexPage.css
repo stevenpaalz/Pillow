@@ -9,6 +9,8 @@
 #index-page-right-side {
     overflow-y: auto;
     flex-shrink: 0;
+    box-shadow: 2px 5px 0 rgba(0,0,0,.4);
+    z-index: 1;
 }
 
 #listings-page-index {

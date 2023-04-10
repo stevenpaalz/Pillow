@@ -289,6 +289,11 @@ listings.each_with_index do |listing, idx|
   listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Kitchen/kitchen_#{1001 + idx}.jpg"), filename: "kitchen_#{1001 + idx}.jpg")
   listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Livingroom/living_#{1001 + idx}.jpg"), filename: "living_#{1001 + idx}.jpg")
   listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Bathroom/bath_#{1001 + idx}.jpg"), filename: "bath_#{1001 + idx}.jpg")
+  address = "#{listing.street_number} #{listing.street_address}, #{listing.city}, #{listing.state} #{listing.zipcode}"
+  latlng = Geocoder.search(address).first.coordinates
+  listing.latitude = latlng[0]
+  listing.longitude = latlng[1]
+  listing.save!
 end
 
 puts "Done!"

@@ -40,6 +40,8 @@ gem "bcrypt"
 gem "jbuilder"
 gem "faker"
 gem "aws-sdk-s3"
+gem 'geocoder', '~> 1.8', '>= 1.8.1'
+gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
