@@ -1,33 +1,13 @@
 import '../Map/Map.css';
 import {GoogleMap, useLoadScript, Marker, MarkerClusterer} from "@react-google-maps/api";
-import { useRef, useEffect } from 'react';
+import { useHistory, withRouter } from 'react-router-dom'; 
+import MarkerObject from './MarkerObject';
 
 function MapWrapper({listings}) {
     const { isLoaded } = useLoadScript({
        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
     });
-
-    // const markers = {};
-
-    // const getLatLng = async (listing) => {
-    //     let geocoder = new window.google.maps.Geocoder();
-    //     const res = await geocoder.geocode({
-    //         address: `${listing.streetNumber} ${listing.streetAddress} ${listing.city} ${listing.state} ${listing.zipcode}`
-    //     })
-    //     return res.results[0].geometry.location;
-    // }
-
-    // useEffect(()=>{
-    //     Object.values(listings).forEach((listing)=>{
-    //         if (!markers[listing.id]) {
-    //             markers[listing.id] = getLatLng(listing)
-    //             // markers[listing.id] = new window.google.maps.Marker({
-    //             //     position: getLatLng(listing)
-    //             // })
-    //         }
-    //     })
-    // }, [isLoaded, listings])
-    // debugger
+  
     if (!isLoaded) return(
         <div>
             Loading...
@@ -40,12 +20,40 @@ function MapWrapper({listings}) {
 }
 
 function Map({listings}) {
+
     return(
-        <GoogleMap zoom={12} center={{lat: 40.79, lng: -74}} mapContainerClassName="map-container">
-            {/* <Marker position={{lat: 40.79, lng: -74}} /> */}
+        <GoogleMap zoom={13} center={{lat: 40.75, lng: -73.99}} mapContainerClassName="map-container">
             {Object.values(listings).map((listing) => {
-                return <Marker key={listing.id} position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
-            })}
+                return <MarkerObject key={listing.id} listing={listing}/>
+            })
+            }
+
+            {/* {Object.values(listings).map((listing) => {
+                let markerImage1 = {
+                    url: 'https://zilloh-seeds.s3.us-east-2.amazonaws.com/marker.001.png',
+                    scaledSize: {width: 50, height: 30}
+                }
+                let markerImage2 = {
+                    url: 'https://zilloh-seeds.s3.us-east-2.amazonaws.com/marker.002.png',
+                    scaledSize: {width: 50, height: 30}
+                }
+                let formattedPrice;
+                if (listing.price > 100000) {
+                    formattedPrice = `${(listing.price / 1000000).toFixed(1)}M`
+                } else { formattedPrice = `${(listing.price / 1000).toFixed(1)}K`}
+                let hovered = false;
+                return <Marker className="marker"
+                    onClick={() => { history.replace(`/homes/${listing.id}`)}}
+                    value={listing.id}
+                    key={listing.id}
+                    onMouseOver={() => {
+                        debugger
+                        hovered = true;
+                        }}
+                    label = {{text: formattedPrice, color: 'white', fontFamily: "'Open Sans', sans-serif"}}
+                    icon = {(!hovered && markerImage1) || markerImage2}
+                    position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
+            })} */}
         </GoogleMap>
     ) 
 }

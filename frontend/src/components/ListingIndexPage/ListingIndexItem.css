@@ -2,6 +2,7 @@
     width: 100%;
     height: 148px;
     object-fit: cover;
+    border-radius: 4px;
 }
 
 li.listing-index-item {

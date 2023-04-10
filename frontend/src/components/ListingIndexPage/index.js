@@ -15,6 +15,12 @@ function ListingIndexPage() {
         dispatch(fetchListings())
     }, [dispatch])
 
+    if (!listings) {
+        return(
+            <h1>Loading...</h1>
+        )
+    }
+
     return(
         <>
             <SearchBar />
