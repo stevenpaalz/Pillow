@@ -1,12 +1,36 @@
-import { useState } from "react";
-import { createListing } from "../../../store/listings";
-import './SellFormPage.css';
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { updateListing } from "../../store/listings";
+import './UpdateFormPage.css';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { fetchListing } from "../../store/listings";
 
-function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType}) {
+function UpdateFormPage() {
     const dispatch = useDispatch();
+    const listingId = useParams().listingId;
     const history = useHistory();
+    const listing = useSelector(state => state.listings[listingId]);
+
+    useEffect(() => {
+        dispatch(fetchListing(listingId))
+    }, [dispatch])
+
+    useEffect(()=>{
+        if (listing) {
+            if (listing && listing.lister.id !== sessionUser.id) { history.push("/") }
+            setPrice(listing.price);
+            setHomeType(listing.homeType);
+            setNumBeds(listing.numBeds);
+            setNumBaths(listing.numBaths);
+            setSquareFeet(listing.squareFeet);
+            setYearBuilt(listing.yearBuilt);
+            setAirCon(listing.airCon);
+            setDescription(listing.description);
+        }
+    }, [listing])
+
+    const sessionUser = useSelector(state => state.session.user);
+
     const [errors, setErrors] = useState([]);
     const [imageFiles, setImageFiles] = useState ([]);
     const [imageUrls, setImageUrls] = useState ([]);
@@ -20,7 +44,6 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
     const [airCon, setAirCon] = useState("");
     const [description, setDescription] = useState("");
     const [loading, setLoading] = useState(false);
-
 
     const [photoFile, setPhotoFile] = useState(null);
 
@@ -57,7 +80,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
         setErrors([]);
         setLoading(true);
         const formData = new FormData();
-        const formValues = {'streetNumber': streetNumber, 'streetAddress': streetAddress, 'unitNumber': unitNumber, 'city': city, 'state': state, 'zipcode': zipcode, 'saleType': saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
+        const formValues = {'id': listing.id, 'streetNumber': listing.streetNumber, 'streetAddress': listing.streetAddress, 'unitNumber': listing.unitNumber, 'city': listing.city, 'state': listing.state, 'zipcode': listing.zipcode, 'saleType': listing.saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
         Object.keys(formValues).forEach((key) => {
             formData.append(`listing[${key}]`, formValues[key])
         })
@@ -69,7 +92,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                 formData.append('listing[images][]', imageFiles[i])
             }
         }
-        const listingId = await dispatch(createListing(formData))
+        const listingId = await dispatch(updateListing(listing.id, formData))
             .catch(async (res) => {
                 let data;
                 try {
@@ -86,22 +109,25 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
         }
     }
 
+    if (!listing) {
+        return null;
+    }
     return(
-        <div id='sell-form-page' className="open-sans">
-            <div id="sell-form-header">
-                {saleType === "Sale" && <h2>For Sale By Owner Listing</h2>}
-                {saleType === "Rent" && <h2>For Rent By Owner Listing</h2>}
+        <div id='update-form-page' className="open-sans">
+            <div id="update-form-header">
+                {listing.saleType === "Sale" && <h2>For Sale By Owner Listing</h2>}
+                {listing.saleType === "Rent" && <h2>For Rent By Owner Listing</h2>}
                 <h3>
-                    <span>{streetNumber}</span>
-                    <span> {streetAddress}</span>
-                    {unitNumber && <span> {unitNumber}</span>}
-                    <span>, {city}</span>,
-                    <span> {state}</span>,
-                    <span> {zipcode}</span>
+                    <span>{listing.streetNumber}</span>
+                    <span> {listing.streetAddress}</span>
+                    {listing.unitNumber && <span> {listing.unitNumber}</span>}
+                    <span>, {listing.city}</span>,
+                    <span> {listing.state}</span>,
+                    <span> {listing.zipcode}</span>
                 </h3>
                 <p>Post once and your home will be listed on both Zillow and Trulia, reaching buyers on the largest real estate network on the Web. Plus, home shoppers receive emails about new homes on the market – including yours.</p>
             </div>
-            <form id='sell-form' onSubmit={handleSubmit}>
+            <form id='update-form' onSubmit={handleSubmit}>
                 
 
                 <div id="price-container">
@@ -180,7 +206,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                             onChange={changeDescription} />
                     </div>
                 </div>
-            <button id="submit-post-button" type="submit">Post listing by owner</button>
+            <button id="submit-post-button" type="submit">Update Listing</button>
 
             {(loading && !errors) && <p>Loading...</p>}
 
@@ -192,4 +218,4 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
     )
 }
 
-export default SellFormPage;
+export default UpdateFormPage;

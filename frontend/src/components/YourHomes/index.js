@@ -1,5 +1,5 @@
 import "./YourHomes.css";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchListings } from "../../store/listings";
@@ -9,13 +9,14 @@ import { deleteListing } from "../../store/listings";
 function YourHomes() {
     const userId = useParams().userId;
     const dispatch = useDispatch();
+    const history = useHistory();
     const listings = useSelector((state) => {
         let allListings = state.listings;
         return Object.values(allListings).filter(listing => listing.lister.id == userId);
     })
 
     const openEdit = (e) => {
-        console.log(e.target.value)
+        history.push(`/homes/${e.target.value}/edit`)
     }
 
     const removeListing = (e) => {

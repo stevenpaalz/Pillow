@@ -45,13 +45,15 @@ export const createListing = (formData) => async dispatch => {
     return data.listing.id;
 }
 
-export const updateListing = (listing) => async dispatch => {
-    const res = await csrfFetch(`/api/listings/${listing.id}`,{
+export const updateListing = (listingId, formData) => async dispatch => {
+    debugger
+    const res = await csrfFetch(`/api/listings/${listingId}`,{
         method: 'PATCH',
-        body: JSON.stringify(listing)
+        body: formData
     });
     const data = await res.json();
     dispatch(addListing(data.listing));
+    return data.listing.id;
 }
 
 export const deleteListing = (listingId) => async dispatch => {

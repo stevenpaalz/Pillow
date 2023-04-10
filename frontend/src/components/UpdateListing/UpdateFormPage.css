@@ -1,0 +1,137 @@
+#home-facts-div {
+    height: 367px;
+}
+
+#home-facts-div input, #price-input-area {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    padding: 4px 6px 2px 6px;
+    width: calc(100% - 12px);
+    border: 1px solid #A7A6AB;
+}
+
+#home-facts-div label{
+    padding-bottom: 4px;
+    display: block;
+}
+
+#home-facts-div input {
+    margin-bottom: 16px;
+}
+
+#home-facts-div input:hover, #price-input-area:hover {
+    border: #006AFF 1px solid;
+}
+
+#home-facts-div input:focus, #price-input-area:focus-within {
+    outline: none;
+    box-shadow: inset 0 0 0 #F9F9FB, 0 0 5px #62aef7;
+    border: #006AFF 1px solid;
+    transition: box-shadow .3s;
+}
+
+#update-form-page {
+    padding: 30px 20px 60px 20px;
+}
+
+#update-form-header, #price-container, #photos-container, #home-facts-div {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: #A7A6AB 1px solid;
+}
+
+#update-form-header h2 {
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 42px;
+}
+
+#update-form-header h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+#update-form-header p {
+    font-size: 15px;
+    line-height: 1.4em;
+}
+
+#update-form h4 {
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#price-input-area {
+    font-size: 15px;
+    width: 11%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#price-input-area input{
+    width: calc(100% - 27px);
+}
+
+#price-input-area span{
+    color: #A7A6AB;
+    width: 20px;
+}
+
+#price-input-area input:focus{
+    outline: none;
+}
+
+#left-home-facts {
+    float: left;
+    width: calc(50% - 30px);
+    padding: 0 20px 0 10px;
+}
+
+#right-home-facts {
+    float: right;
+    width: calc(50% - 30px);
+    padding: 0 20px 0 10px;
+}
+
+#home-type {
+    margin-bottom: 16px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #A7A6AB;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#submit-post-button {
+    background: #006AFF;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: .4em .67em;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+#submit-post-button:hover {
+    background: linear-gradient(to top,#006AFF,#0D4599);
+}
+
+#submit-post-button:active:hover {
+    background: linear-gradient(to top,#0D4599,#006AFF);
+}
+
+#listing-errors li{
+    color: red;
+    margin-top: 4px;
+}
+
+#description {
+    height: 154px;
+}
