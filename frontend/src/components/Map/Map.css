@@ -9,7 +9,16 @@
     z-index: 2;
 }
 
+.map-container * {
+    z-index: 2;
+}
+
+.gm-style {
+    z-index: 2;
+}
+
 .map-container {
     width: 100%;
     z-index: 2;
+    /* background-color: transparent; */
 }

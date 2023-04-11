@@ -10,6 +10,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
     const [errors, setErrors] = useState([]);
     const [imageFiles, setImageFiles] = useState ([]);
     const [imageUrls, setImageUrls] = useState ([]);
+    const [posting, setPosting] = useState(false);
 
     const [price, setPrice] = useState("");
     const [homeType, setHomeType] = useState("Condo");
@@ -19,8 +20,6 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
     const [yearBuilt, setYearBuilt] = useState("");
     const [airCon, setAirCon] = useState("");
     const [description, setDescription] = useState("");
-    const [loading, setLoading] = useState(false);
-
 
     const [photoFile, setPhotoFile] = useState(null);
 
@@ -54,8 +53,8 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setPosting(true);
         setErrors([]);
-        setLoading(true);
         const formData = new FormData();
         const formValues = {'streetNumber': streetNumber, 'streetAddress': streetAddress, 'unitNumber': unitNumber, 'city': city, 'state': state, 'zipcode': zipcode, 'saleType': saleType, 'price': price, 'homeType': homeType, 'numBeds': numBeds, 'numBaths': numBaths, 'squareFeet': squareFeet, 'yearBuilt': yearBuilt, 'airCon': airCon, 'description': description}
         Object.keys(formValues).forEach((key) => {
@@ -71,6 +70,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
         }
         const listingId = await dispatch(createListing(formData))
             .catch(async (res) => {
+                setPosting(false);
                 let data;
                 try {
                     data = await res.clone().json();
@@ -182,7 +182,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                 </div>
             <button id="submit-post-button" type="submit">Post listing by owner</button>
 
-            {(loading && !errors) && <p>Loading...</p>}
+            {posting && <p>Posting...</p>}
 
             </form>
             <ul id="listing-errors">
