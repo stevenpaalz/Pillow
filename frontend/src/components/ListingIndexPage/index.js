@@ -6,13 +6,15 @@ import ListingIndexItems from "./ListingIndexItems";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchListings } from "../../store/listings";
+import { fetchFavorites } from "../../store/favorites";
 
 function ListingIndexPage() {
     const dispatch = useDispatch();
     const listings = useSelector(state => state.listings)
 
     useEffect(()=>{
-        dispatch(fetchListings())
+        dispatch(fetchListings());
+        dispatch(fetchFavorites());
     }, [dispatch])
 
     if (!listings) {
