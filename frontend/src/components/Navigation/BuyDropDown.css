@@ -13,6 +13,10 @@
     z-index: 7;
 }
 
+#buy-dropdown:hover {
+    cursor: default !important;
+}
+
 #buy-dropdown.dropdown-subnav {
     display: flex;
     height: 100%;

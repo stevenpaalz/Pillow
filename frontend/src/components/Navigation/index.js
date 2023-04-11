@@ -31,11 +31,11 @@ function Navigation() {
         <>
         <div id='nav-bar' className="open-sans">
             <ul id="left-nav">
-                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span><NavLink exact to="/homes">Buy</NavLink></span>
+                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/homes">Buy</NavLink></span>
                     {buyDropDownOpen && <BuyDropDown />}
                 </li>
                 <li><span><NavLink exact to="/">Rent</NavLink></span></li>
-                <li><span><NavLink exact to="/sell">Sell</NavLink></span></li>
+                <li><span onClick={()=>history.replace("/sell")}><NavLink exact to="/sell">Sell</NavLink></span></li>
                 <li><span><NavLink exact to="/">Home Loans</NavLink></span></li>
                 <li><span><NavLink exact to="/">Agent Finder</NavLink></span></li>
             </ul>
@@ -45,7 +45,7 @@ function Navigation() {
                     </NavLink>
             </div>
             <ul id="right-nav">
-                <li><span onClick={() => {history.replace(`/${sessionUser.id}/homes`)}}>Manage Rentals</span></li>
+                <li><span onClick={() => {if (sessionUser) {history.replace(`/${sessionUser.id}/homes`)}}}>Manage Rentals</span></li>
                 <li><span><NavLink exact to="/">Advertise</NavLink></span></li>
                 <li><span><NavLink exact to="/">Help</NavLink></span></li>
                 {sessionLinks}

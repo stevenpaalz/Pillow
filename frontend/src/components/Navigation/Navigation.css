@@ -38,7 +38,8 @@
     }
 
     #nav-bar ul li span:hover {
-        color: rgb(0, 106, 255)
+        color: rgb(0, 106, 255);
+        cursor: pointer;
     }
 
     #right-nav {
