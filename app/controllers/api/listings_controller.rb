@@ -3,7 +3,6 @@ class Api::ListingsController < ApplicationController
 
     def index
         @listings = Listing.includes(:lister).includes(:favoritors).all
-        debugger
         render :index
     end
 
