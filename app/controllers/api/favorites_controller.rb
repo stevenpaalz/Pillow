@@ -9,7 +9,7 @@ class Api::FavoritesController < ApplicationController
     def create
         @favorite = Favorite.new({listing_id: params['listing_id'], user_id: params['user_id']})
         if @favorite.save!
-            render json: @favorite
+            render :show
         else
             render json: { errors: @favorite.errors.full_messages}, status: 422
         end

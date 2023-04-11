@@ -35,8 +35,8 @@ export const createFavorite = (favorite) => async dispatch => {
         body: JSON.stringify(favorite)
     })
     const data = await res.json();
-    dispatch(addFavorite(data));
-    return data.id;
+    dispatch(addFavorite(data.favorite));
+    return data.favorite.id;
 }
 
 export const deleteFavorite = (favoriteId) => async dispatch => {

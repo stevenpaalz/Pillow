@@ -21,7 +21,7 @@ function ListingIndexPage() {
     useEffect(()=>{
         dispatch(fetchListings());
     },[favorites])
-
+    
     if (!listings || !favorites) {
         return(
             <h1>Loading...</h1>

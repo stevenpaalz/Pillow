@@ -15,13 +15,21 @@ function ListingIndexItem({listing, favorites}) {
     useEffect(()=>{
         setLiked(false);
         if (!sessionUser) {return}
-        if ((listing.favoriteIds).some((element) => {
-            return favorites[element] && favorites[element].userId === sessionUser.id
-        })) { 
-            setLiked(true)
-        } else {
-            setLiked(false);
-        }
+        listing.favoriteIds.forEach((favoriteId) =>{
+            if (!favorites[favoriteId]) return;
+            if (favorites[favoriteId].listingId === listing.id && favorites[favoriteId].userId === sessionUser.id){
+                setLiked(true)
+            }
+        })
+
+
+        // if ((listing.favoriteIds).some((element) => {
+        //     return favorites[element] && favorites[element].userId === sessionUser.id
+        // })) { 
+        //     setLiked(true)
+        // } else {
+        //     setLiked(false);
+        // }
     }, [favorites, sessionUser, listing.favoriteIds])
 
     const toggleLiked = (e) => {
