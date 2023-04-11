@@ -296,4 +296,11 @@ listings.each_with_index do |listing, idx|
   listing.save!
 end
 
+puts "Creating favorites..."
+
+Favorite.create!({
+  user_id: 1,
+  listing_id: 1
+})
+
 puts "Done!"

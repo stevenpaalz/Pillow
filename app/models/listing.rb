@@ -52,13 +52,6 @@ class Listing < ApplicationRecord
   validates :zipcode, length: {minimum: 5}
   validates :home_type, inclusion: {in: HOME_TYPE}
   validates :sale_type, inclusion: {in: SALE_TYPE}
-  # validate :ensure_photo
-
-  # def ensure_photo
-  #   unless self.photo.attached?
-  #     errors.add(:photo, "Must include photo")
-  #   end
-  # end
 
   belongs_to(
     :lister,

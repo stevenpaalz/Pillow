@@ -2,12 +2,13 @@ class Api::ListingsController < ApplicationController
     wrap_parameters include: Listing.attribute_names + [:photo, :images]
 
     def index
-        @listings = Listing.includes(:lister).all
+        @listings = Listing.includes(:lister).includes(:favoritors).all
+        debugger
         render :index
     end
 
     def show
-        @listing = Listing.includes(:lister).find(params[:id])
+        @listing = Listing.includes(:lister).includes(:favoritors).find(params[:id])
         render :show
     end
 
