@@ -11,13 +11,14 @@ import { fetchFavorites } from "../../store/favorites";
 function ListingIndexPage() {
     const dispatch = useDispatch();
     const listings = useSelector(state => state.listings)
+    const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
         dispatch(fetchListings());
         dispatch(fetchFavorites());
     }, [dispatch])
 
-    if (!listings) {
+    if (!listings || !favorites) {
         return(
             <h1>Loading...</h1>
         )
@@ -29,7 +30,7 @@ function ListingIndexPage() {
             <div id='index-page-container'>
                 
                 <MapWrapper listings={listings}/>
-                <ListingIndexItems listings={listings}/>
+                <ListingIndexItems listings={listings} favorites={favorites}/>
             </div>
         </>
     )

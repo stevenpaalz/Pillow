@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
 
-function ListingIndexItems({listings}) {
+function ListingIndexItems({listings, favorites}) {
     const [sortText, setSortText] = useState("Newest");
     const [sortOptions, setSortOptions] = useState(false)
 
@@ -47,13 +47,6 @@ function ListingIndexItems({listings}) {
                                 <li onClick={updateSort}>Squarefeet</li>
                             </ul>}
                         </div>
-                            {/* <option value="newest">Newest</option>
-                            <option>Price (High to Low)</option>
-                            <option>Price (Low to High)</option>
-                            <option>Bedrooms</option>
-                            <option>Bathrooms</option>
-                            <option>Square Feet</option> */}
-
                     </div>
                 </div>
             </div>
@@ -61,7 +54,7 @@ function ListingIndexItems({listings}) {
             <div id="listings-page-index">
                 <ul id='index-listings-ul'>
                     {Object.values(listings).map((listing)=>{
-                        return <ListingIndexItem key={listing.id} listing={listing} />
+                        return <ListingIndexItem key={listing.id} listing={listing} favorites={favorites}/>
                     })}
                 </ul>               
             </div>

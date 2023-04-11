@@ -15,6 +15,7 @@ Listing.destroy_all
 puts "Resetting primary keys..."
 ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('listings')
+ApplicationRecord.connection.reset_pk_sequence!('favorites')
 
 puts "Creating users..."
 User.create!(
@@ -298,9 +299,23 @@ end
 
 puts "Creating favorites..."
 
-Favorite.create!({
-  user_id: 1,
-  listing_id: 1
-})
+Favorite.create!({user_id: 1, listing_id: 1})
+Favorite.create!({user_id: 1, listing_id: 2})
+Favorite.create!({user_id: 1, listing_id: 5})
+Favorite.create!({user_id: 1, listing_id: 7})
+Favorite.create!({user_id: 2, listing_id: 2})
+Favorite.create!({user_id: 2, listing_id: 5})
+Favorite.create!({user_id: 2, listing_id: 3})
+Favorite.create!({user_id: 2, listing_id: 10})
+Favorite.create!({user_id: 3, listing_id: 1})
+Favorite.create!({user_id: 4, listing_id: 1})
+Favorite.create!({user_id: 4, listing_id: 7})
+Favorite.create!({user_id: 5, listing_id: 9})
+Favorite.create!({user_id: 5, listing_id: 11})
+Favorite.create!({user_id: 7, listing_id: 2})
+Favorite.create!({user_id: 7, listing_id: 3})
+Favorite.create!({user_id: 8, listing_id: 3})
+Favorite.create!({user_id: 8, listing_id: 4})
+Favorite.create!({user_id: 8, listing_id: 5})
 
 puts "Done!"

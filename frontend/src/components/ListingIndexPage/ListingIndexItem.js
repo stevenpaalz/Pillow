@@ -1,19 +1,35 @@
 import '../Splash/SplashListings.css';
 import './ListingIndexItem.css';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { deleteFavorite } from '../../store/favorites';
 
-function ListingIndexItem({listing}) {
+function ListingIndexItem({listing, favorites}) {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
     const [liked, setLiked] = useState(false)
 
+    useEffect(()=>{
+        setLiked(false);
+        if ((listing.favoriteIds).some((element) => {
+            return favorites[element].userId === sessionUser.id
+        })) { 
+            setLiked(true);
+        } else {
+            setLiked(false);
+        }
+    }, [listing])
+
     const toggleLiked = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        setLiked(!liked);
+        // if (liked === true) {
+        //     favoriteId = 
+        //     dispatch(deleteFavorite(favoriteId))
+        // }
     }
 
     let modifiedHomeType;
