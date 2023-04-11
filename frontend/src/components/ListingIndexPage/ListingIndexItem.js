@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { deleteFavorite } from '../../store/favorites';
+import { createFavorite, deleteFavorite } from '../../store/favorites';
 
 function ListingIndexItem({listing, favorites}) {
     const dispatch = useDispatch();
@@ -14,22 +14,30 @@ function ListingIndexItem({listing, favorites}) {
 
     useEffect(()=>{
         setLiked(false);
+        if (!sessionUser) {return}
         if ((listing.favoriteIds).some((element) => {
-            return favorites[element].userId === sessionUser.id
+            return favorites[element] && favorites[element].userId === sessionUser.id
         })) { 
-            setLiked(true);
+            setLiked(true)
         } else {
             setLiked(false);
         }
-    }, [listing])
+    }, [favorites, sessionUser, listing.favoriteIds])
 
     const toggleLiked = (e) => {
+        if (!sessionUser) {
+            console.log("nobody logged in")
+        }
         e.preventDefault();
         e.stopPropagation();
-        // if (liked === true) {
-        //     favoriteId = 
-        //     dispatch(deleteFavorite(favoriteId))
-        // }
+        if (liked === true) {
+            let favorite = Object.values(favorites).filter((favorite) => {
+                return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
+            })
+            dispatch(deleteFavorite(favorite[0].id))
+        } else {
+            dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
+        }
     }
 
     let modifiedHomeType;

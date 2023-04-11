@@ -7,7 +7,7 @@ class Api::FavoritesController < ApplicationController
     end
 
     def create
-        @favorite = Favorite.new(favoriteparams)
+        @favorite = Favorite.new({listing_id: params['listing_id'], user_id: params['user_id']})
         if @favorite.save!
             render json: @favorite
         else

@@ -18,6 +18,10 @@ function ListingIndexPage() {
         dispatch(fetchFavorites());
     }, [dispatch])
 
+    useEffect(()=>{
+        dispatch(fetchListings());
+    },[favorites])
+
     if (!listings || !favorites) {
         return(
             <h1>Loading...</h1>
