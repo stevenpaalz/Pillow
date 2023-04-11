@@ -26,6 +26,14 @@ class Listing < ApplicationRecord
 
   has_many_attached :images
 
+  has_many(
+    :favoritors,
+    foreign_key: :listing_id,
+    primary_key: :id,
+    class_name: :Favorite,
+    dependent: :destroy
+  )
+
   HOME_TYPE = [
     "Condo",
     "Apartment",

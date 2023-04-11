@@ -21,6 +21,14 @@ class User < ApplicationRecord
     dependent: :destroy
   ) 
 
+  has_many(
+    :favorites,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: :Favorite,
+    dependent: :destroy
+  )
+
   validates :email, 
     uniqueness: true, 
     length: { in: 3..255 }, 
