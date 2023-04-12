@@ -14,7 +14,7 @@ li.listing-index-item {
 }
 
 li.listing-index-item:hover {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px 0px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 10px 2px;
     cursor: pointer;
 }
 
