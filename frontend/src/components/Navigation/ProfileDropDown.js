@@ -21,12 +21,12 @@ function ProfileDropDown() {
       <div id="profile-dropdown" className="hidden">
         <div className="arrow-up"></div>
         <ul id= "profile-dropdown-content" className="hidden open-sans">
-          <li><Link to={`/${sessionUser.id}/favorites`}>Saved homes</Link></li>
-          <li><Link to="/in-process">Saved searches</Link></li>
-          <li><Link to="in-process">Recently Viewed</Link></li>
+          <Link to={`/${sessionUser.id}/favorites`}><li>Saved homes</li></Link>
+          <Link to="/in-process"><li>Saved searches</li></Link>
+          <Link to="in-process"><li>Recently Viewed</li></Link>
           <Link to={`/${sessionUser.id}/homes`}><li>Your home</li></Link>
-          <li><Link to={`/${sessionUser.id}/homes`}>Renter Hub</Link></li>
-          <li><Link to="/in-process">Account settings</Link></li>
+          <Link to={`/${sessionUser.id}/homes`}><li>Renter Hub</li></Link>
+          <Link to="/in-process"><li>Account settings</li></Link>
           <li onClick={logout}>
             <button>Sign out</button>
           </li>
