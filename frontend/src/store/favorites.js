@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { fetchUsers } from './users';
 
 const SET_FAVORITES = "favorites/setFavorites"
 const ADD_FAVORITE = "favorites/addFavorite"
@@ -36,6 +37,7 @@ export const createFavorite = (favorite) => async dispatch => {
     })
     const data = await res.json();
     dispatch(addFavorite(data.favorite));
+    dispatch(fetchUsers);
     return data.favorite.id;
 }
 
@@ -44,7 +46,8 @@ export const deleteFavorite = (favoriteId) => async dispatch => {
         method: 'DELETE',
         body: JSON.stringify(favoriteId)
     })
-    dispatch(removeFavorite(favoriteId))
+    dispatch(removeFavorite(favoriteId));
+    dispatch(fetchUsers);
 }
 
 

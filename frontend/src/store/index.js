@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import listingsReducer from "./listings";
 import sessionReducer from "./session";
 import favoritesReducer from "./favorites";
+import usersReducer from "./users";
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     listings: listingsReducer,
-    favorites: favoritesReducer
+    favorites: favoritesReducer,
+    users: usersReducer
 })
 
 let enhancer;

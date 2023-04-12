@@ -3,14 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "../ListingIndexPage/ListingIndexItem";
 import './SplashListings';
+import { fetchFavorites } from "../../store/favorites";
 
 function SplashListings() {
     const dispatch = useDispatch();
     const listings = useSelector(state => state.listings)
+    const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
         dispatch(fetchListings())
+        dispatch(fetchFavorites());
     }, [dispatch])
+
+    useEffect(()=>{
+        dispatch(fetchListings());
+    },[favorites])
 
     const nextScroll = (e) => {
         e.preventDefault();
@@ -64,7 +71,7 @@ function SplashListings() {
             </div>
             <ul id='splash-carousel' onScroll={scrollHandler}>
                 {Object.values(listings).map((listing)=>{
-                    return <ListingIndexItem key={listing.id} listing={listing} />
+                    return <ListingIndexItem key={listing.id} listing={listing} favorites={favorites}/>
                 })}
             </ul>
         </>

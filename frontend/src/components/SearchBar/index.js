@@ -1,13 +1,17 @@
 import "./SearchBar.css";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function SearchBar() {
+    const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
 
     return(
-        <div id="index-page-search-bar">
+        <div id="index-page-search-bar" className="open-sans">
             <div id="search-bar-form">
                 <form onSubmit={handleSubmit} className="open-sans" id='index-search'>
                     <input id='search-input-area' placeholder='City, Neighborhood, ZIP, Address'></input>
@@ -23,7 +27,7 @@ function SearchBar() {
                 </button>
             </div>
             <div id="saved-homes">
-                <button>Saved Homes</button>
+                <button onClick={()=>history.replace(`/${sessionUser.id}/favorites`)}>Saved Homes</button>
             </div> 
         </div>
     )

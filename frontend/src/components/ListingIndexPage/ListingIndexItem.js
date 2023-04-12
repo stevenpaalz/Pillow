@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { createFavorite, deleteFavorite } from '../../store/favorites';
+import LoginFormModal from '../LoginFormModal';
 
 function ListingIndexItem({listing, favorites}) {
     const dispatch = useDispatch();
@@ -21,23 +22,16 @@ function ListingIndexItem({listing, favorites}) {
                 setLiked(true)
             }
         })
-
-
-        // if ((listing.favoriteIds).some((element) => {
-        //     return favorites[element] && favorites[element].userId === sessionUser.id
-        // })) { 
-        //     setLiked(true)
-        // } else {
-        //     setLiked(false);
-        // }
     }, [favorites, sessionUser, listing.favoriteIds])
 
     const toggleLiked = (e) => {
-        if (!sessionUser) {
-            console.log("nobody logged in")
-        }
         e.preventDefault();
         e.stopPropagation();
+        if (!sessionUser) {
+            console.log("nobody logged in");
+            return;
+            // return(<LoginFormModal requireLogIn="true" />)
+        }
         if (liked === true) {
             let favorite = Object.values(favorites).filter((favorite) => {
                 return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)

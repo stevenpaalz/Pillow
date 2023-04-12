@@ -36,3 +36,14 @@
 #search-input-area:focus-visible {
     outline: none;
 }
+
+#saved-homes {
+    font-size: 15px;
+    font-weight: 600;
+    color: #006AFF;
+    cursor: pointer;
+}
+
+#saved-homes:hover {
+    color: rgb(0, 23, 81)
+}
