@@ -2,7 +2,6 @@ import '../Splash/SplashListings.css';
 import './ListingIndexItem.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { createFavorite, deleteFavorite } from '../../store/favorites';
 import { setModal } from '../../store/modal';
@@ -14,15 +13,17 @@ function ListingIndexItem({listing, favorites}) {
     const [liked, setLiked] = useState(false)
 
     useEffect(()=>{
-        setLiked(false);
         if (!sessionUser) {return}
+        let checkedForLike = false;
         listing.favoriteIds.forEach((favoriteId) =>{
             if (!favorites[favoriteId]) return;
             if (favorites[favoriteId].listingId === listing.id && favorites[favoriteId].userId === sessionUser.id){
-                setLiked(true)
+                setLiked(true);
+                checkedForLike = true;
             }
         })
-    }, [favorites, sessionUser, listing.favoriteIds])
+        if (checkedForLike === false) setLiked(false);
+    }, [listing.favoriteIds])
 
     const toggleLiked = (e) => {
         e.preventDefault();
@@ -32,11 +33,13 @@ function ListingIndexItem({listing, favorites}) {
             return;
         }
         if (liked === true) {
+            setLiked(false);
             let favorite = Object.values(favorites).filter((favorite) => {
                 return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
             })
             dispatch(deleteFavorite(favorite[0].id))
         } else {
+            setLiked(true);
             dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
         }
     }
