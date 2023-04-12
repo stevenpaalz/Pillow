@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { fetchListing } from "../../store/listings";
+import { fetchListing, fetchListings } from "../../store/listings";
 import ShowDetailsIcons from "./ShowDetailsIcons";
 import ShowHeader from "./ShowHeader";
 import ShowImages from "./ShowImages";
@@ -11,16 +11,20 @@ import ShowDetailsOverview from "./ShowDetailsOverview";
 import ShowDetailsFacts from "./ShowDetailsFacts";
 import "./ListingsShowPage.css";
 
-
 function ListingShowPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const listingId = useParams().listingId;
+    const favorites = useSelector(state => state.favorites)
     const listing = useSelector(state => state.listings[listingId]);
 
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [dispatch])
+
+    useEffect(()=>{
+        dispatch(fetchListing(listingId));
+    },[favorites])
 
     const closePage = () => {
         history.push('/homes')
@@ -43,7 +47,7 @@ function ListingShowPage() {
                     <ShowImages listing={listing}/>
                 </div>
                 <div id="listing-show-page-right">
-                    <ShowNav />
+                    <ShowNav listing={listing}/>
                     <ShowHeader listing={listing}/>
                     <div id='show-details-area'>
                         <ShowRightSubnav />

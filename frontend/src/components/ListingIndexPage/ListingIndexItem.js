@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { createFavorite, deleteFavorite } from '../../store/favorites';
-import LoginFormModal from '../LoginFormModal';
+import { setModal } from '../../store/modal';
 
 function ListingIndexItem({listing, favorites}) {
     const dispatch = useDispatch();
@@ -28,9 +28,8 @@ function ListingIndexItem({listing, favorites}) {
         e.preventDefault();
         e.stopPropagation();
         if (!sessionUser) {
-            console.log("nobody logged in");
+            dispatch(setModal(true))
             return;
-            // return(<LoginFormModal requireLogIn="true" />)
         }
         if (liked === true) {
             let favorite = Object.values(favorites).filter((favorite) => {
