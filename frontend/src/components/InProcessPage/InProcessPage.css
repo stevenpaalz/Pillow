@@ -1,0 +1,42 @@
+#in-process-page {
+    padding-top: 3%;
+    padding-left: 3%;
+    width: 35%;
+}
+
+#in-process-page h1 {
+    font-size: 80px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(0, 106, 255);
+    padding-bottom: 16px;
+}
+
+#in-process-page h2 {
+    padding-bottom: 24px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+#in-process-page h3 {
+    padding-bottom: 8px;
+}
+
+#in-process-page ul {
+    list-style: inside;
+    width: 45%;
+}
+
+#in-process-page ul li {
+    padding-bottom: 8px;
+}
+
+#in-process-page ul li a {
+    color: #006AFF;
+}
+
+#in-process-page ul li a:hover {
+    cursor: pointer;
+    color: rgb(0, 23, 81);
+}

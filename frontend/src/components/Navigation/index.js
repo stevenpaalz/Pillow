@@ -7,12 +7,17 @@ import LoginFormModal from "../LoginFormModal";
 import zillowLogo from "../../assets/zillow_main_logo.png"
 import ProfileDropDown from "./ProfileDropDown";
 import BuyDropDown from "./BuyDropDown";
+import RentDropDown from "./RentDropDown";
+import SellDropDown from "./SellDropDown";
 import { useState } from "react";
 
 function Navigation() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [buyDropDownOpen, setBuyDropDownOpen] = useState(false);
+    const [rentDropDownOpen, setRentDropDownOpen] = useState(false);
+    const [sellDropDownOpen, setSellDropDownOpen] = useState(false);
+
 
     let sessionLinks;
     let dropdown;
@@ -34,10 +39,14 @@ function Navigation() {
                 <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/homes">Buy</NavLink></span>
                     {buyDropDownOpen && <BuyDropDown />}
                 </li>
-                <li><span><NavLink exact to="/">Rent</NavLink></span></li>
-                <li><span onClick={()=>history.replace("/sell")}><NavLink exact to="/sell">Sell</NavLink></span></li>
-                <li><span><NavLink exact to="/">Home Loans</NavLink></span></li>
-                <li><span><NavLink exact to="/">Agent Finder</NavLink></span></li>
+                <li onMouseOver={()=>setRentDropDownOpen(true)} onMouseLeave={()=>setRentDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/">Rent</NavLink></span>
+                    {rentDropDownOpen && <RentDropDown />}
+                </li>
+                <li onMouseOver={()=>setSellDropDownOpen(true)} onMouseLeave={()=>setSellDropDownOpen(false)}><span onClick={()=>history.replace("/sell")}><NavLink exact to="/sell">Sell</NavLink></span>
+                    {sellDropDownOpen && <SellDropDown />}
+                </li>
+                <li><span><NavLink exact to="/in-process">Home Loans</NavLink></span></li>
+                <li><span><NavLink exact to="/in-process">Agent Finder</NavLink></span></li>
             </ul>
             <div id="nav-logo">
                 <NavLink exact to="/">
@@ -46,8 +55,8 @@ function Navigation() {
             </div>
             <ul id="right-nav">
                 <li><span onClick={() => {if (sessionUser) {history.replace(`/${sessionUser.id}/homes`)}}}>Manage Rentals</span></li>
-                <li><span><NavLink exact to="/">Advertise</NavLink></span></li>
-                <li><span><NavLink exact to="/">Help</NavLink></span></li>
+                <li><span><NavLink exact to="/in-process">Advertise</NavLink></span></li>
+                <li><span><NavLink exact to="/in-process">Help</NavLink></span></li>
                 {sessionLinks}
             </ul>
         </div>

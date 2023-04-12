@@ -8,6 +8,7 @@ import CreateListing from './components/CreateListing';
 import YourHomes from './components/YourHomes';
 import UpdateFormPage from './components/UpdateListing';
 import Favorites from './components/Favorites';
+import InProcessPage from './components/InProcessPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/:userId/homes'><YourHomes /></Route>
         <Route exact path='/homes/:listingId/edit'><UpdateFormPage /></Route>
         <Route exact path='/:userId/favorites'><Favorites /></Route>
+        <Route exact path='/in-process'><InProcessPage /></Route>
         <Route path="/"><Splash /></Route>
       </Switch>
     </> 
