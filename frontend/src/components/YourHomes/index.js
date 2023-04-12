@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchListings } from "../../store/listings";
 import ListingIndexItem from "../ListingIndexPage/ListingIndexItem";
 import { deleteListing } from "../../store/listings";
+import { setModal } from "../../store/modal";
 
 function YourHomes() {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
 
@@ -15,7 +17,6 @@ function YourHomes() {
     }
 
     const userId = useParams().userId;
-    const dispatch = useDispatch();
     const listings = useSelector((state) => {
         let allListings = state.listings;
         return Object.values(allListings).filter(listing => listing.lister.id == userId);

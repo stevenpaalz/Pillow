@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './LoginForm.css';
 import './SignUpForm.css';
+import { setModal } from '../../store/modal';
 
 function SignUpForm() {
     const dispatch = useDispatch();
@@ -100,10 +101,10 @@ function SignUpForm() {
         }
     }, [password, specialRegex])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.signup({email: email, password: password}))
+        const data = await dispatch(sessionActions.signup({email: email, password: password}))
             .catch(async (res) => {
                 let data;
                 try {
@@ -115,6 +116,9 @@ function SignUpForm() {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
+        if (data) {
+            dispatch(setModal(false))
+        }
     }
 
     return(

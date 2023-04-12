@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import zillowLogo from "../../assets/zillow_main_logo.png"
 import ProfileDropDown from "./ProfileDropDown";
 import BuyDropDown from "./BuyDropDown";
 import RentDropDown from "./RentDropDown";
 import SellDropDown from "./SellDropDown";
+import { setModal } from "../../store/modal";
 import { useState } from "react";
 
 function Navigation() {
     const history = useHistory();
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [buyDropDownOpen, setBuyDropDownOpen] = useState(false);
     const [rentDropDownOpen, setRentDropDownOpen] = useState(false);
     const [sellDropDownOpen, setSellDropDownOpen] = useState(false);
 
+    useEffect(()=>{
+        dispatch(setModal(false))
+    }, [])
 
     let sessionLinks;
     let dropdown;
@@ -42,7 +47,7 @@ function Navigation() {
                 <li onMouseOver={()=>setRentDropDownOpen(true)} onMouseLeave={()=>setRentDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/">Rent</NavLink></span>
                     {rentDropDownOpen && <RentDropDown />}
                 </li>
-                <li onMouseOver={()=>setSellDropDownOpen(true)} onMouseLeave={()=>setSellDropDownOpen(false)}><span onClick={()=>history.replace("/sell")}><NavLink exact to="/sell">Sell</NavLink></span>
+                <li onMouseOver={()=>setSellDropDownOpen(true)} onMouseLeave={()=>setSellDropDownOpen(false)}><span onClick={() => {sessionUser ? history.replace("/sell") : dispatch(setModal(true))}}><NavLink exact to="/sell">Sell</NavLink></span>
                     {sellDropDownOpen && <SellDropDown />}
                 </li>
                 <li><span><NavLink exact to="/in-process">Home Loans</NavLink></span></li>
@@ -54,7 +59,7 @@ function Navigation() {
                     </NavLink>
             </div>
             <ul id="right-nav">
-                <li><span onClick={() => {if (sessionUser) {history.replace(`/${sessionUser.id}/homes`)}}}>Manage Rentals</span></li>
+                <li><span onClick={() => {sessionUser ? history.replace(`/${sessionUser.id}/homes`) : dispatch(setModal(true))}}>Manage Rentals</span></li>
                 <li><span><NavLink exact to="/in-process">Advertise</NavLink></span></li>
                 <li><span><NavLink exact to="/in-process">Help</NavLink></span></li>
                 {sessionLinks}

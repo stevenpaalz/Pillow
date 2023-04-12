@@ -1,8 +1,25 @@
 import SellFormPage from "./SellFormPage";
 import SellLandingPage from "./SellLandingPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setModal } from "../../store/modal";
 
 function CreateListing() {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
+    const modalState = useSelector(state => state.modal.modalState)
+
+    useEffect(()=>{
+        setModal(false)
+        setTimeout(()=>{
+            if (!sessionUser) {
+                dispatch(setModal(true));
+            }
+        }, 500)
+    }, [modalState])
+
+
     const [landingComplete, setLandingComplete] = useState(false);
     const [streetNumber, setStreetNumber] = useState("");
     const [streetAddress, setStreetAddress] = useState("");

@@ -10,6 +10,9 @@ function UpdateFormPage() {
     const listingId = useParams().listingId;
     const history = useHistory();
     const listing = useSelector(state => state.listings[listingId]);
+    const sessionUser = useSelector(state => state.session.user);
+
+    if (!sessionUser) {history.replace("/")}
 
     useEffect(() => {
         dispatch(fetchListing(listingId))
@@ -29,7 +32,6 @@ function UpdateFormPage() {
         }
     }, [listing])
 
-    const sessionUser = useSelector(state => state.session.user);
 
     const [errors, setErrors] = useState([]);
     const [imageFiles, setImageFiles] = useState ([]);

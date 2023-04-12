@@ -4,12 +4,14 @@ import listingsReducer from "./listings";
 import sessionReducer from "./session";
 import favoritesReducer from "./favorites";
 import usersReducer from "./users";
+import modalReducer from "./modal";
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     listings: listingsReducer,
     favorites: favoritesReducer,
-    users: usersReducer
+    users: usersReducer,
+    modal: modalReducer
 })
 
 let enhancer;

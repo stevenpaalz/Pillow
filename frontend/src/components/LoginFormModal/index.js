@@ -2,14 +2,15 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignUpForm";
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setModal } from "../../store/modal";
 import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 
 function LoginFormModal() {
-    const [showModal, setShowModal] = useState(false);
     const [existingUser, setExistingUser] = useState(true);
     const dispatch = useDispatch();
+    const modalState = useSelector(state => state.modal.modalState )
 
     const selectSignIn = (e) => {
         e.preventDefault();
@@ -31,19 +32,20 @@ function LoginFormModal() {
 
     const demoLoginHandler = (e) => {
         e.preventDefault();
-        return dispatch(sessionActions.login({email: 'demo@email.com', password: 'Password1!'}))
+        dispatch(sessionActions.login({email: 'demo@email.com', password: 'Password1!'}));
+        dispatch(setModal(false));
     }
 
     const closeModal = (e) => {
         e.preventDefault();
-        setShowModal(false);
+        dispatch(setModal(false))
         setExistingUser(true);
     }
 
     return(
         <>
-            <button id="login-open-button" className="open-sans" onClick={() => setShowModal(true)}>Sign In</button>
-            {showModal && (
+            <button id="login-open-button" className="open-sans" onClick={() => dispatch(setModal(true))}>Sign In</button>
+            {modalState && (
                 <Modal onClose={closeModal}>
                     <h2 id='welcome-header'>Welcome to Zill-oh</h2>
                     <nav id='new-account-nav'>

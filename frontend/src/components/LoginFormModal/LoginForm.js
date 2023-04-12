@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useState } from 'react';
 import './LoginForm.css';
 import { useEffect } from 'react';
-
+import { setModal } from '../../store/modal';
 
 function LoginForm() {
     const dispatch = useDispatch();
@@ -30,10 +30,10 @@ function LoginForm() {
         return () => document.removeEventListener("click", clickAway);
     }, [email, emailRegex])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({email: email, password: password}))
+        const data = await dispatch(sessionActions.login({email: email, password: password}))
             .catch(async (res) => {
                 let data;
                 try {
@@ -45,6 +45,9 @@ function LoginForm() {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             });
+        if (data) {
+            dispatch(setModal(false))
+        }
     }
 
     return(
