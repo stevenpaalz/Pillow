@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :index]
     resources :listings, only: [:show, :create, :destroy, :index, :update]
   end
-
+  get '/api/search', to: 'api/search#index', query: [:q]
   get '*path', to: "static_pages#frontend_index"
 end

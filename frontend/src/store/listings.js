@@ -20,7 +20,17 @@ const removeListing = (listingId) => ({
 })
 
 export const fetchListings = () => async dispatch => {
-    const res = await csrfFetch('/api/listings')
+    const res = await csrfFetch('/api/listings');
+    const data = await res.json();
+    const listings = {};
+    data.forEach((el)=>{
+        listings[el.listing.id] = el.listing
+    })
+    dispatch(setListings(listings));
+}
+
+export const searchListings = (query) => async dispatch => {
+    const res = await csrfFetch(`/api/search?q=${query}`);
     const data = await res.json();
     const listings = {};
     data.forEach((el)=>{

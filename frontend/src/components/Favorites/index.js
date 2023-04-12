@@ -25,7 +25,7 @@ function Favorites() {
         dispatch(fetchUsers())
         dispatch(fetchListings())
         dispatch(fetchFavorites())
-    }, [])
+    }, [dispatch])
 
     useEffect(()=>{
         
@@ -88,7 +88,6 @@ function Favorites() {
     if (!myListings || myListings === []) {return(
         <h1>Loading...</h1>
     )}
-        console.log(myListings)
     return(
         <div id="favorites-container">
             <div className='open-sans' id='favorites-listings-nav'>

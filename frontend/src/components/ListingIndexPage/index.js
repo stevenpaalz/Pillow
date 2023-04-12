@@ -14,13 +14,12 @@ function ListingIndexPage() {
     const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
-        dispatch(fetchListings());
         dispatch(fetchFavorites());
     }, [dispatch])
 
     useEffect(()=>{
         dispatch(fetchListings());
-    },[favorites])
+    }, [favorites])
     
     if (!listings || !favorites) {
         return(

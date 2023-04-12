@@ -1,23 +1,26 @@
 import "./SearchBar.css";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { setModal } from "../../store/modal";
+import { searchListings } from "../../store/listings";
 
 function SearchBar() {
+    const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [searchField, setSearchField] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        debugger
+        dispatch(searchListings(searchField))
     }
 
     return(
         <div id="index-page-search-bar" className="open-sans">
             <div id="search-bar-form">
                 <form onSubmit={handleSubmit} className="open-sans" id='index-search'>
-                    <input id='search-input-area' onChange={e=>setSearchField(e.target.value)}value={searchField} placeholder='City, Neighborhood, ZIP, Address'></input>
+                    <input id='search-input-area' onChange={e=>setSearchField(e.target.value)} value={searchField} placeholder='City, State, ZIP'></input>
                     <span><button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button></span>
                 </form>
                 {/* <button id='sale-type-sort' className='search-bar-sort'>
@@ -30,7 +33,7 @@ function SearchBar() {
                 </button> */}
             </div>
             <div id="saved-homes">
-                <button onClick={()=>history.replace(`/${sessionUser.id}/favorites`)}>Saved Homes</button>
+                <button onClick={()=> {sessionUser ? history.replace(`/${sessionUser.id}/favorites`) : dispatch(setModal(true))}}>Saved Homes</button>
             </div> 
         </div>
     )

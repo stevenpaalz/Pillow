@@ -11,7 +11,6 @@ function SplashListings() {
     const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
-        dispatch(fetchListings())
         dispatch(fetchFavorites());
     }, [dispatch])
 
