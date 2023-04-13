@@ -68,7 +68,6 @@ function LoginFormModal() {
                     </div>
                 </Modal>
             )}
-            
         </>
     )
 }
