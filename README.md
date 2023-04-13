@@ -23,7 +23,7 @@ Zill-oh? is a clone of the Zillow website. Zillow is a home finding/listing serv
 ### User Authentication
 
 Zill-oh? users are able to create and log in to an account. Frontend live validation is included on creating an account.\
-![Signup Validations](assets/Signup_AdobeExpress.gif)
+<img src="assets/Signup_AdobeExpress.gif" width="80" alt="Signup Validations">
 
 ```js
 useEffect(()=>{
