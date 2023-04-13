@@ -94,8 +94,8 @@ function YourHomes() {
                                     <ListingIndexItem listing={listing} />
                                 </ul>
                                 <div id="change-buttons" className="open-sans">
-                                    <button onClick={openEdit} value={listing.id} id="update-button">Update<i class="fa-solid fa-pencil"></i></button>
-                                    <button onClick={removeListing} value={listing.id} id="delete-button">Delete<i class="fa-regular fa-trash-can"></i></button>
+                                    <button onClick={openEdit} value={listing.id} id="update-button">Update<i className="fa-solid fa-pencil"></i></button>
+                                    <button onClick={removeListing} value={listing.id} id="delete-button">Delete<i className="fa-regular fa-trash-can"></i></button>
                                 </div>
                             </li>
 

@@ -284,6 +284,446 @@ listings.push(Listing.create!({
   num_beds: 2
 }))
 
+listings.push(Listing.create!({
+  lister_id: 1,
+  street_number: '162',
+  street_address: "West 4th St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10014,
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'Condo',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "Welcome to your new home in the heart of the West Village! This stunning apartment boasts a spacious and bright living room, perfect for entertaining guests or relaxing after a long day. The high ceilings and large windows flood the space with natural light, creating a warm and inviting atmosphere.
+
+  The apartment features a fully-equipped kitchen with modern stainless steel appliances, including a dishwasher and microwave. You'll love cooking and entertaining in this beautiful space, with ample counter space and plenty of storage.
+  
+  The bedroom is generously sized and features a large closet with built-in organizers, ensuring that you'll have plenty of space for all your clothes and belongings. The apartment also includes a beautiful modern bathroom with a walk-in shower and elegant finishes.
+  
+  This historic building is situated in the heart of the West Village, one of the most sought-after neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the West Village! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 1950,
+  num_baths: 1,
+  num_beds: 1
+}))
+
+listings.push(Listing.create!({
+  lister_id: 1,
+  street_number: '66',
+  street_address: "East 7th St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10003,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This beautifully renovated 2-bedroom apartment offers a cozy and comfortable living space, perfect for couples or roommates.
+
+  The apartment features a spacious and sunny living room, perfect for relaxing or entertaining guests. The open-plan layout flows seamlessly into the fully-equipped kitchen, featuring modern stainless steel appliances, including a dishwasher and microwave, as well as ample counter space and storage.
+  
+  Both bedrooms are generously sized and offer plenty of space for everyone. Each bedroom features large windows that let in plenty of natural light, creating a warm and inviting atmosphere. The modern bathroom features elegant finishes and a shower/tub combination.
+  
+  This charming building is situated in the heart of the East Village, one of the most vibrant and eclectic neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the East Village! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1940,
+  num_baths: 1.5,
+  num_beds: 2
+}))
+
+listings.push(Listing.create!({
+  lister_id: 2,
+  street_number: '301',
+  street_address: "East 9th St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10003,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "Welcome to your new home in the vibrant East Village! This beautifully renovated 3-bedroom apartment offers a spacious and stylish living space, perfect for families or roommates.
+
+  The apartment features a large and sunny living room, perfect for entertaining guests or relaxing with friends and family. The open-plan layout flows seamlessly into the fully-equipped kitchen, featuring modern stainless steel appliances, including a dishwasher and microwave, as well as ample counter space and storage.
+  
+  The three bedrooms are generously sized and offer plenty of space for everyone. Each bedroom features large windows that let in plenty of natural light, creating a warm and inviting atmosphere. The master bedroom includes a beautiful en-suite bathroom, complete with a walk-in shower and elegant finishes. The other two bedrooms share a modern and stylish bathroom, with plenty of space for everyone.
+  
+  This stunning building is situated in the heart of the East Village, one of the most vibrant neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the East Village! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1956,
+  num_baths: 1,
+  num_beds: 3
+}))
+
+listings.push(Listing.create!({
+  lister_id: 3,
+  street_number: '117',
+  street_address: "West 10th St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10011,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This spacious and beautifully renovated 3-bedroom apartment is perfect for families or roommates looking for a comfortable and stylish living space.
+
+  The apartment features a large and bright living room, perfect for entertaining guests or relaxing with friends and family. The open-plan layout flows seamlessly into the fully-equipped kitchen, featuring modern stainless steel appliances, including a dishwasher and microwave, as well as ample counter space and storage.
+  
+  The three bedrooms are generously sized and feature large windows that let in plenty of natural light. The master bedroom includes a beautiful en-suite bathroom, complete with a walk-in shower and elegant finishes. The other two bedrooms share a modern and stylish bathroom, with plenty of space for everyone.
+  
+  This historic building is situated in the heart of the West Village, one of the most sought-after neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the West Village! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1920,
+  num_baths: 1.5,
+  num_beds: 3
+}))
+
+listings.push(Listing.create!({
+  lister_id: 1,
+  street_number: '57',
+  street_address: "Wall St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10005,
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'Condo',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "Welcome to your new home in the heart of the Financial District! This charming and cozy studio apartment is perfect for anyone looking for a convenient and affordable living space in the heart of the city.
+
+  The apartment features an open-plan layout that maximizes the space available, creating a comfortable and practical living area. The kitchenette is fully equipped with modern appliances, including a refrigerator and stove, as well as plenty of storage space.
+  
+  The living area is bright and welcoming, with large windows that let in plenty of natural light, creating a warm and inviting atmosphere. The modern bathroom features elegant finishes and a shower/tub combination.
+  
+  This historic building is situated in the heart of the Financial District, one of the most exciting and dynamic neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the Financial District! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 1946,
+  num_baths: 1,
+  num_beds: 2
+}))
+
+listings.push(Listing.create!({
+  lister_id: 4,
+  street_number: '11',
+  street_address: "Fulton St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10038,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This charming and cozy studio apartment is perfect for anyone looking for a unique and stylish living space in one of the most exciting neighborhoods in the city.
+
+  The apartment features a cleverly designed open-plan layout that maximizes the available space, creating a comfortable and practical living area. The kitchenette is fully equipped with modern appliances, including a refrigerator and stove, as well as plenty of storage space. The living area is bright and welcoming, with large windows that let in plenty of natural light, and a stylish Murphy bed that can be easily tucked away during the day to create more space.
+  
+  The apartment also features a stylish and modern bathroom, with elegant finishes and a walk-in shower.
+  
+  This charming building is situated in the heart of the Financial District, one of the most vibrant and dynamic neighborhoods in New York City. You'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks.
+  
+  Don't miss out on this amazing opportunity to live in the Financial District! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1965,
+  num_baths: 1,
+  num_beds: 1
+}))
+
+listings.push(Listing.create!({
+  lister_id: 4,
+  street_number: '17',
+  street_address: "Battery Pl",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10004,
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'Condo',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This spacious and elegant one-bedroom apartment is perfect for anyone looking for a luxurious living space in one of the most exciting neighborhoods in the city.
+
+  The apartment features a spacious and bright living room, perfect for relaxing or entertaining guests. The open-plan layout flows seamlessly into the fully-equipped kitchen, featuring modern stainless steel appliances, including a dishwasher and microwave, as well as ample counter space and storage.
+  
+  The generously sized bedroom is the perfect retreat after a long day, featuring large windows that let in plenty of natural light and a comfortable queen-size bed. The modern bathroom features elegant finishes and a shower/tub combination.
+  
+  This stunning building offers residents a wealth of amenities, including a state-of-the-art fitness center, a beautiful rooftop terrace with panoramic city views, and a 24-hour doorman and concierge service.
+  
+  Located in the heart of the Financial District, you'll be just steps away from some of the city's best restaurants, cafes, and shops, as well as beautiful parks and landmarks. With easy access to public transportation, including several subway lines and buses, this is the perfect location for anyone looking to experience the best of New York City.
+  
+  Don't miss out on this amazing opportunity to live in luxury in the Financial District! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 2002,
+  num_baths: 1,
+  num_beds: 1
+}))
+
+listings.push(Listing.create!({
+  lister_id: 2,
+  street_number: '66',
+  street_address: "Greene St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10012,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This stunning and spacious two-bedroom apartment is the epitome of luxury living in one of the most sought-after neighborhoods in New York City.
+
+  As you enter the apartment, you'll be struck by the high ceilings and beautiful hardwood floors that flow throughout the space. The living room is bright and airy, with large windows that let in plenty of natural light, creating a warm and inviting atmosphere. The modern kitchen features sleek stainless steel appliances, including a refrigerator, dishwasher, and range, as well as plenty of counter space and storage.
+  
+  The master bedroom is a true oasis, featuring a king-size bed, ample closet space, and an en-suite bathroom with a luxurious walk-in shower. The second bedroom is perfect for guests or as a home office, with a comfortable queen-size bed and plenty of natural light. The apartment also features a second full bathroom with elegant finishes and a bathtub.
+  
+  This stunning building offers residents a wealth of amenities, including a fitness center, a beautiful rooftop terrace with breathtaking city views, and a 24-hour doorman and concierge service.
+  
+  Located in the heart of SoHo, you'll be surrounded by some of the best restaurants, cafes, and shops the city has to offer, as well as world-class galleries and cultural landmarks. With easy access to public transportation, including several subway lines and buses, this is the perfect location for anyone looking to experience the best of New York City.
+  
+  Don't miss out on this incredible opportunity to live in luxury in the heart of SoHo! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1927,
+  num_baths: 1,
+  num_beds: 2
+}))
+
+listings.push(Listing.create!({
+  lister_id: 6,
+  street_number: '446',
+  street_address: "Broadway",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10013,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "This beautifully designed one-bedroom apartment is the perfect retreat for anyone looking for a stylish and comfortable living space in one of the most vibrant neighborhoods in New York City.
+
+  As you enter the apartment, you'll be immediately struck by the high ceilings and beautiful hardwood floors that give the space a warm and inviting feel. The open-plan living area is bright and spacious, with large windows that let in plenty of natural light, creating a welcoming atmosphere perfect for entertaining guests or relaxing after a long day.
+  
+  The modern kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and stove, as well as plenty of counter space and storage. The generously sized bedroom features a comfortable queen-size bed and ample closet space, as well as large windows that let in plenty of natural light.
+  
+  The apartment also features a modern bathroom with elegant finishes and a walk-in shower.
+  
+  This stunning building offers residents a variety of amenities, including a state-of-the-art fitness center, a beautifully landscaped rooftop terrace with panoramic views of the city, and a 24-hour doorman and concierge service.
+  
+  Located in the heart of SoHo, you'll be just steps away from some of the best restaurants, cafes, and shops in the city, as well as world-class galleries and cultural landmarks. With easy access to public transportation, including several subway lines and buses, this is the perfect location for anyone looking to experience the best of New York City.
+  
+  Don't miss out on this amazing opportunity to live in luxury in the heart of SoHo! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1980,
+  num_baths: 1,
+  num_beds: 1
+}))
+
+listings.push(Listing.create!({
+  lister_id: 6,
+  street_number: '59',
+  street_address: "Canal St",
+  unit_number: Faker::Address.secondary_address,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10002,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'Apartment',
+  square_feet: Faker::Number.between(from: 5, to: 30) * 100,
+  description: "Welcome to your new home in the heart of vibrant Chinatown! This charming studio apartment is the perfect place to experience all that this unique neighborhood has to offer.
+
+  As you enter the apartment, you'll be greeted by an open and inviting space that features beautiful hardwood floors and plenty of natural light. The living area is spacious and comfortable, with enough room for a bed, couch, and other furnishings. The kitchen features modern appliances, including a refrigerator and stove, as well as plenty of counter space and storage.
+  
+  The apartment also features a modern bathroom with elegant finishes and a walk-in shower.
+  
+  This historic building offers residents a variety of amenities, including a secure entry, on-site laundry facilities, and a beautifully landscaped courtyard that provides a peaceful retreat from the hustle and bustle of the city.
+  
+  Located in the heart of Chinatown, you'll be surrounded by a diverse array of restaurants, cafes, and shops that offer some of the best cuisine and shopping in the city. With easy access to public transportation, including several subway lines and buses, this is the perfect location for anyone looking to experience the best of New York City.
+  
+  Don't miss out on this amazing opportunity to live in one of the most unique and exciting neighborhoods in the city! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1932,
+  num_baths: 1,
+  num_beds: 1
+}))
+
+listings.push(Listing.create!({
+  lister_id: 7,
+  street_number: '321',
+  street_address: "Adams St",
+  city: 'Hoboken',
+  state: 'NJ',
+  zipcode: "07030",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "This beautifully renovated three-story house offers the perfect blend of historic charm and modern amenities, making it the perfect place for anyone looking for a unique and comfortable living space.
+
+  As you enter the house, you'll be immediately struck by the stunning original details, including hardwood floors, crown molding, and a beautiful fireplace that serves as the centerpiece of the living room. The spacious living area is perfect for entertaining guests or relaxing after a long day, and features large windows that let in plenty of natural light.
+  
+  The modern kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and gas stove, as well as plenty of counter space and storage. The adjacent dining area is perfect for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The house features four generously sized bedrooms, each with plenty of closet space and large windows that provide stunning views of the neighborhood. The master bedroom features a beautiful en-suite bathroom with elegant finishes and a large walk-in shower.
+  
+  The house also features a spacious rooftop deck that provides a peaceful retreat from the hustle and bustle of the city, and offers panoramic views of Hoboken and the surrounding area.
+  
+  Located in the heart of Hoboken, you'll be just steps away from some of the best restaurants, cafes, and shops in the city, as well as world-class parks and cultural landmarks. With easy access to public transportation, including several bus routes and the PATH train, this is the perfect location for anyone looking to experience the best of New Jersey.
+  
+  Don't miss out on this amazing opportunity to live in luxury in one of the most desirable neighborhoods in Hoboken! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 1972,
+  num_baths: 2,
+  num_beds: 4
+}))
+
+listings.push(Listing.create!({
+  lister_id: 7,
+  street_number: '505',
+  street_address: "Park Ave",
+  city: 'Hoboken',
+  state: 'NJ',
+  zipcode: "07030",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Experience the best of Hoboken living in this stunning four-story house that combines classic architecture with modern comfort. This beautiful home offers the perfect blend of spacious living areas and private retreats, making it the ideal choice for anyone looking for a luxurious living experience.
+
+  As you enter the house, you'll be greeted by a grand foyer with beautiful hardwood floors and stunning architectural details. The spacious living area features a large bay window that provides plenty of natural light, as well as a beautiful fireplace that serves as the centerpiece of the room.
+  
+  The modern kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and gas stove, as well as plenty of counter space and storage. The adjacent dining area features beautiful built-in shelving and plenty of space for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The house features five generously sized bedrooms, each with its own unique charm and plenty of closet space. The master bedroom features a beautiful en-suite bathroom with elegant finishes, a large walk-in shower, and a separate soaking tub.
+  
+  The house also features a spacious rooftop deck with stunning views of the Manhattan skyline, as well as a beautiful backyard that provides the perfect retreat from the city.
+  
+  Located in the heart of Hoboken, you'll be just steps away from some of the best restaurants, cafes, and shops in the city, as well as world-class parks and cultural landmarks. With easy access to public transportation, including several bus routes and the PATH train, this is the perfect location for anyone looking to experience the best of New Jersey.
+  
+  Don't miss out on this amazing opportunity to live in luxury in one of the most desirable neighborhoods in Hoboken! Contact us today to schedule a viewing.",
+  sale_type: "Rent",
+  year_built: 1952,
+  num_baths: 2.5,
+  num_beds: 5
+}))
+
+listings.push(Listing.create!({
+  lister_id: 8,
+  street_number: '815',
+  street_address: "Willow Ave",
+  city: 'Hoboken',
+  state: 'NJ',
+  zipcode: "07030",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'Condo',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your beautiful new condo in Hoboken! This stunning space offers the perfect blend of modern comfort and convenience, making it the perfect place for anyone looking for a comfortable and stylish living experience.
+
+  As you enter the condo, you'll be immediately struck by the beautiful hardwood floors, high ceilings, and modern finishes throughout. The spacious living area is perfect for entertaining guests or relaxing after a long day, and features large windows that let in plenty of natural light.
+  
+  The modern kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and gas stove, as well as plenty of counter space and storage. The adjacent dining area is perfect for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The condo features two generously sized bedrooms, each with plenty of closet space and large windows that provide stunning views of the neighborhood. The master bedroom features a beautiful en-suite bathroom with elegant finishes and a large walk-in shower.
+  
+  The condo also features a private balcony that provides a peaceful retreat from the hustle and bustle of the city, and offers stunning views of Hoboken and the surrounding area.
+  
+  Located in the heart of Hoboken, you'll be just steps away from some of the best restaurants, cafes, and shops in the city, as well as world-class parks and cultural landmarks. With easy access to public transportation, including several bus routes and the PATH train, this is the perfect location for anyone looking to experience the best of New Jersey.
+  
+  Don't miss out on this amazing opportunity to live in luxury in one of the most desirable neighborhoods in Hoboken! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 1990,
+  num_baths: 1.5,
+  num_beds: 2
+}))
+
+listings.push(Listing.create!({
+  lister_id: 6,
+  street_number: '125',
+  street_address: "1st st",
+  city: 'Jersey City',
+  state: 'NJ',
+  zipcode: "07302",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'Condo',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "This stunning two-bedroom condo offers the perfect blend of modern design and urban living, making it the ideal choice for anyone looking for a comfortable and stylish living space.
+
+  As you enter the condo, you'll be immediately struck by the open and airy layout, with large windows that let in plenty of natural light. The spacious living area is perfect for entertaining guests or relaxing after a long day, and features beautiful hardwood floors and a modern fireplace.
+  
+  The sleek and modern kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and gas stove, as well as plenty of counter space and storage. The adjacent dining area is perfect for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The condo features two generously sized bedrooms, each with its own unique charm and plenty of closet space. The master bedroom features a beautiful en-suite bathroom with elegant finishes and a large walk-in shower.
+  
+  The condo also features a private balcony that provides stunning views of the city, as well as access to a shared rooftop deck that offers panoramic views of Jersey City and the surrounding area.
+  
+  Located in the heart of Jersey City, you'll be just steps away from some of the best restaurants, cafes, and shops in the city, as well as world-class parks and cultural landmarks. With easy access to public transportation, including several bus routes and the PATH train, this is the perfect location for anyone looking to experience the best of New Jersey.
+  
+  Don't miss out on this amazing opportunity to live in luxury in one of the most desirable neighborhoods in Jersey City! Contact us today to schedule a viewing.",
+  sale_type: "Sale",
+  year_built: 2010,
+  num_baths: 1.5,
+  num_beds: 2
+}))
+
+listings.push(Listing.create!({
+  lister_id: 1,
+  street_number: '123',
+  street_address: "Greenpoint Ave",
+  city: 'Brooklyn',
+  state: 'NY',
+  zipcode: "11222",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your charming new home in the heart of Greenpoint! This beautiful three-bedroom house offers the perfect combination of classic style and modern amenities, making it the ideal choice for anyone looking for a comfortable and inviting living space.
+
+  As you enter the house, you'll be immediately struck by the open and airy layout, with large windows that let in plenty of natural light. The spacious living area is perfect for relaxing or entertaining guests, and features beautiful hardwood floors, a cozy fireplace, and plenty of comfortable seating.
+  
+  The updated kitchen is fully equipped with stainless steel appliances, including a refrigerator, dishwasher, and gas range, as well as ample counter space and storage. The adjacent dining area is perfect for enjoying meals with family and friends.
+  
+  The house features three generously sized bedrooms, each with its own unique charm and plenty of closet space. The master bedroom is especially spacious and features a comfortable king-sized bed and a large walk-in closet. All three bedrooms are located on the second floor for privacy and convenience.
+  
+  The house also features a private backyard that's perfect for enjoying the outdoors or hosting a summer BBQ. And with easy access to some of the best parks, restaurants, and shops in Greenpoint, you'll have everything you need just steps from your front door.
+  
+  Located in one of the most desirable neighborhoods in Brooklyn, this house is just a short walk from the Greenpoint Avenue subway station, providing easy access to Manhattan and other parts of the city. With all of these amazing features and so much more, this is the perfect rental for anyone looking for the ultimate Brooklyn lifestyle. Contact us today to schedule a viewing!",
+  sale_type: "Rent",
+  year_built: 1954,
+  num_baths: 1.5,
+  num_beds: 3
+}))
+
+listings.push(Listing.create!({
+  lister_id: 3,
+  street_number: '456',
+  street_address: "Manhattan Ave",
+  city: 'Brooklyn',
+  state: 'NY',
+  zipcode: "11222",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your stunning new home in the heart of Greenpoint! This gorgeous four-bedroom house offers the perfect blend of classic elegance and modern convenience, making it the ideal choice for anyone looking for a luxurious and spacious living space.
+
+  As you step inside the house, you'll be immediately struck by the stunning details and finishes, from the beautiful hardwood floors to the soaring ceilings and elegant moldings. The spacious living area is perfect for entertaining guests or relaxing after a long day, and features a cozy fireplace and plenty of comfortable seating.
+  
+  The gourmet kitchen is a chef's dream, with top-of-the-line stainless steel appliances, including a refrigerator, gas range, and dishwasher, as well as plenty of counter space and storage. The adjacent dining area is perfect for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The house features four generously sized bedrooms, each with its own unique charm and plenty of closet space. The master bedroom is especially luxurious, with a king-sized bed, a beautiful en-suite bathroom with a soaking tub and separate shower, and a large walk-in closet.
+  
+  The house also features a private backyard that's perfect for enjoying the outdoors or hosting a summer BBQ. And with easy access to some of the best parks, restaurants, and shops in Greenpoint, you'll have everything you need just steps from your front door.
+  
+  Located in one of the most desirable neighborhoods in Brooklyn, this house is just a short walk from the Greenpoint Avenue subway station, providing easy access to Manhattan and other parts of the city. With all of these amazing features and so much more, this is the perfect rental for anyone looking for the ultimate Brooklyn lifestyle. Contact us today to schedule a viewing!",
+  sale_type: "Sale",
+  year_built: 1944,
+  num_baths: 2.5,
+  num_beds: 4
+}))
+
 listings.each_with_index do |listing, idx|
   listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/listing_#{idx + 1}.jpg"), filename: "listing_#{idx+1}.jpg")
   listing.images.attach(io: URI.open("https://zilloh-seeds.s3.us-east-2.amazonaws.com/Bedroom/bed_#{1001 + idx}.jpg"), filename: "bed_#{1001 + idx}.jpg")
