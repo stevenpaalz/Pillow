@@ -20,9 +20,6 @@ function MarkerObject({listing}) {
         formattedPrice = `${(listing.price / 1000000).toFixed(1)}M`
     } else { formattedPrice = `${(listing.price / 1000).toFixed(1)}K`}
 
-    // let thisMarker = document.querySelector(`div[aria-label='${formattedPrice}']`);
-    // setDefaultZIndex(thisMarker.style.zIndex);
-    // debugger
     return(
         <Marker className="marker"
         onClick={() => { history.replace(`/homes/${listing.id}`)}}
@@ -30,7 +27,7 @@ function MarkerObject({listing}) {
         onMouseOver={() => {setHovering(true);}}
         onMouseOut={()=> { setHovering(false)}}
         label = {{text: formattedPrice, color: 'white', fontFamily: "'Open Sans', sans-serif"}}
-        zIndex = {(hovering && 200) || -100}
+        zIndex = {(hovering && 200) || Math.floor(Math.random() * -100)}
         icon = {(!hovering && markerImage1) || markerImage2}
         position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
     )
