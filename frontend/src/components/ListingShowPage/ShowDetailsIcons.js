@@ -16,7 +16,7 @@ function ShowDetails({listing}) {
             </li>}
             {listing.saleType === "Rent" && <li>
                 <i className="fa-solid fa-sack-dollar"></i>
-                {(listing.price / 30).toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits: 0,})} per month
+                {(listing.price * 12).toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits: 0,})} per year
             </li>}
         </ul>
     )

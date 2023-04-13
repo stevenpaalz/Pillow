@@ -8,7 +8,7 @@ function InProcessPage() {
 
     return(
         <div id="in-process-page" className='open-sans'>
-            <h1><i class="fa-solid fa-screwdriver-wrench"></i><i class="fa-solid fa-toolbox"></i><i class="fa-solid fa-helmet-safety"></i></h1>
+            <h1><i className="fa-solid fa-screwdriver-wrench"></i><i className="fa-solid fa-toolbox"></i><i className="fa-solid fa-helmet-safety"></i></h1>
             <h2>I only had 2 weeks to build this, what did you expect?</h2>
             <h3>You should check out one of the following features:</h3>
             <ul>

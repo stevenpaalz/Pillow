@@ -50,8 +50,8 @@ function Navigation() {
                 <li onMouseOver={()=>setSellDropDownOpen(true)} onMouseLeave={()=>setSellDropDownOpen(false)}><span onClick={() => {sessionUser ? history.replace("/sell") : dispatch(setModal(true))}}><NavLink exact to="/sell">Sell</NavLink></span>
                     {sellDropDownOpen && <SellDropDown />}
                 </li>
-                <li><span><NavLink exact to="/in-process">Home Loans</NavLink></span></li>
-                <li><span><NavLink exact to="/in-process">Agent Finder</NavLink></span></li>
+                <li><span onClick={()=>history.replace("/in-process")}>Home Loans</span></li>
+                <li><span onClick={()=>history.replace("/in-process")}>Agent Finder</span></li>
             </ul>
             <div id="nav-logo">
                 <NavLink exact to="/">
@@ -60,8 +60,8 @@ function Navigation() {
             </div>
             <ul id="right-nav">
                 <li><span onClick={() => {sessionUser ? history.replace(`/${sessionUser.id}/homes`) : dispatch(setModal(true))}}>Manage Rentals</span></li>
-                <li><span><a href="https://github.com/stevenpaalz"><i className="fa-brands fa-github"></i> Github</a></span></li>
-                <li><span><a href="https://www.linkedin.com/in/steve-paalz/"><i className="fa-brands fa-linkedin"></i> LinkedIn</a></span></li>
+                <li><span onClick={()=>window.location='https://github.com/stevenpaalz'}><i className="fa-brands fa-github"></i> Github</span></li>
+                <li><span onClick={()=>window.location='https://www.linkedin.com/in/steve-paalz/'}><i className="fa-brands fa-linkedin"></i> LinkedIn</span></li>
                 {sessionLinks}
             </ul>
         </div>
