@@ -1,6 +1,8 @@
+import { useHistory } from "react-router-dom";
 import "./ShowHeader.css";
 
 function ShowHeader({listing}) {
+    const history = useHistory();
 
     return(
         <div id='show-header'>
@@ -22,8 +24,8 @@ function ShowHeader({listing}) {
             </p>
             <p id='show-header-sale-type'>For {listing.saleType}</p>
             <div id='header-buttons'>
-                <button>Request a tour</button>
-                <button>Contact an agent</button>
+                <button onClick={()=>{history.replace("/in-process")}}>Request a tour</button>
+                <button onClick={()=>{history.replace("/in-process")}}>Contact an agent</button>
             </div>
         </div>
     )

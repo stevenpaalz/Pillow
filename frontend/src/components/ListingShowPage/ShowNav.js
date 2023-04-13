@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createFavorite, deleteFavorite, fetchFavorites } from '../../store/favorites';
 import { setModal } from "../../store/modal";
+import { useHistory } from "react-router-dom";
 
 function ShowNav({listing}) {
     const [liked, setLiked] = useState(false);
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const favorites = useSelector(state => state.favorites);
+    const history = useHistory();
 
     useEffect(()=>{
         dispatch(fetchFavorites());
@@ -53,8 +55,8 @@ function ShowNav({listing}) {
             <ul>
                 {liked && <li onClick={toggleLiked}><i className="fa-solid fa-heart"></i>Saved</li>}
                 {!liked && <li onClick={toggleLiked}><i className="fa-regular fa-heart"></i>Save</li>}
-                <li><i className="fa-regular fa-share-from-square"></i>Share</li>
-                <li><i className="fa-solid fa-ban"></i>Hide</li>
+                <li onClick={()=>{history.replace("/in-process")}}><i className="fa-regular fa-share-from-square"></i>Share</li>
+                <li onClick={()=>{history.replace("/in-process")}}><i className="fa-solid fa-ban"></i>Hide</li>
             </ul>
         </div>
     )

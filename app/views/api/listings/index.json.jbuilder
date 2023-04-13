@@ -8,3 +8,8 @@ json.array! @listings do |listing|
         json.favoriteIds favoriteIds
     end
 end
+# ids = []
+# @listings.each do |listing|
+#     ids.push(listing.id)
+# end
+# json.listingIds ids;

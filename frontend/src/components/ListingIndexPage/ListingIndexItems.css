@@ -64,6 +64,7 @@
     font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 12px 0px;
     border-radius: 8px;
+    z-index: 3;
 }
 
 #sort-drop-down li{

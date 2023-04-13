@@ -60,8 +60,8 @@ function Navigation() {
             </div>
             <ul id="right-nav">
                 <li><span onClick={() => {sessionUser ? history.replace(`/${sessionUser.id}/homes`) : dispatch(setModal(true))}}>Manage Rentals</span></li>
-                <li><span><NavLink exact to="/in-process">Advertise</NavLink></span></li>
-                <li><span><NavLink exact to="/in-process">Help</NavLink></span></li>
+                <li><span><a href="https://github.com/stevenpaalz"><i className="fa-brands fa-github"></i> Github</a></span></li>
+                <li><span><a href="https://www.linkedin.com/in/steve-paalz/"><i className="fa-brands fa-linkedin"></i> LinkedIn</a></span></li>
                 {sessionLinks}
             </ul>
         </div>
