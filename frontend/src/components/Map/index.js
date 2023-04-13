@@ -22,7 +22,7 @@ function MapWrapper({listings}) {
 function Map({listings}) {
 
     return(
-        <GoogleMap zoom={12.5} center={{lat: 40.74, lng: -73.99}} mapContainerClassName="map-container">
+        <GoogleMap zoom={13} center={{lat: 40.735, lng: -73.99}} mapContainerClassName="map-container">
             {Object.values(listings).map((listing) => {
                 return <MarkerObject key={listing.id} listing={listing}/>
             })
