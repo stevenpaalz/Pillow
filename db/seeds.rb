@@ -590,7 +590,7 @@ listings.push(Listing.create!({
   city: 'Hoboken',
   state: 'NJ',
   zipcode: "07030",
-  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
   home_type: 'House',
   square_feet: Faker::Number.between(from: 10, to: 40) * 100,
   description: "Experience the best of Hoboken living in this stunning four-story house that combines classic architecture with modern comfort. This beautiful home offers the perfect blend of spacious living areas and private retreats, making it the ideal choice for anyone looking for a luxurious living experience.
@@ -677,7 +677,7 @@ listings.push(Listing.create!({
   city: 'Brooklyn',
   state: 'NY',
   zipcode: "11222",
-  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  price: Faker::Number.between(from: 25, to: 70) * 100,
   home_type: 'House',
   square_feet: Faker::Number.between(from: 10, to: 40) * 100,
   description: "Welcome to your charming new home in the heart of Greenpoint! This beautiful three-bedroom house offers the perfect combination of classic style and modern amenities, making it the ideal choice for anyone looking for a comfortable and inviting living space.
@@ -719,9 +719,132 @@ listings.push(Listing.create!({
   
   Located in one of the most desirable neighborhoods in Brooklyn, this house is just a short walk from the Greenpoint Avenue subway station, providing easy access to Manhattan and other parts of the city. With all of these amazing features and so much more, this is the perfect rental for anyone looking for the ultimate Brooklyn lifestyle. Contact us today to schedule a viewing!",
   sale_type: "Sale",
+  year_built: 1987,
+  num_baths: 2.5,
+  num_beds: 4
+}))
+
+listings.push(Listing.create!({
+  lister_id: 5,
+  street_number: '456',
+  street_address: "Manhattan Ave",
+  city: 'Brooklyn',
+  state: 'NY',
+  zipcode: "11222",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your stunning new home in the heart of Greenpoint! This gorgeous four-bedroom house offers the perfect blend of classic elegance and modern convenience, making it the ideal choice for anyone looking for a luxurious and spacious living space.
+
+  As you step inside the house, you'll be immediately struck by the stunning details and finishes, from the beautiful hardwood floors to the soaring ceilings and elegant moldings. The spacious living area is perfect for entertaining guests or relaxing after a long day, and features a cozy fireplace and plenty of comfortable seating.
+  
+  The gourmet kitchen is a chef's dream, with top-of-the-line stainless steel appliances, including a refrigerator, gas range, and dishwasher, as well as plenty of counter space and storage. The adjacent dining area is perfect for hosting dinner parties or enjoying a quiet meal with family.
+  
+  The house features four generously sized bedrooms, each with its own unique charm and plenty of closet space. The master bedroom is especially luxurious, with a king-sized bed, a beautiful en-suite bathroom with a soaking tub and separate shower, and a large walk-in closet.
+  
+  The house also features a private backyard that's perfect for enjoying the outdoors or hosting a summer BBQ. And with easy access to some of the best parks, restaurants, and shops in Greenpoint, you'll have everything you need just steps from your front door.
+  
+  Located in one of the most desirable neighborhoods in Brooklyn, this house is just a short walk from the Greenpoint Avenue subway station, providing easy access to Manhattan and other parts of the city. With all of these amazing features and so much more, this is the perfect rental for anyone looking for the ultimate Brooklyn lifestyle. Contact us today to schedule a viewing!",
+  sale_type: "Sale",
   year_built: 1944,
   num_baths: 2.5,
   num_beds: 4
+}))
+
+listings.push(Listing.create!({
+  lister_id: 5,
+  street_number: '136',
+  street_address: "North 10th St",
+  city: 'Brooklyn',
+  state: 'NY',
+  zipcode: "11249",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "This stunning property boasts a unique blend of modern luxury and historic charm that is sure to captivate you from the moment you step inside. With its spacious layout and thoughtful design, this house offers the perfect balance of comfort and sophistication.
+
+  As you enter the house, you'll be greeted by an open and airy living space that is bathed in natural light. The high ceilings and large windows create a bright and inviting atmosphere, making it the perfect place to relax and unwind after a long day. The living room seamlessly flows into the dining area and kitchen, which is equipped with top-of-the-line appliances and sleek, modern finishes.
+  
+  The master suite is a true oasis, with its spacious layout, en-suite bathroom, and walk-in closet. The additional bedrooms are equally as impressive, with ample closet space and plenty of room to make them your own. The home also features a spacious backyard, perfect for entertaining guests or enjoying a peaceful evening outdoors.
+  
+  Located in the heart of Williamsburg, this home is just steps away from some of the city's best restaurants, cafes, and shops. With its prime location and luxurious amenities, this property won't be on the market for long. Don't miss your chance to make it your own!",
+  sale_type: "Sale",
+  year_built: 1942,
+  num_baths: 2,
+  num_beds: 3
+}))
+
+listings.push(Listing.create!({
+  lister_id: 7,
+  street_number: '214',
+  street_address: "Grand St",
+  city: 'Brooklyn',
+  state: 'NY',
+  zipcode: "11211",
+  price: Faker::Number.between(from: 500, to: 3000) * 1000,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your new home in the heart of Williamsburg! This charming townhouse boasts three levels of modern luxury and is just waiting for you to make it your own.
+
+  As you enter the home, you're greeted by a spacious living area, perfect for hosting friends and family. The open floor plan leads to a gourmet kitchen, complete with stainless steel appliances and quartz countertops, making cooking a breeze.
+  
+  Head upstairs to find the primary bedroom, complete with a luxurious en-suite bathroom and ample closet space. Two additional bedrooms and another full bathroom provide plenty of room for guests or a growing family.
+  
+  The top level features a stunning rooftop terrace with breathtaking views of the Brooklyn skyline. Perfect for entertaining or enjoying a quiet evening at home, this space is sure to impress.
+  
+  Located just steps away from some of the best restaurants, bars, and shops that Williamsburg has to offer, this townhouse is the perfect blend of modern convenience and classic Brooklyn charm. Don't miss out on the opportunity to make this house your dream home!",
+  sale_type: "Sale",
+  year_built: 1953,
+  num_baths: 3,
+  num_beds: 3
+}))
+
+listings.push(Listing.create!({
+  lister_id: 8,
+  street_number: '255',
+  street_address: "W 23rd St",
+  city: 'New York',
+  state: 'NY',
+  zipcode: "10011",
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to this stunning and spacious townhouse in the heart of Chelsea, one of New York City's most sought-after neighborhoods. This beautiful home features four levels of luxurious living space, with four bedrooms, three and a half bathrooms, and an abundance of natural light.
+
+  As you enter the home, you'll be greeted by a grand foyer with soaring ceilings and elegant hardwood floors. The main level boasts an open concept living and dining area, perfect for entertaining guests or relaxing with family. The chef's kitchen features top-of-the-line appliances, granite countertops, and ample cabinet space.
+  
+  The second level is dedicated to the primary suite, complete with a walk-in closet and a spa-like bathroom with a deep soaking tub and a separate shower. Two additional bedrooms and a full bathroom can be found on the third level, while the fourth level offers a private fourth bedroom and a full bathroom.
+  
+  This townhouse also features a finished basement with a laundry room and plenty of storage space. Outside, you'll find a beautifully landscaped backyard oasis, perfect for enjoying a morning cup of coffee or hosting summer barbecues.
+  
+  Located just steps from the city's best dining, shopping, and entertainment options, this townhouse is the epitome of luxury living in the heart of New York City.",
+  sale_type: "Rent",
+  year_built: 1923,
+  num_baths: 3.5,
+  num_beds: 4
+}))
+
+listings.push(Listing.create!({
+  lister_id: 8,
+  street_number: '555',
+  street_address: "W 25th St",
+  city: 'New York',
+  state: 'NY',
+  zipcode: "10001",
+  price: Faker::Number.between(from: 25, to: 70) * 100,
+  home_type: 'House',
+  square_feet: Faker::Number.between(from: 10, to: 40) * 100,
+  description: "Welcome to your luxurious urban oasis in the heart of Chelsea! This stunning townhouse offers the perfect blend of modern amenities and classic charm. The spacious and bright living room boasts soaring ceilings, oversized windows, and a cozy fireplace, making it the ideal spot for entertaining guests or enjoying a quiet evening at home.
+
+  The fully equipped gourmet kitchen is a chef's dream, featuring high-end stainless steel appliances, sleek cabinetry, and a convenient breakfast bar. The adjacent dining area is perfect for hosting dinner parties or intimate gatherings with friends and family.
+  
+  Upstairs, you'll find a serene master suite complete with a spa-like en-suite bathroom and plenty of closet space. Two additional bedrooms and a second full bathroom provide ample space for guests or a growing family.
+  
+  Other features of this fabulous townhouse include hardwood floors throughout, central air conditioning and heating, and a private rooftop terrace with stunning city views. And with its unbeatable location just steps from world-class restaurants, shopping, and cultural attractions, you'll be living the ultimate New York City lifestyle. Don't miss your chance to make this incredible townhouse your new home!",
+  sale_type: "Rent",
+  year_built: 1974,
+  num_baths: 1.5,
+  num_beds: 3
 }))
 
 listings.each_with_index do |listing, idx|
