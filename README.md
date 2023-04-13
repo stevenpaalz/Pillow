@@ -27,28 +27,28 @@ Zill-oh? users are able to create and log in to an account. Frontend live valida
 
 ```js
 useEffect(()=>{
-        const passValidationOne = document.querySelector('#create-account-password-errors li:nth-child(1)');
-        const passValidationTwo = document.querySelector('#create-account-password-errors li:nth-child(2)');
-        const passValidationThree = document.querySelector('#create-account-password-errors li:nth-child(3)');
-        const passValidationFour = document.querySelector('#create-account-password-errors li:nth-child(4)');
-        const createSubmit = document.getElementById('create-submit');
-        const passValidations = [passValidationOne, passValidationTwo, passValidationThree, passValidationFour];
-        setPasswordValid(true);
+    const passValidationOne = document.querySelector('#create-account-password-errors li:nth-child(1)');
+    const passValidationTwo = document.querySelector('#create-account-password-errors li:nth-child(2)');
+    const passValidationThree = document.querySelector('#create-account-password-errors li:nth-child(3)');
+    const passValidationFour = document.querySelector('#create-account-password-errors li:nth-child(4)');
+    const createSubmit = document.getElementById('create-submit');
+    const passValidations = [passValidationOne, passValidationTwo, passValidationThree, passValidationFour];
+    setPasswordValid(true);
 
-        const makeGreen = (validation) => {
-            validation.classList.remove('red-error');
-            validation.classList.add('green');
-            validation.children[1].classList.remove('hidden');
-            validation.children[0].classList.add('hidden');
-        }
+    const makeGreen = (validation) => {
+        validation.classList.remove('red-error');
+        validation.classList.add('green');
+        validation.children[1].classList.remove('hidden');
+        validation.children[0].classList.add('hidden');
+    }
 
-        const makeRed = (validation) => {
-            validation.classList.add('red-error');
-            validation.classList.remove('green');
-            validation.children[0].classList.remove('hidden');
-            validation.children[1].classList.add('hidden');
-            setPasswordValid(false);
-        }
+    const makeRed = (validation) => {
+        validation.classList.add('red-error');
+        validation.classList.remove('green');
+        validation.children[0].classList.remove('hidden');
+        validation.children[1].classList.add('hidden');
+        setPasswordValid(false);
+    }
 
     if (password.length === 0) {
         passValidations.forEach((validation)=>{
@@ -89,6 +89,37 @@ useEffect(()=>{
 
 ### Listings
 
+Zill-oh? allows users to create, read, update, and delete home listings. Listings are stored in the database and are accessed via api fetch calls to the Rails backend server.
+
+<img src="assets/listings.gif" width="100%" alt="Listings Display">
+
+```js
+export const fetchListings = () => async dispatch => {
+    const res = await csrfFetch('/api/listings');
+    const data = await res.json();
+    const listings = {};
+    data.forEach((el)=>{
+        listings[el.listing.id] = el.listing
+    })
+    dispatch(setListings(listings));
+}
+
+function listingsReducer(state={}, action) {
+    let newState = {...state}
+    switch (action.type) {
+        case SET_LISTINGS:
+            return {...action.listings};
+        case ADD_LISTING:
+            newState[action.listing.id] = action.listing;
+            return newState;
+        case REMOVE_LISTING:
+            delete newState[action.listingId];
+            return newState;
+        default:
+            return state;
+    }
+}
+```
 
 ### Favorites
 
