@@ -123,8 +123,71 @@ function listingsReducer(state={}, action) {
 
 ### Favorites
 
+Users can "favorite" a listing. This saves their the listing on their saved homes page. Favorites are included as a joins table in the database and are included in the global Redux state.
+
+<img src="assets/favorites.gif" width="100%" alt="Favorites walkthrough">
+
+```js
+const toggleLiked = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!sessionUser) {
+        dispatch(setModal(true))
+        return;
+    }
+    if (liked === true) {
+        setLiked(false);
+        let favorite = Object.values(favorites).filter((favorite) => {
+            return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
+        })
+        dispatch(deleteFavorite(favorite[0].id))
+    } else {
+        setLiked(true);
+        dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
+    }
+}
+```
 
 ### Search
 
+Users can search on the index page for homes by city, state, or zip code. This search queries the database and returns only homes fitting the search parameters.
+
+<img src="assets/search.gif" width="100%" alt="Search example">
+
+```ruby
+def index
+    query_string = params[:q]
+    if !query_string || query_string === ""
+        @listings = Listing.all
+    else
+        @listings = Listing.where('zipcode = ?', query_string).or(Listing.where('city = ?', query_string)).or(Listing.where('state = ?', query_string))
+    end
+    render 'api/listings/index'
+end
+```
 
 ### Map
+
+Users are able to view listing locations via a google map api. Selecting a pin takes a user to a listing show page.
+
+<img src="assets/map.gif" width="100%" alt="Map Walkthrough">
+
+```js
+<GoogleMap zoom={13} center={{lat: 40.735, lng: -73.99}} mapContainerClassName="map-container">
+    {Object.values(listings).map((listing) => {
+        return <MarkerObject key={listing.id} listing={listing}/>
+    })
+    }
+</GoogleMap>
+```
+```js
+<Marker className="marker"
+onClick={() => { history.replace(`/homes/${listing.id}`)}}
+value={listing.id}
+onMouseOver={() => {setHovering(true);}}
+onMouseOut={()=> { setHovering(false)}}
+label = {{text: formattedPrice, color: 'white', fontFamily: "'Open Sans', sans-serif"}}
+zIndex = {(hovering && 200) || Math.floor(Math.random() * -100)}
+icon = {(!hovering && markerImage1) || markerImage2}
+position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
+```
