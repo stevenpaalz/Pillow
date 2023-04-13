@@ -13,6 +13,7 @@ function SignUpForm() {
     const [passwordValid, setPasswordValid] = useState(false);
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const [loadingSignUp, setLoadingSignUp] = useState(false);
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const specialRegex = /[^A-Za-z 0-9]/g;
 
@@ -32,7 +33,7 @@ function SignUpForm() {
                 setEmailValid(true);
             }
         }
-        if (emailValid && passwordValid) {
+        if (emailValid && passwordValid && createSubmit) {
             createSubmit.removeAttribute('disabled');
         }
 
@@ -96,13 +97,14 @@ function SignUpForm() {
                 makeGreen(passValidationFour);
             }
         }   
-        if (passwordValid && emailValid) {
+        if (passwordValid && emailValid && createSubmit) {
             createSubmit.removeAttribute('disabled');
         }
     }, [password, specialRegex])
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setLoadingSignUp(true)
         setErrors([]);
         const data = await dispatch(sessionActions.signup({email: email, password: password}))
             .catch(async (res) => {
@@ -115,8 +117,10 @@ function SignUpForm() {
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
+                setLoadingSignUp(false)
             });
         if (data) {
+            setLoadingSignUp(false)
             dispatch(setModal(false))
         }
     }
@@ -141,8 +145,9 @@ function SignUpForm() {
                 <label htmlFor='landlord-checkbox'>I am a landlord or industry professional</label>
             </div>
             
-            <button id="create-submit" type="submit" disabled>Submit</button>
-            <p id="terms-of-use">By submitting, I accept Zill-oh's <a href='https://www.zillow.com/z/corp/terms/'>terms of use.</a></p>
+            {!loadingSignUp && <button id="create-submit" type="submit" disabled>Submit</button>}
+            {loadingSignUp && <button id="loading-button" className="loading-button"><i className="fa-solid fa-spinner"></i>Loading...</button>}
+            <p id="terms-of-use">By submitting, I accept Zill-oh's <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'>terms of use.</a></p>
         </form>
         <ul id="login-errors">
             {errors.map(error => <li key={error}>{error}</li>)}

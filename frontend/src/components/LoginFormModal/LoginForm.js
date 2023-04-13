@@ -10,6 +10,7 @@ function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const [loadingLogin, setLoadingLogin] = useState(false);
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 
@@ -31,6 +32,7 @@ function LoginForm() {
     }, [email, emailRegex])
 
     const handleSubmit = async e => {
+        setLoadingLogin(true);
         e.preventDefault();
         setErrors([]);
         const data = await dispatch(sessionActions.login({email: email, password: password}))
@@ -44,8 +46,10 @@ function LoginForm() {
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
+                setLoadingLogin(false);
             });
         if (data) {
+            setLoadingLogin(false);
             dispatch(setModal(false))
         }
     }
@@ -59,7 +63,8 @@ function LoginForm() {
             <label htmlFor="password">Password
             </label>
             <input id="password" type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} required/>
-            <button type="submit">Sign In</button>
+            {!loadingLogin && <button type="submit">Sign In</button>}
+            {loadingLogin && <button id="loading-button" className="loading-button"><i className="fa-solid fa-spinner"></i>Loading...</button>}
             <a href="https://www.wikihow.com/Remember-a-Forgotten-Password">Forgot your password?</a>
         </form>
         <ul id="login-errors">

@@ -11,6 +11,7 @@ function LoginFormModal() {
     const [existingUser, setExistingUser] = useState(true);
     const dispatch = useDispatch();
     const modalState = useSelector(state => state.modal.modalState )
+    const [loadingDemo, setLoadingDemo] = useState(false);
 
     const selectSignIn = (e) => {
         e.preventDefault();
@@ -30,10 +31,14 @@ function LoginFormModal() {
         signIn.classList.remove('selected-login-nav');
     }
 
-    const demoLoginHandler = (e) => {
+    const demoLoginHandler = async e => {
         e.preventDefault();
-        dispatch(sessionActions.login({email: 'demo@email.com', password: 'Password1!'}));
-        dispatch(setModal(false));
+        setLoadingDemo(true);
+        const data = await dispatch(sessionActions.login({email: 'demo@email.com', password: 'Password1!'}));
+        if (data) {
+            setLoadingDemo(false);
+            dispatch(setModal(false));
+        }
     }
 
     const closeModal = (e) => {
@@ -58,7 +63,8 @@ function LoginFormModal() {
                     <hr className='login-divider-line'/>
                     <div id='demo-login'>
                         <p>Or connect with:</p>
-                        <button onClick={demoLoginHandler}>Sign in as Demo User</button>
+                        {!loadingDemo && <button onClick={demoLoginHandler}>Sign in as Demo User</button>}
+                        {loadingDemo && <button id="loading-button" className="loading-button"><i className="fa-solid fa-spinner"></i>Demo loading...</button>}
                     </div>
                 </Modal>
             )}

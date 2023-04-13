@@ -184,3 +184,15 @@
     cursor: default;
     box-shadow: 0px 0px 0px 0px #2a7dd5;
 }
+
+#loading-button.loading-button {
+    background-color: rgb(237, 237, 237);
+    color: #2A2A33;
+    cursor: default;
+}
+
+#loading-button.loading-button:hover {
+    background-color: rgb(237, 237, 237);
+    color: #2A2A33;
+    cursor: default;
+}

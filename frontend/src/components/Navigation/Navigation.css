@@ -116,13 +116,14 @@
         width: 415px;
     }
 
-    #nav-bar {
-        padding-left: calc((100% - 1280px)/2);
-        padding-right: calc((100% - 1280px)/2);
-    }
-
     #nav-bar ul li span {
         padding-left: 8px;
         padding-right: 8px;
+    }
+}
+
+@media (max-width: 935px) {
+    #nav-bar{
+        font-size: 14.5px;
     }
 }
