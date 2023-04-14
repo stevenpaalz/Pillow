@@ -191,3 +191,5 @@ zIndex = {(hovering && 200) || Math.floor(Math.random() * -100)}
 icon = {(!hovering && markerImage1) || markerImage2}
 position={{lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}} />
 ```
+
+Thanks for viewing my project!
