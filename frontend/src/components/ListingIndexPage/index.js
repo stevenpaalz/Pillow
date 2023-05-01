@@ -10,7 +10,8 @@ import { fetchFavorites } from "../../store/favorites";
 
 function ListingIndexPage() {
     const dispatch = useDispatch();
-    const listings = useSelector(state => state.listings)
+    const listings = useSelector(state => state.listings.listings)
+    const listingsIds = useSelector(state => state.listings.listingsIds)
     const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
@@ -33,7 +34,7 @@ function ListingIndexPage() {
             <div id='index-page-container'>
                 
                 <MapWrapper listings={listings}/>
-                <ListingIndexItems listings={listings} favorites={favorites}/>
+                <ListingIndexItems key={listings.id} listings={listings} listingsIds={listingsIds} favorites={favorites}/>
             </div>
         </>
     )

@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     listings: listingsReducer,
     favorites: favoritesReducer,
     users: usersReducer,
-    modal: modalReducer
+    modal: modalReducer,
 })
 
 let enhancer;

@@ -7,7 +7,8 @@ import { fetchFavorites } from "../../store/favorites";
 
 function SplashListings() {
     const dispatch = useDispatch();
-    const listings = useSelector(state => state.listings)
+    const listings = useSelector(state => state.listings.listings)
+    const listingsIds = useSelector(state => state.listings.listingsIds)
     const favorites = useSelector(state => state.favorites)
 
     useEffect(()=>{
@@ -53,9 +54,13 @@ function SplashListings() {
     
     useEffect(()=> {
         const previousButton = document.getElementById('previous-button');
-        previousButton.setAttribute('disabled', true);
+        if (previousButton) {
+            previousButton.setAttribute('disabled', true);
+        }
     }, [])
 
+    if (!listings) return (<h1>Loading...</h1>);
+    
     return(
         <>
             <div className='open-sans' id='splash-listings-nav'>
@@ -70,7 +75,7 @@ function SplashListings() {
             </div>
             <ul id='splash-carousel' onScroll={scrollHandler}>
                 {Object.values(listings).map((listing)=>{
-                    return <ListingIndexItem key={listing.id} listing={listing} favorites={favorites}/>
+                    return <ListingIndexItem key={listing.id} listingsIds={listingsIds} listing={listing} favorites={favorites}/>
                 })}
             </ul>
         </>
