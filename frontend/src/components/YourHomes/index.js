@@ -18,7 +18,7 @@ function YourHomes() {
 
     const userId = useParams().userId;
     const listings = useSelector((state) => {
-        let allListings = state.listings;
+        let allListings = state.listings.listings;
         return Object.values(allListings).filter(listing => listing.lister.id == userId);
     })
 

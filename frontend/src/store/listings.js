@@ -23,10 +23,11 @@ export const fetchListings = () => async dispatch => {
     
     const res = await csrfFetch('/api/listings');
     const data = await res.json();
-    const listings = {};
-    data.forEach((el)=>{
-        listings[el.listing.id] = el.listing
+    const listings = {listings: {}, listingsIds: {}};
+    data.listings.forEach((el)=>{
+        listings.listings[el.listing.id] = el.listing
     })
+    listings.listingsIds = data.listingsIds
     dispatch(setListings(listings));
 }
 

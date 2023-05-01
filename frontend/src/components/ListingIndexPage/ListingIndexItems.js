@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
 
-function ListingIndexItems({listings, favorites}) {
+function ListingIndexItems({listings, listingsIds, favorites}) {
     const [sortText, setSortText] = useState("Newest");
     const [sortOptions, setSortOptions] = useState(false)
 
@@ -53,9 +53,11 @@ function ListingIndexItems({listings, favorites}) {
 
             <div id="listings-page-index">
                 <ul id='index-listings-ul'>
-                    {Object.values(listings).map((listing)=>{
-                        return <ListingIndexItem key={listing.id} listing={listing} favorites={favorites}/>
-                    })}
+                    {
+                        listingsIds.map((listingId)=>{
+                            return <ListingIndexItem key={listingId} listing={listings[listingId]} favorites={favorites}/>
+                        })
+                    }
                 </ul>               
             </div>
         </div>

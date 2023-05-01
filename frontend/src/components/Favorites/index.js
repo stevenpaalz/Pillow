@@ -17,7 +17,8 @@ function Favorites() {
 
     const dispatch = useDispatch();
     const favorites = useSelector(state => state.favorites);
-    const listings = useSelector(state => state.listings);
+    const listings = useSelector(state => state.listings.listings);
+    const listingsIds = useSelector(state => state.listings.listingsIds);
     const users = useSelector(state => state.users);
     
 

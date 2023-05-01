@@ -2,21 +2,18 @@
 
 // const SET_IDS = 'listingIds/setIds'
 
-// const setIds = (listingIds) => ({
+// export const setIds = (listingsIds) => ({
 //     type: SET_IDS,
-//     listingIds
+//     listingsIds
 // })
 
-
-
-
-// function listingIdsReducer(state={}, action) {
+// function listingsIdsReducer(state={}, action) {
 //     switch (action.type) {
 //         case SET_IDS:
-//             return {...listingIds};
+//             return {...action.listingIds};
 //         default:
 //             return state;
 //     }
 // }
 
-// export default listingIdsReducer;
+// export default listingsIdsReducer;

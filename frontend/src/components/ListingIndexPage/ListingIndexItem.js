@@ -15,13 +15,18 @@ function ListingIndexItem({listing, favorites}) {
     useEffect(()=>{
         if (!sessionUser) {return}
         let checkedForLike = false;
-        listing.favoriteIds.forEach((favoriteId) =>{
-            if (!favorites[favoriteId]) return;
-            if (favorites[favoriteId].listingId === listing.id && favorites[favoriteId].userId === sessionUser.id){
+        listing.favoritorIds.forEach((favoritorId) =>{
+
+            if (favoritorId === sessionUser.id) {
                 setLiked(true);
                 checkedForLike = true;
             }
+            // if (favorites[favoriteId].listingId === listing.id && favorites[favoriteId].userId === sessionUser.id){
+            //     setLiked(true);
+            //     checkedForLike = true;
+            // }
         })
+        // setLiked(false);
         if (checkedForLike === false) setLiked(false);
     }, [listing.favoriteIds])
 
@@ -55,7 +60,7 @@ function ListingIndexItem({listing, favorites}) {
     const routeChange = () => {
         history.push(`/homes/${listing.id}`)
     }
-
+    
     return(
         <li onClick={routeChange} className='listing-index-item open-sans'>
             {(!sessionUser || listing.lister.id !== sessionUser.id) && 
