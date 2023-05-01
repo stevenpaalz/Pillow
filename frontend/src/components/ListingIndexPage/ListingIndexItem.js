@@ -33,13 +33,13 @@ function ListingIndexItem({listing, favorites}) {
             return;
         }
         if (liked === true) {
-            setLiked(false);
+            // setLiked(false);
             let favorite = Object.values(favorites).filter((favorite) => {
                 return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
             })
             dispatch(deleteFavorite(favorite[0].id))
         } else {
-            setLiked(true);
+            // setLiked(true);
             dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
         }
     }
