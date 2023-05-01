@@ -41,6 +41,17 @@ export const searchListings = (query) => async dispatch => {
     dispatch(setListings(listings));
 }
 
+export const userListings = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}/listings`);
+    const data = await res.json();
+    const listings = {listings: {}, listingsIds: {}};
+    data.listings.forEach((el)=>{
+        listings.listings[el.listing.id] = el.listing
+    })
+    listings.listingsIds = data.listingsIds
+    dispatch(setListings(listings));
+}
+
 export const fetchListing = (listingId) => async dispatch => {
     const res = await csrfFetch(`/api/listings/${listingId}`)
     const data = await res.json();
@@ -67,12 +78,12 @@ export const updateListing = (listingId, formData) => async dispatch => {
     return data.listing.id;
 }
 
-export const deleteListing = (listingId) => async dispatch => {
+export const deleteListing = (listingId, userId) => async dispatch => {
     const res = await csrfFetch(`/api/listings/${listingId}`,{
         method: 'DELETE',
         body: JSON.stringify(listingId)
     })
-    dispatch(removeListing(listingId));
+    dispatch(userListings(userId));
 }
 
 function listingsReducer(state={}, action) {
@@ -84,7 +95,9 @@ function listingsReducer(state={}, action) {
             newState[action.listing.id] = action.listing;
             return newState;
         case REMOVE_LISTING:
-            delete newState[action.listingId];
+            delete newState.listings[action.listingId];
+            let idx = newState.listingsIds.indexOf(action.listingId);
+            newState.listingsIds.splice(idx, 1)
             return newState;
         default:
             return state;

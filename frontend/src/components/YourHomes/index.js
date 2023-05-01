@@ -2,7 +2,7 @@ import "./YourHomes.css";
 import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchListings } from "../../store/listings";
+import { fetchListings, userListings } from "../../store/listings";
 import ListingIndexItem from "../ListingIndexPage/ListingIndexItem";
 import { deleteListing } from "../../store/listings";
 import { setModal } from "../../store/modal";
@@ -17,22 +17,21 @@ function YourHomes() {
     }
 
     const userId = useParams().userId;
-    const listings = useSelector((state) => {
-        let allListings = state.listings.listings;
-        return Object.values(allListings).filter(listing => listing.lister.id == userId);
-    })
+
+    const listings = useSelector(state => state.listings.listings);
 
     const openEdit = (e) => {
         history.replace(`/homes/${e.target.value}/edit`)
     }
-
+    
     const removeListing = (e) => {
         let listingId = e.target.value
-        dispatch(deleteListing(listingId))
+        dispatch(deleteListing(listingId, userId))
     }
 
     useEffect(()=>{
-        dispatch(fetchListings())
+        if (!userId) return;
+        dispatch(userListings(userId))
     }, [dispatch])
 
     const nextScroll = (e) => {
@@ -69,9 +68,14 @@ function YourHomes() {
     }
     
     useEffect(()=> {
+        if (!listings) return;
         const previousButton = document.getElementById('previous-button');
         previousButton.setAttribute('disabled', true);
     }, [])
+
+    if (!listings) return(
+        <h1>Loading...</h1>
+    )
 
     return(
         <div id="your-home-container">
@@ -87,7 +91,8 @@ function YourHomes() {
             <div id="your-home-body">
 
                 <ul id='your-home-carousel' onScroll={scrollHandler}>
-                    {Object.values(listings).map((listing)=>{
+                    {Object.values(listings).length === 0 && <li>No homes listed yet!</li>}
+                    {Object.values(listings).length !== 0 && Object.values(listings).map((listing)=>{
                         return(
                             <li key={listing.id} className="house-package">
                                 <ul>

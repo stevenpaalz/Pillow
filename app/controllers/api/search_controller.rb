@@ -10,4 +10,10 @@ class Api::SearchController < ApplicationController
         render 'api/listings/index'
     end
 
+    # def user
+    #     user_id = params[:id]
+    #     @listings = Listing.where('lister = ?', user_id)
+    #     render 'api/listings/index'
+    # end
+
 end
