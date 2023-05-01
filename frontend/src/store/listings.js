@@ -20,6 +20,7 @@ const removeListing = (listingId) => ({
 })
 
 export const fetchListings = () => async dispatch => {
+    
     const res = await csrfFetch('/api/listings');
     const data = await res.json();
     const listings = {};
