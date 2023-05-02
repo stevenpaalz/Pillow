@@ -145,3 +145,13 @@
     rgb(0, 106, 255) 0px 0px 2px 4px;
     transition: 0.2s;
 }
+
+.no-homes-message {
+    text-align: center;
+    width: 100%;
+    padding-top: 160px;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: rgb(160, 167, 185);
+}

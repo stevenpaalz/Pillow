@@ -48,7 +48,7 @@ class Listing < ApplicationRecord
 
   validates :lister_id, :street_number, :street_address, :city, :state, :num_beds, :num_baths, presence: true;
   validates :year_built, numericality: { in: 1700..2023 }
-  validates :square_feet, :price, numericality: {greater_than: 0}
+  validates :square_feet, :price, :num_baths, :num_beds, numericality: {greater_than: 0}
   validates :zipcode, length: {minimum: 5}
   validates :home_type, inclusion: {in: HOME_TYPE}
   validates :sale_type, inclusion: {in: SALE_TYPE}

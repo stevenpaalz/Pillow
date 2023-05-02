@@ -50,7 +50,8 @@ function LoginForm() {
             });
         if (data) {
             setLoadingLogin(false);
-            dispatch(setModal(false))
+            dispatch(setModal(false));
+            window.location.reload();
         }
     }
 

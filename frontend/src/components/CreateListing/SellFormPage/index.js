@@ -118,9 +118,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                 <div id="photos-container">
                     <h4>Photos</h4>
                     <div id="photo-upload-area">
-                        {/* <h4>My Photos</h4> */}
                         <p>Upload files here</p>
-                        {/* <label htmlFor="file-upload">Add New Photo</label> */}
                         <input id='file-upload' type="file" onChange={handleFiles} multiple />
                     </div>
                 </div>
@@ -140,6 +138,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                     <label htmlFor="num-beds">Beds</label>
                     <input id ='num-beds'
                         type='number'
+                        min="0"
                         step="1" 
                         value={numBeds}
                         onChange={changeNumBeds} />
@@ -147,6 +146,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                     <label htmlFor="num-baths">Baths</label>
                     <input id ='num-baths'
                         type='number'
+                        min="0"
                         step="0.5" 
                         value={numBaths}
                         onChange={changeNumBaths} />

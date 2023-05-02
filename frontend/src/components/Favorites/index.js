@@ -21,32 +21,27 @@ function Favorites() {
     const listingsIds = useSelector(state => state.listings.listingsIds);
     const users = useSelector(state => state.users);
     
-
     useEffect(()=>{
-        dispatch(fetchUsers())
-        dispatch(fetchListings())
         dispatch(fetchFavorites())
     }, [dispatch])
 
     useEffect(()=>{
-        
+        dispatch(fetchUsers())
+        dispatch(fetchListings())
+    }, [favorites])
+
+    useEffect(()=>{
         setMyListings([]);
+        if (!listings) return;
+        if (!sessionUser) return;
         if (users[sessionUser.id]) {
-            let favoriteIds = users[sessionUser.id].favoriteIds;
-            let updatedListingIds = favoriteIds.map((favoriteId) => {
-                if (favorites[favoriteId]) {
-                    return favorites[favoriteId].listingId;
-                }
+            let favoritedListingIds = users[sessionUser.id].favoritedIds;
+            let updatedListings = favoritedListingIds.map((favoritedListingId) => {
+                return listings[favoritedListingId]
             })
-            let listingsArray = []
-            updatedListingIds.forEach((listingId) => {
-                if (listings[listingId]) {
-                    listingsArray.push(listings[listingId]);
-                }
-            })
-            setMyListings(listingsArray);
+            setMyListings(updatedListings);
         }
-    }, [listings, favorites, users])
+    }, [favorites, listings, users])
 
     const nextScroll = (e) => {
         e.preventDefault();
@@ -82,28 +77,32 @@ function Favorites() {
     }
     
     useEffect(()=> {
+        if (!myListings || myListings.length === 0) return; 
         const previousButton = document.getElementById('previous-button');
         previousButton.setAttribute('disabled', true);
     }, [])
 
-    if (!myListings || myListings === []) {return(
+    if (!myListings) {return(
         <h1>Loading...</h1>
     )}
+
     return(
         <div id="favorites-container">
             <div className='open-sans' id='favorites-listings-nav'>
                 <div id='favorites-listings-headers'>
                     <h3>Saved homes</h3>
                 </div>
-                <div id='favorites-listings-scroller'>
+                {myListings.length > 0 && <div id='favorites-listings-scroller'>
                     <button id='previous-button' onClick={prevScroll}><i className="fa-solid fa-chevron-left"></i></button>
                     <button id='next-button' onClick={nextScroll}><i className="fa-solid fa-chevron-right"></i></button>
-                </div>
+                </div>}
             </div>
             <div id="favorites-body">
 
                 <ul id='favorites-carousel' onScroll={scrollHandler}>
-                    {Object.values(myListings).map((listing)=>{
+
+                    {myListings.length === 0 && <li className="no-homes-message" id="saved-homes-message">No saved homes yet</li>}
+                    {myListings.length > 0 && myListings.map((listing)=>{
                         
                         return(
                             <li key={listing.id} className="house-package">

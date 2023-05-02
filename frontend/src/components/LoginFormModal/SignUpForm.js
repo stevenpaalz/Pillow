@@ -120,8 +120,9 @@ function SignUpForm() {
                 setLoadingSignUp(false)
             });
         if (data) {
-            setLoadingSignUp(false)
-            dispatch(setModal(false))
+            setLoadingSignUp(false);
+            dispatch(setModal(false));
+            window.location.reload();
         }
     }
 
