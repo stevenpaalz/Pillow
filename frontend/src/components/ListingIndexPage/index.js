@@ -54,8 +54,12 @@ function ListingIndexPage() {
     const openDropDown= () => {
         if (typeDropDown) {
           setTypeDropDown(false);
+          const typeFilterButton = document.getElementById('type-filter-button');
+          typeFilterButton.classList.remove('hovering-child');
         } else {
           setTypeDropDown(true);
+          const typeFilterButton = document.getElementById('type-filter-button');
+          typeFilterButton.classList.add('hovering-child');
         }
     }
 
@@ -71,7 +75,11 @@ function ListingIndexPage() {
         };
       
         document.addEventListener('click', closeFilter);
-        return () => document.removeEventListener("click", closeFilter);
+        return () => {
+            const typeFilterButton = document.getElementById('type-filter-button');
+            typeFilterButton.classList.remove('hovering-child')
+            document.removeEventListener("click", closeFilter);
+        }
     }, [typeDropDown]);
       
     if (!listings || !favorites) {
@@ -94,10 +102,14 @@ function ListingIndexPage() {
                     </button>
                     {typeDropDown && <div className="type-dropdown-class" id="type-filter-dropdown">
                         <form className="type-dropdown-class">
-                            <input className="type-dropdown-class" defaultChecked={type === "Sale"} onClick={handleTypeDropdownClick} value="Sale" name="type-radio" id='for-sale-radio' type='radio' />  
-                            <label className="type-dropdown-class" htmlFor="for-sale-radio">For Sale</label>
-                            <input className="type-dropdown-class" defaultChecked={type === "Rent"} onClick={handleTypeDropdownClick} value="Rent" name="type-radio" id='for-rent-radio' type='radio' />
-                            <label className="type-dropdown-class" htmlFor="for-rent-radio">For Rent</label>
+                            <div className="type-dropdown-class">
+                                <input className="type-dropdown-class" defaultChecked={type === "Sale"} onClick={handleTypeDropdownClick} value="Sale" name="type-radio" id='for-sale-radio' type='radio' />  
+                                <label className="type-dropdown-class" htmlFor="for-sale-radio">For Sale</label>
+                            </div>
+                            <div className="type-dropdown-class">
+                                <input className="type-dropdown-class" defaultChecked={type === "Rent"} onClick={handleTypeDropdownClick} value="Rent" name="type-radio" id='for-rent-radio' type='radio' />
+                                <label className="type-dropdown-class" htmlFor="for-rent-radio">For Rent</label>
+                            </div>
                             <button>Apply</button>
                         </form>
                     </div>}
