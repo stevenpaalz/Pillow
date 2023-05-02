@@ -21,12 +21,7 @@ function ListingIndexItem({listing, favorites}) {
                 setLiked(true);
                 checkedForLike = true;
             }
-            // if (favorites[favoriteId].listingId === listing.id && favorites[favoriteId].userId === sessionUser.id){
-            //     setLiked(true);
-            //     checkedForLike = true;
-            // }
         })
-        // setLiked(false);
         if (checkedForLike === false) setLiked(false);
     }, [listing.favoriteIds])
 
@@ -38,13 +33,11 @@ function ListingIndexItem({listing, favorites}) {
             return;
         }
         if (liked === true) {
-            // setLiked(false);
             let favorite = Object.values(favorites).filter((favorite) => {
                 return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
             })
             dispatch(deleteFavorite(favorite[0].id))
         } else {
-            // setLiked(true);
             dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
         }
     }
@@ -77,7 +70,8 @@ function ListingIndexItem({listing, favorites}) {
                 <li><span>{listing.numBeds}</span> bds</li>
                 <li><span>{listing.numBaths}</span> ba</li>
                 <li><span>{listing.squareFeet}</span> sqft</li>
-                <li>{modifiedHomeType} for {listing.saleType}</li>
+                {modifiedHomeType === "New Construction" &&  <li>{modifiedHomeType}</li>}
+                {modifiedHomeType !== "New Construction" && <li>{modifiedHomeType} for {listing.saleType}</li>}
             </ul>
             <p className='listing-index-address'>
                 <span>{listing.streetNumber}</span>

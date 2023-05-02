@@ -68,7 +68,7 @@ function YourHomes() {
     }
     
     useEffect(()=> {
-        if (!listings) return;
+        if (!listings || Object.values(listings).length === 0) return;
         const previousButton = document.getElementById('previous-button');
         previousButton.setAttribute('disabled', true);
     }, [])
@@ -83,15 +83,15 @@ function YourHomes() {
                 <div id='your-home-listings-headers'>
                     <h3>Your homes</h3>
                 </div>
-                <div id='your-home-listings-scroller'>
+                {Object.values(listings).length !== 0 && <div id='your-home-listings-scroller'>
                     <button id='previous-button' onClick={prevScroll}><i className="fa-solid fa-chevron-left"></i></button>
                     <button id='next-button' onClick={nextScroll}><i className="fa-solid fa-chevron-right"></i></button>
-                </div>
+                </div>}
             </div>
             <div id="your-home-body">
 
                 <ul id='your-home-carousel' onScroll={scrollHandler}>
-                    {Object.values(listings).length === 0 && <li>No homes listed yet!</li>}
+                    {Object.values(listings).length === 0 && <li className="no-homes-message">No homes listed yet</li>}
                     {Object.values(listings).length !== 0 && Object.values(listings).map((listing)=>{
                         return(
                             <li key={listing.id} className="house-package">

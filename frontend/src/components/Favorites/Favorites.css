@@ -145,3 +145,8 @@
     rgb(0, 106, 255) 0px 0px 2px 4px;
     transition: 0.2s;
 }
+
+
+#saved-homes-message {
+    padding-top: 120px;
+}

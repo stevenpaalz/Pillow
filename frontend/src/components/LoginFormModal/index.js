@@ -38,6 +38,7 @@ function LoginFormModal() {
         if (data) {
             setLoadingDemo(false);
             dispatch(setModal(false));
+            window.location.reload();
         }
     }
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Route, Switch, useLocation} from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Splash from './components/Splash';
 import ListingIndexPage from './components/ListingIndexPage';
@@ -11,6 +11,10 @@ import Favorites from './components/Favorites';
 import InProcessPage from './components/InProcessPage';
 
 function App() {
+  // const location = useLocation();
+  // useEffect(()=> {
+
+  // }, [location])
   return (
     <>
       <Navigation />

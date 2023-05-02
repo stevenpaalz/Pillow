@@ -10,11 +10,14 @@ function ProfileDropDown() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
-    const logout = (e) => {
+    const logout = async (e) => {
         e.preventDefault();
-        dispatch(sessionActions.logout());
-        dispatch(setModal(false));
-        history.replace("/");
+        const res = await dispatch(sessionActions.logout());
+        if (res.ok) {
+          dispatch(setModal(false));
+          await history.replace("/");
+          window.location.reload();
+        }
       };
 
     return(
