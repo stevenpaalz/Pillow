@@ -24,7 +24,7 @@
         align-items: center;
     }
 
-    #nav-bar ul li span {
+    #nav-bar ul li span, #profile-links {
         width: 100%;
         height: 65%;
         display: flex;
@@ -33,11 +33,11 @@
         padding-right: 6px;
     }
 
-    #nav-bar ul li span:active:hover {
+    #nav-bar ul li span:active:hover, #profile-links:active:hover {
         box-shadow:0px 0px 3px 2px #2a7dd5;
     }
 
-    #nav-bar ul li span:hover {
+    #nav-bar ul li span:hover, #profile-links:hover {
         color: rgb(0, 106, 255);
         cursor: pointer;
     }
@@ -92,6 +92,23 @@
     cursor: pointer;
 }
 
+#profile-links i{
+    padding-right: 6px;
+}
+
+.no-click {
+    cursor: default !important;
+}
+
+.no-click:active:hover {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.no-click:hover {
+    color: #2a2a35 !important;
+}
+
 @media (min-width: 1150px) and (max-width: 1294px) {
     #left-nav {
         width: 415px;
@@ -101,7 +118,7 @@
         width: 400px;
     }
 
-    #nav-bar ul li span {
+    #nav-bar ul li span, #profile-links {
         padding-left: 8px;
         padding-right: 8px;
     }
@@ -116,7 +133,7 @@
         width: 415px;
     }
 
-    #nav-bar ul li span {
+    #nav-bar ul li span, #profile-links {
         padding-left: 8px;
         padding-right: 8px;
     }

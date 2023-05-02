@@ -15,7 +15,8 @@ function App() {
     <>
       <Navigation />
       <Switch>
-        <Route exact path="/homes"><ListingIndexPage /></Route>
+        <Route exact path="/homes/Sale"><ListingIndexPage /></Route>
+        <Route exact path="/homes/Rent"><ListingIndexPage /></Route>
         <Route exact path="/homes/:listingId"><ListingShowPage /></Route>
         <Route exact path='/sell'><CreateListing /></Route>
         <Route exact path='/:userId/homes'><YourHomes /></Route>
