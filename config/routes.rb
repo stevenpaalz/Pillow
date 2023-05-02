@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       resources :listings, only: [:index], shallow: true
     end
   end
-  # get '/api/:id/search', to: 'api/search#user'
-  get '/api/search', to: 'api/search#index', query: [:q]
+  get '/api/search', to: 'api/search#index', query: [:q, :type]
   get '*path', to: "static_pages#frontend_index"
 end

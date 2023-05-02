@@ -585,8 +585,8 @@ listings.push(Listing.create!({
 
 listings.push(Listing.create!({
   lister_id: 7,
-  street_number: '505',
-  street_address: "Park Ave",
+  street_number: '95',
+  street_address: "River St",
   city: 'Hoboken',
   state: 'NJ',
   zipcode: "07030",

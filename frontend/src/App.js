@@ -11,10 +11,6 @@ import Favorites from './components/Favorites';
 import InProcessPage from './components/InProcessPage';
 
 function App() {
-  // const location = useLocation();
-  // useEffect(()=> {
-
-  // }, [location])
   return (
     <>
       <Navigation />

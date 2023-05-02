@@ -31,13 +31,20 @@ export const fetchListings = () => async dispatch => {
     dispatch(setListings(listings));
 }
 
-export const searchListings = (query) => async dispatch => {
-    const res = await csrfFetch(`/api/search?q=${query}`);
+export const searchListings = (query, type) => async dispatch => {
+    let typeString = "";
+    let queryString = "";
+    let andString = "";
+    if (type) {typeString = `type=${type}`;}
+    if (query) {queryString = `q=${query}`;}
+    if (type && query) {andString = "&"}
+    const res = await csrfFetch(`/api/search?${queryString}${andString}${typeString}`);
     const data = await res.json();
-    const listings = {};
-    data.forEach((el)=>{
-        listings[el.listing.id] = el.listing
+    const listings = {listings: {}, listingsIds: {}};
+    data.listings.forEach((el)=>{
+        listings.listings[el.listing.id] = el.listing
     })
+    listings.listingsIds = data.listingsIds
     dispatch(setListings(listings));
 }
 
