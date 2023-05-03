@@ -3,6 +3,7 @@ import csrfFetch from './csrf';
 const SET_LISTINGS = 'listings/setListings';
 const ADD_LISTING = 'listings/addListing';
 const REMOVE_LISTING = 'listings/removeListing';
+const SORT_LISTINGSIDS = 'listings/sortListingsIds';
 
 const setListings = (listings) => ({
     type: SET_LISTINGS,
@@ -19,8 +20,57 @@ const removeListing = (listingId) => ({
     listingId
 })
 
+const sortListingsIds = (listingsIds) => ({
+    type: SORT_LISTINGSIDS,
+    listingsIds
+})
+
+export const sortListingsIdsByMethod = (method) => async (dispatch, getState) => {
+    const { listings } = getState();
+    const allListings = listings.listings;
+    const listingsIds = listings.listingsIds;
+    switch (method) {
+        case "Newest":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].yearBuilt <= allListings[b].yearBuilt) {return 1}
+                else {return -1}
+            })
+            break;
+        case "Price (High to Low)":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].price <= allListings[b].price) {return 1}
+                else {return -1}
+            })
+            break;
+        case "Price (Low to High)":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].price <= allListings[b].price) {return -1}
+                else {return 1}
+            })
+            break;
+        case "Bedrooms":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].numBeds <= allListings[b].numBeds) {return 1}
+                else {return -1}
+            })
+            break;
+        case "Bathrooms":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].numBaths <= allListings[b].numBaths) {return 1}
+                else {return -1}
+            })
+            break;
+        case "Squarefeet":
+            listingsIds.sort((a,b) => {
+                if (allListings[a].squareFeet <= allListings[b].squareFeet) {return 1}
+                else {return -1}
+            })
+            break;
+    }
+    dispatch(sortListingsIds(listingsIds));
+}
+
 export const fetchListings = () => async dispatch => {
-    
     const res = await csrfFetch('/api/listings');
     const data = await res.json();
     const listings = {listings: {}, listingsIds: {}};
@@ -105,6 +155,9 @@ function listingsReducer(state={}, action) {
             delete newState.listings[action.listingId];
             let idx = newState.listingsIds.indexOf(action.listingId);
             newState.listingsIds.splice(idx, 1)
+            return newState;
+        case SORT_LISTINGSIDS:
+            newState.listingsIds = action.listingsIds;
             return newState;
         default:
             return state;

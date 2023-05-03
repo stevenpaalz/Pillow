@@ -28,7 +28,10 @@ function ListingIndexPage() {
     }
 
     const runSearch = () => {
-        let queryString = `?q=${searchField}`;
+        let queryString = ""
+        if (searchField.length > 0) {
+            queryString = `?q=${searchField}`;
+        }
         history.replace(`/homes/${type}${queryString}`)
         dispatch(searchListings(searchField, type))
     }
@@ -39,7 +42,10 @@ function ListingIndexPage() {
     }, [searchField])
 
     const handleTypeDropdownClick = (e) => {
-        let queryString = `?q=${searchField}`;
+        let queryString = ""
+        if (searchField.length > 0) {
+            queryString = `?q=${searchField}`;
+        }
         history.replace(`/homes/${e.target.value}${queryString}`)
     }
 

@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
+import { sortListingsIdsByMethod } from "../../store/listings";
+import { useDispatch } from "react-redux";
 
 function ListingIndexItems({listings, listingsIds, favorites}) {
+    const dispatch = useDispatch();
     const [sortText, setSortText] = useState("Newest");
-    const [sortOptions, setSortOptions] = useState(false)
+    const [sortOptions, setSortOptions] = useState(false);
+    const [resort, setResort] = useState(false);
 
     const showSortOptions = () => {
         setSortOptions(!sortOptions);
@@ -23,8 +27,38 @@ function ListingIndexItems({listings, listingsIds, favorites}) {
       }, [sortOptions]);
 
     const updateSort = (e) => {
-        setSortText(e.target.innerHTML)
+        setSortText(e.target.innerHTML);
     }
+
+    useEffect(()=>{
+        dispatch(sortListingsIdsByMethod(sortText));
+        setResort(!resort);
+    },[sortText])
+
+    useEffect(() => {
+        setSortText("Newest")
+        dispatch(sortListingsIdsByMethod("Newest"));
+    },[listings])
+    // useEffect(() => {
+    //     const listingsPageSortByButton = document.getElementById('listings-page-sort-by-button')
+    //     switch (listingsPageSortByButton.innerText) {
+    //         case "Newest":
+    //             let newest = [...listingsIds]
+    //             newest.sort((a, b) => {
+    //                 if (listings[a].yearBuilt <= listings[b].yearBuilt) {return 1}
+    //                 else {return -1}
+    //             })
+    //             setSortedListingsIds(newest);
+    //             break;
+    //         case "Price (High to Low)":
+    //             let priciest = [...listingsIds].sort((a, b) => {
+    //                 if (listings[a].price >= listings[b].price) {return -1}
+    //                 else {return 1}
+    //             })
+    //             setSortedListingsIds(priciest);
+    //             break;
+    //     }
+    // }, [sortText])
 
     return(
         <div id='index-page-right-side' className="open-sans">
