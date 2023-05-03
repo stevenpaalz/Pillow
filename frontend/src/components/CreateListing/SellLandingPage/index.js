@@ -3,16 +3,39 @@ import SellLandingBottom from "./SellLandingBottom";
 import { useState } from "react";
 
 function SellLandingPage({setLandingComplete, streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType, setStreetNumber, setStreetAddress, setUnitNumber, setCity, setState, setZipcode, setSaleType}) {
-    const changeUnitNumber = e => { setUnitNumber(e.target.value)};
-    const changeCity = e => { setCity(e.target.value)};
-    const changeState = e => { setState(e.target.value)};
-    const changeZipcode = e => { setZipcode(e.target.value)};
-    const changeSaleType = e => { setSaleType(e.target.value) };
+    const [addressError, setAddressError] = useState(false)
+    const changeUnitNumber = e => {
+        setAddressError(false);
+        setUnitNumber(e.target.value)
+    };
+    const changeCity = e => { 
+        setAddressError(false);
+        setCity(e.target.value)
+    };
+    const changeState = e => {
+        setAddressError(false);
+        setState(e.target.value)
+    };
+    const changeZipcode = e => { 
+        setAddressError(false);
+        setZipcode(e.target.value)
+    };
+    const changeSaleType = e => {
+        setAddressError(false);
+        setSaleType(e.target.value) 
+    };
     const [fullAddress, setFullAddress] = useState("");
-    const changeFullAddress = e => { setFullAddress(e.target.value)};
+    const changeFullAddress = e => { 
+        setAddressError(false);
+        setFullAddress(e.target.value)
+    };
 
     const handleContinue = (e) => {
         e.preventDefault();
+        if (!fullAddress || !city || !state || !zipcode) {
+            setAddressError(true);
+            return;
+        }
         let arr = fullAddress.split(" ");
         setStreetNumber(arr.shift());
         setStreetAddress(arr.join(' '));
@@ -80,6 +103,7 @@ function SellLandingPage({setLandingComplete, streetNumber, streetAddress, unitN
 
                     <button id="continue-button" onClick={handleContinue}>Continue</button>
                 </div>
+                {addressError && <p className="address-error">Invalid Address</p>}
                 </form>
                 <div id='blue-bar'></div>
             </div>

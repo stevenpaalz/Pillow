@@ -144,3 +144,9 @@
 #continue-button:active:hover {
     background: linear-gradient(to top,#17B036,#3DCA5A);
 }
+
+.address-error {
+    color: rgb(255, 34, 34);
+    font-weight: 600;
+    margin-top: 10px;
+}
