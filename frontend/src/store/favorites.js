@@ -36,17 +36,27 @@ export const createFavorite = (favorite) => async dispatch => {
         body: JSON.stringify(favorite)
     })
     const data = await res.json();
-    dispatch(addFavorite(data.favorite));
     dispatch(fetchUsers);
     return data.favorite.id;
 }
 
-export const deleteFavorite = (favoriteId) => async dispatch => {
-    const res = await csrfFetch(`/api/favorites/${favoriteId}`, {
-        method: 'DELETE',
-        body: JSON.stringify(favoriteId)
+export const deleteFavorite = (userId, listingId) => async (dispatch) => {
+    const responseOne = await csrfFetch('/api/favorites')
+    const data = await responseOne.json();
+    const favorites = {};
+    data.forEach((el)=>{
+        favorites[el.favorite.id] = el.favorite
     })
-    dispatch(removeFavorite(favoriteId));
+    const favorite = Object.values(favorites).find((el)=> el.userId === userId && el.listingId === listingId);
+    const res = await csrfFetch(`/api/favorites/${favorite.id}`, {
+        method: 'DELETE',
+        body: JSON.stringify(favorite.id)
+    })
+    const locationArray = window.location.href.split("/");
+    const location = locationArray[locationArray.length - 1];
+    if (location === "favorites") {
+        dispatch(removeFavorite(favorite.id));
+    }
     dispatch(fetchUsers);
 }
 

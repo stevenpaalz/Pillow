@@ -9,23 +9,23 @@ function BuyDropDown() {
                 <div>
                     <h3>Homes for sale</h3>
                     <ul id='buy-dropdown-col1' className='main-dropdown-col'>
-                        <li><Link to="/homes">Homes for sale</Link></li>
-                        <li><Link to="/homes">Foreclosures</Link></li>
-                        <li><Link to="/homes">For sale by owner</Link></li>
-                        <li><Link to="/homes">Open houses</Link></li>
-                        <li><Link to="/homes">New construction</Link></li>
-                        <li><Link to="/homes">Coming soon</Link></li>
-                        <li><Link to="/homes">Recent home sales</Link></li>
-                        <li><Link to="/homes">All homes</Link></li>
+                        <li><Link to="/homes/Sale">Homes for sale</Link></li>
+                        <li><Link to="/homes/Sale">Foreclosures</Link></li>
+                        <li><Link to="/homes/Sale">For sale by owner</Link></li>
+                        <li><Link to="/homes/Sale">Open houses</Link></li>
+                        <li><Link to="/homes/Sale">New construction</Link></li>
+                        <li><Link to="/homes/Sale">Coming soon</Link></li>
+                        <li><Link to="/homes/Sale">Recent home sales</Link></li>
+                        <li><Link to="/homes/Sale">All homes</Link></li>
                     </ul>
                 </div>
                 <div className='not-first-col-main-dropdown'>
                     <h3>Resources</h3>
                         <ul id='buy-dropdown-col2' className='main-dropdown-col'>
-                            <li><Link to="/in-process">Buyers Guide</Link></li>
-                            <li><Link to="/in-process">Foreclosure center</Link></li>
-                            <li><Link to="/in-process">Real estate app</Link></li>
-                            <li><Link to="/in-process">Down payment assistance</Link></li>
+                            <li className="no-click">Buyers Guide</li>
+                            <li className="no-click">Foreclosure center</li>
+                            <li className="no-click">Real estate app</li>
+                            <li className="no-click">Down payment assistance</li>
                         </ul>
                 </div>
             </div>

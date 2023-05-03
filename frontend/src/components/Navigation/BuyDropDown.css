@@ -63,3 +63,8 @@
     border-left: 1px solid rgb(178, 178, 178);
     padding-left: 50px;
 }
+
+#buy-dropdown-col2.main-dropdown-col li.no-click:hover {
+    text-decoration: none !important;
+    color: #006AFF !important;
+}
