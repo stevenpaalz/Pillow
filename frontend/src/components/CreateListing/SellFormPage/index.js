@@ -4,7 +4,7 @@ import './SellFormPage.css';
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType}) {
+function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zipcode, saleType, sessionUser}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [errors, setErrors] = useState([]);
@@ -82,7 +82,7 @@ function SellFormPage({streetNumber, streetAddress, unitNumber, city, state, zip
                 else setErrors([res.statusText]);
             });
         if (listingId) {
-            history.push(`/homes/${listingId}`);
+            history.push(`/${sessionUser.id}/homes/`);
         }
     }
 

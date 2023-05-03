@@ -55,6 +55,7 @@ function CreateListing() {
             state={state}
             zipcode={zipcode}
             saleType={saleType}
+            sessionUser={sessionUser}
             />}
         </div> 
     )
