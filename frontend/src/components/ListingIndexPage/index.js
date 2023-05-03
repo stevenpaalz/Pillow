@@ -1,5 +1,4 @@
 import MapWrapper from "../Map";
-import SearchBar from "../SearchBar";
 import ListingIndexItem from "./ListingIndexItem";
 import "./ListingIndexPage.css";
 import ListingIndexItems from "./ListingIndexItems";

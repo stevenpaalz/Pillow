@@ -9,7 +9,6 @@ function ListingIndexItems({listings, listingsIds, favorites}) {
     const [sortOptions, setSortOptions] = useState(false);
     const [resort, setResort] = useState(false);
     const sortText = useRef("Newest")
-    // const [sortText, setSortText] = useState("Homes For You");
 
     const showSortOptions = () => {
         setSortOptions(!sortOptions);

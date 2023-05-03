@@ -9,7 +9,6 @@ import "./Favorites.css";
 
 function Favorites() {
     const [myListings, setMyListings] = useState([]);
-    // const [noListings, setNoListings] = useState(false)
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
     if (!sessionUser) {

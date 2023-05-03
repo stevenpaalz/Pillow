@@ -33,9 +33,6 @@ function ListingIndexItem({listing, favorites}) {
             return;
         }
         if (liked === true) {
-            // let favorite = Object.values(favorites).filter((favorite) => {
-            //     return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
-            // })
             dispatch(deleteFavorite(sessionUser.id, listing.id));
             setLiked(false);
         } else {
