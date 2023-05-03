@@ -76,3 +76,107 @@
     color: #2A2A33;
     background-color: rgb(242, 250, 255);
 }
+
+#type-filter-button {
+    margin-left: 24px;
+    cursor: pointer;
+    height: 37px;
+    line-height: 1.5em;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(167, 166, 171);
+    border-radius: 4px;
+    color: rgb(42, 42, 51);
+    width: 98px;
+    text-align: center;
+}
+
+#type-filter-button:hover {
+    background-color: rgb(241, 241, 244);
+}
+
+#type-filter-button:active:hover {
+    background-color: rgb(209, 209, 213);
+    border-color: rgb(84, 84, 90);
+}
+
+#type-filter-button.hovering-child {
+    background-color: rgb(242, 250, 255);
+    border: 1px solid rgb(0, 106, 255);
+    transition: 0.3s;
+}
+
+#type-filter-button i {
+    margin-left: 6px;
+}
+
+#type-filter-dropdown {
+    position: relative;
+    top: 122px;
+    right: 100px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 12px 0px;
+    outline: none;
+    border-radius: 8px;
+    height: 190px;
+    width: 292px;
+    z-index: 100;
+    padding-bottom: 10px;
+}
+
+#type-filter-dropdown form {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+    padding: 5%;
+    justify-content: space-between;
+}
+
+#type-filter-dropdown form div{
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+#type-filter-dropdown form div input{
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+#type-filter-dropdown form div label{
+    cursor: pointer;
+}
+
+#type-filter-dropdown form div label:hover{
+    color: rgb(0, 106, 255);
+}
+
+#type-filter-dropdown form button{
+    background-color: rgb(0, 106, 255);
+    border-color: rgb(0, 106, 255);
+    color: rgb(255, 255, 255);
+    height: 44px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#type-filter-dropdown form button:hover {
+    background-color: rgb(13, 69, 153);
+    border-color: rgb(13, 69, 153);
+    color: rgb(255, 255, 255);
+    transition: 0.2s;
+}
+
+#type-filter-dropdown form button:active:hover {
+    background-color: rgb(0, 23, 81);
+    border-color: rgb(0, 23, 81);
+    color: rgb(255, 255, 255);
+    transition: 0.2s;
+}

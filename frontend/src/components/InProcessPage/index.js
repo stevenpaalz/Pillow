@@ -13,7 +13,7 @@ function InProcessPage() {
             <h3>You should check out one of the following features:</h3>
             <ul>
                 <li><Link to="/">Splash Page</Link></li>
-                <li><Link to="/homes">Homes + Map</Link></li>
+                <li><Link to="/homes/Sale">Homes + Map</Link></li>
                 <li><Link to="/sell">Create Listing Page</Link></li>
                 <li onClick={()=>{if (sessionUser) {history.replace(`/${sessionUser.id}/homes`)}}}><Link to="/">Your Homes</Link></li>
                 <li onClick={()=>{if (sessionUser) {history.replace(`/${sessionUser.id}/favorites`)}}}><Link to="/">Saved Homes</Link></li>

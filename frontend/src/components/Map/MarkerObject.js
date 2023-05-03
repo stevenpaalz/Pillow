@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 function MarkerObject({listing}) {
     const history = useHistory();
     const [hovering, setHovering] = useState(false);
-    // const [defaultZIndex, setDefaultZIndex] = useState(0);
 
     let markerImage1 = {
         url: 'https://zilloh-seeds.s3.us-east-2.amazonaws.com/marker.001.png',

@@ -82,7 +82,7 @@ function Favorites() {
         previousButton.setAttribute('disabled', true);
     }, [])
 
-    if (!myListings) {return(
+    if (!myListings || myListings[0] === undefined) {return(
         <h1>Loading...</h1>
     )}
 
@@ -103,7 +103,7 @@ function Favorites() {
 
                     {myListings.length === 0 && <li className="no-homes-message" id="saved-homes-message">No saved homes yet</li>}
                     {myListings.length > 0 && myListings.map((listing)=>{
-                        
+            
                         return(
                             <li key={listing.id} className="house-package">
                                 <ul>

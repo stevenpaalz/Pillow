@@ -107,7 +107,7 @@ function UpdateFormPage() {
                 else setErrors([res.statusText]);
             });
         if (listingId) {
-            history.push(`/homes/${listingId}`);
+            history.push(`/${sessionUser.id}/homes/`);
         }
     }
 

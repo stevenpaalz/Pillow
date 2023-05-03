@@ -10,6 +10,8 @@ import ShowRightSubnav from "./ShowRightSubnav";
 import ShowDetailsOverview from "./ShowDetailsOverview";
 import ShowDetailsFacts from "./ShowDetailsFacts";
 import "./ListingsShowPage.css";
+import "../SearchBar/SearchBar.css";
+
 
 function ListingShowPage() {
     const dispatch = useDispatch();
@@ -26,8 +28,10 @@ function ListingShowPage() {
         dispatch(fetchListing(listingId));
     },[favorites])
 
-    const closePage = () => {
-        history.push('/homes')
+    const closePage = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        history.goBack();
     }
 
     if (!listing) {

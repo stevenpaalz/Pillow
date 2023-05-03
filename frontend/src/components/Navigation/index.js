@@ -41,17 +41,17 @@ function Navigation() {
         <>
         <div id='nav-bar' className="open-sans">
             <ul id="left-nav">
-                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/homes">Buy</NavLink></span>
+                <li onMouseOver={()=>setBuyDropDownOpen(true)} onMouseLeave={()=>setBuyDropDownOpen(false)}><span onClick={()=>history.replace("/homes/Sale")}><NavLink exact to="/homes/Sale">Buy</NavLink></span>
                     {buyDropDownOpen && <BuyDropDown />}
                 </li>
-                <li onMouseOver={()=>setRentDropDownOpen(true)} onMouseLeave={()=>setRentDropDownOpen(false)}><span onClick={()=>history.replace("/homes")}><NavLink exact to="/">Rent</NavLink></span>
+                <li onMouseOver={()=>setRentDropDownOpen(true)} onMouseLeave={()=>setRentDropDownOpen(false)}><span onClick={()=>history.replace("/homes/Rent")}><NavLink exact to="/homes/Rent">Rent</NavLink></span>
                     {rentDropDownOpen && <RentDropDown />}
                 </li>
                 <li onMouseOver={()=>setSellDropDownOpen(true)} onMouseLeave={()=>setSellDropDownOpen(false)}><span onClick={() => {sessionUser ? history.replace("/sell") : dispatch(setModal(true))}}><NavLink exact to="/sell">Sell</NavLink></span>
                     {sellDropDownOpen && <SellDropDown />}
                 </li>
-                <li><span onClick={()=>history.replace("/in-process")}>Home Loans</span></li>
-                <li><span onClick={()=>history.replace("/in-process")}>Agent Finder</span></li>
+                <li><span className="no-click">Home Loans</span></li>
+                <li><span className="no-click">Agent Finder</span></li>
             </ul>
             <div id="nav-logo">
                 <NavLink exact to="/">
@@ -60,8 +60,8 @@ function Navigation() {
             </div>
             <ul id="right-nav">
                 <li><span onClick={() => {sessionUser ? history.replace(`/${sessionUser.id}/homes`) : dispatch(setModal(true))}}>Manage Rentals</span></li>
-                <li><span onClick={()=>window.location='https://github.com/stevenpaalz'}><i className="fa-brands fa-github"></i> Github</span></li>
-                <li><span onClick={()=>window.location='https://www.linkedin.com/in/steve-paalz/'}><i className="fa-brands fa-linkedin"></i> LinkedIn</span></li>
+                <li><a id="profile-links" href='https://github.com/stevenpaalz' target="_blank"><i className="fa-brands fa-github"></i> Github</a></li>
+                <li><a id="profile-links" href='https://www.linkedin.com/in/steve-paalz/' target="_blank"><i className="fa-brands fa-linkedin"></i> LinkedIn</a></li>
                 {sessionLinks}
             </ul>
         </div>

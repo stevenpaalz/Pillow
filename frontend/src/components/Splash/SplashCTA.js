@@ -8,7 +8,7 @@ function SplashCTA() {
     const history = useHistory();
 
     const buyReroute = () => {
-        history.push("/homes")
+        history.push("/homes/Sale")
     }
 
     const sellReroute = () => {
@@ -16,7 +16,7 @@ function SplashCTA() {
     }
 
     const rentReroute = () => {
-        history.push("/homes")
+        history.push("/homes/Rent")
     }
 
     return(

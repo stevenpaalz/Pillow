@@ -13,8 +13,7 @@ function Splash() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.replace("/homes");
-        dispatch(searchListings(searchField));
+        history.replace(`/homes/Sale?q=${searchField}`);
     }
 
     return(
