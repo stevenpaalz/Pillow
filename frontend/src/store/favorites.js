@@ -52,6 +52,11 @@ export const deleteFavorite = (userId, listingId) => async (dispatch) => {
         method: 'DELETE',
         body: JSON.stringify(favorite.id)
     })
+    const locationArray = window.location.href.split("/");
+    const location = locationArray[locationArray.length - 1];
+    if (location === "favorites") {
+        dispatch(removeFavorite(favorite.id));
+    }
     dispatch(fetchUsers);
 }
 

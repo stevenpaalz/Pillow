@@ -9,6 +9,7 @@ import "./Favorites.css";
 
 function Favorites() {
     const [myListings, setMyListings] = useState([]);
+    // const [noListings, setNoListings] = useState(false)
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
     if (!sessionUser) {
@@ -37,6 +38,8 @@ function Favorites() {
         if (users[sessionUser.id]) {
             let favoritedListingIds = users[sessionUser.id].favoritedIds;
             let updatedListings = favoritedListingIds.map((favoritedListingId) => {
+                if (!listings[favoritedListingId]) {
+                }
                 return listings[favoritedListingId]
             })
             setMyListings(updatedListings);
@@ -82,7 +85,7 @@ function Favorites() {
         previousButton.setAttribute('disabled', true);
     }, [])
 
-    if (!myListings || myListings[0] === undefined) {return(
+    if (!myListings || myListings.some((listing) => !listing)) {return(
         <h1>Loading...</h1>
     )}
 

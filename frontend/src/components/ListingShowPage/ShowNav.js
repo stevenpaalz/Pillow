@@ -39,10 +39,7 @@ function ShowNav({listing}) {
         }
         if (liked === true) {
             setLiked(false);
-            let favorite = Object.values(favorites).filter((favorite) => {
-                return (favorite.listingId === listing.id) && (favorite.userId === sessionUser.id)
-            })
-            dispatch(deleteFavorite(favorite[0].id))
+            dispatch(deleteFavorite(sessionUser.id, listing.id))
         } else {
             setLiked(true);
             dispatch(createFavorite({listingId: listing.id, userId: sessionUser.id}))
