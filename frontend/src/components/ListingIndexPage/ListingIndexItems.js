@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ListingIndexItem from "./ListingIndexItem";
 import './ListingIndexItems.css';
 import { sortListingsIdsByMethod } from "../../store/listings";
@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 
 function ListingIndexItems({listings, listingsIds, favorites}) {
     const dispatch = useDispatch();
-    const [sortText, setSortText] = useState("Newest");
     const [sortOptions, setSortOptions] = useState(false);
     const [resort, setResort] = useState(false);
+    const sortText = useRef("Newest")
+    // const [sortText, setSortText] = useState("Homes For You");
 
     const showSortOptions = () => {
         setSortOptions(!sortOptions);
@@ -27,38 +28,13 @@ function ListingIndexItems({listings, listingsIds, favorites}) {
       }, [sortOptions]);
 
     const updateSort = (e) => {
-        setSortText(e.target.innerHTML);
+        sortText.current = e.target.innerHTML
     }
 
     useEffect(()=>{
-        dispatch(sortListingsIdsByMethod(sortText));
+        dispatch(sortListingsIdsByMethod(sortText.current));
         setResort(!resort);
-    },[sortText])
-
-    useEffect(() => {
-        setSortText("Newest")
-        dispatch(sortListingsIdsByMethod("Newest"));
-    },[listings])
-    // useEffect(() => {
-    //     const listingsPageSortByButton = document.getElementById('listings-page-sort-by-button')
-    //     switch (listingsPageSortByButton.innerText) {
-    //         case "Newest":
-    //             let newest = [...listingsIds]
-    //             newest.sort((a, b) => {
-    //                 if (listings[a].yearBuilt <= listings[b].yearBuilt) {return 1}
-    //                 else {return -1}
-    //             })
-    //             setSortedListingsIds(newest);
-    //             break;
-    //         case "Price (High to Low)":
-    //             let priciest = [...listingsIds].sort((a, b) => {
-    //                 if (listings[a].price >= listings[b].price) {return -1}
-    //                 else {return 1}
-    //             })
-    //             setSortedListingsIds(priciest);
-    //             break;
-    //     }
-    // }, [sortText])
+    },[sortText.current, listingsIds])
 
     return(
         <div id='index-page-right-side' className="open-sans">
@@ -70,7 +46,7 @@ function ListingIndexItems({listings, listingsIds, favorites}) {
                         
                         <div onClick={showSortOptions} id='listings-page-sort-by'>
                             <p>Sort:</p>
-                            <button id='listings-page-sort-by-button'>{sortText}<i className="fa-solid fa-chevron-down"></i></button>
+                            <button id='listings-page-sort-by-button'>{sortText.current}<i className="fa-solid fa-chevron-down"></i></button>
                             {sortOptions && 
                             <ul id='sort-drop-down'>
                                 <li onClick={updateSort}>Newest</li>

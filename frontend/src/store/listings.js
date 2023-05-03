@@ -32,13 +32,13 @@ export const sortListingsIdsByMethod = (method) => async (dispatch, getState) =>
     switch (method) {
         case "Newest":
             listingsIds.sort((a,b) => {
-                if (allListings[a].yearBuilt <= allListings[b].yearBuilt) {return 1}
+                if (allListings[a].yearBuilt < allListings[b].yearBuilt) {return 1}
                 else {return -1}
             })
             break;
         case "Price (High to Low)":
             listingsIds.sort((a,b) => {
-                if (allListings[a].price <= allListings[b].price) {return 1}
+                if (allListings[a].price < allListings[b].price) {return 1}
                 else {return -1}
             })
             break;
@@ -50,19 +50,19 @@ export const sortListingsIdsByMethod = (method) => async (dispatch, getState) =>
             break;
         case "Bedrooms":
             listingsIds.sort((a,b) => {
-                if (allListings[a].numBeds <= allListings[b].numBeds) {return 1}
+                if (allListings[a].numBeds < allListings[b].numBeds) {return 1}
                 else {return -1}
             })
             break;
         case "Bathrooms":
             listingsIds.sort((a,b) => {
-                if (allListings[a].numBaths <= allListings[b].numBaths) {return 1}
+                if (allListings[a].numBaths < allListings[b].numBaths) {return 1}
                 else {return -1}
             })
             break;
         case "Squarefeet":
             listingsIds.sort((a,b) => {
-                if (allListings[a].squareFeet <= allListings[b].squareFeet) {return 1}
+                if (allListings[a].squareFeet < allListings[b].squareFeet) {return 1}
                 else {return -1}
             })
             break;

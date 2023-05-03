@@ -55,8 +55,8 @@ function ShowNav({listing}) {
             <ul>
                 { (!sessionUser || (listing.lister.id !== sessionUser.id)) && liked && <li onClick={toggleLiked}><i className="fa-solid fa-heart"></i>Saved</li> }
                 { (!sessionUser || (listing.lister.id !== sessionUser.id)) && !liked && <li onClick={toggleLiked}><i className="fa-regular fa-heart"></i>Save</li> }
-                <li onClick={()=>{history.replace("/in-process")}}><i className="fa-regular fa-share-from-square"></i>Share</li>
-                <li onClick={()=>{history.replace("/in-process")}}><i className="fa-solid fa-ban"></i>Hide</li>
+                <li className="no-click"><i className="fa-regular fa-share-from-square"></i>Share</li>
+                <li onClick={()=>{history.goBack()}}><i className="fa-solid fa-ban"></i>Hide</li>
             </ul>
         </div>
     )
